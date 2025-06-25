@@ -1,0 +1,71 @@
+{
+    "CP": {
+        "10": {
+            "plain-gecode": {
+                "status": "inconsistent",
+                "time": -1,
+                "obj": 2147483647
+            }
+        },
+        "12": {
+            "plain-gecode": {
+                "status": "inconsistent",
+                "time": -1,
+                "obj": 2147483647
+            }
+        },
+        "14": {
+            "plain-gecode": {
+                "status": "inconsistent",
+                "time": -1,
+                "obj": 2147483647
+            }
+        },
+        "16": {
+            "plain-gecode": {
+                "status": "inconsistent",
+                "time": -1,
+                "obj": 2147483647
+            }
+        },
+        "18": {
+            "plain-gecode": {
+                "status": "inconsistent",
+                "time": -1,
+                "obj": 2147483647
+            }
+        },
+        "20": {
+            "plain-gecode": {
+                "status": "inconsistent",
+                "time": -1,
+                "obj": 2147483647
+            }
+        },
+        "4": {
+            "plain-gecode": {
+                "status": "optimal",
+                "time": 1,
+                "obj": 1
+            }
+        },
+        "6": {
+            "plain-gecode": {
+                "status": "inconsistent",
+                "time": -1,
+                "obj": 2147483647
+            }
+        },
+        "8": {
+            "plain-gecode": {
+                "status": "inconsistent",
+                "time": -1,
+                "obj": 2147483647
+            }
+        }
+    },
+    "MILP": {},
+    "MIP": {},
+    "SAT": {},
+    "SMT": {}
+}

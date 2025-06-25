@@ -1,0 +1,90 @@
+name: Instances checks
+
+on:
+  push:
+    branches:
+      - main
+      - cp
+      - sat
+      - smt
+      - smt-lib
+      - milp
+    paths: ["src/**", .github/workflows/status.yml, .github/status_update.py, .github/check_solution_json.py, "results/**"]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check-status:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Build Dockerfile
+        run: |
+          cd ${GITHUB_WORKSPACE}/src
+          docker build . -t cdmo --build-arg="AMPL_KEY=${{secrets.AMPL_KEY}}"
+
+
+      - name: Set env for methods to run (main)
+        if: endsWith(github.ref, '/main')
+        run: |
+          echo "METHODS=cp,sat,smt,milp" >> $GITHUB_ENV
+      - name: Set env for methods to run (CP)
+        if: endsWith(github.ref, '/cp')
+        run: |
+          echo "METHODS=cp" >> $GITHUB_ENV
+      - name: Set env for methods to run (SAT)
+        if: endsWith(github.ref, '/sat')
+        run: |
+          echo "METHODS=sat" >> $GITHUB_ENV
+      - name: Set env for methods to run (SMT)
+        if: endsWith(github.ref, '/smt')
+        run: |
+          echo "METHODS=smt" >> $GITHUB_ENV
+      - name: Set env for methods to run (SMT-LIB)
+        if: endsWith(github.ref, '/smt-lib')
+        run: |
+          echo "METHODS=smt" >> $GITHUB_ENV
+      - name: Set env for methods to run (MILP)
+        if: endsWith(github.ref, '/milp')
+        run: |
+          echo "METHODS=milp" >> $GITHUB_ENV
+
+          
+      - name: Generate results
+        run: |
+          docker run -v ${GITHUB_WORKSPACE}/results:/cdmo/results cdmo \
+            --runner-label="github-action" \
+            --verbose \
+            --timeout=300 \
+            --mem-limit=5120 \
+            --methods=$METHODS
+
+      - name: Generate checks
+        run: |
+          cd ${GITHUB_WORKSPACE}/.github
+          python3 check_solution_json.py ${GITHUB_WORKSPACE}/results/ > /tmp/instances_checks.json
+
+      - name: Update status in README
+        run: |
+          cd ${GITHUB_WORKSPACE}/.github
+          python3 status_update.py \
+            --checks-file=/tmp/instances_checks.json \
+            --readme-file=${GITHUB_WORKSPACE}/README.md \
+            --method-status-dir=${GITHUB_WORKSPACE}/method-statuses \
+            --method-status-git=./method-statuses
+
+
+      - name: Push status
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add ${GITHUB_WORKSPACE}/README.md
+          git add ${GITHUB_WORKSPACE}/results/*
+          git add ${GITHUB_WORKSPACE}/method-statuses/*
+          git commit -m "Update status" || true
+          git push || true
