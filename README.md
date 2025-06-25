@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Project for the Combinatorial Decision Making and Optimization course at the University of Bologna (A.Y. 2023-2024).
+Project for the Combinatorial Decision Making and Optimization course at the University of Bologna (A.Y. 2024-2025).
 
 ## Description
 
