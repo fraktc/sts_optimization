@@ -222,10 +222,13 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
     out_results = {}
 
     return {
-        "time": 1,
-        "optimal": True,
-        "obj": 1,
-        "sol": [[[1,2,3]]],
+        "aaa":{
+            "time": 1,
+            "optimal": True,
+            "obj": 1,
+            "sol": [[[1,2,3]]],
+            "_extras": {}
+    }
     }
 
     for experiment in experiments_setup:
