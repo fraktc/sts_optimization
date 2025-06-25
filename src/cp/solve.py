@@ -221,6 +221,13 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
     instance_path = os.path.join(pathlib.Path(__file__).parent.resolve(), ".instance.dzn")
     out_results = {}
 
+    return {
+        "time": -1,
+        "optimal": None,
+        "obj": -1,
+        "sol": None,
+    }
+
     for experiment in experiments_setup:
         if (models_filter is not None) and (experiment["name"] not in models_filter):
             continue
