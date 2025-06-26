@@ -4,7 +4,7 @@ include "globals.mzn";
 int: n;
 set of int: TEAMS = 1..(n);
 set of int: WEEKS = 1..(n-1);
-set of int: PERIODS = 1..n/2;
+set of int: PERIODS = 1..(n div 2);
 set of int: SLOTS = 1..2;
 
 % Decision variables
