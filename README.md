@@ -1,6 +1,3 @@
-<<<<<<< cp
-Nice Readme
-=======
 # Sports Scheduling Optimization
 
 ## Introduction
@@ -39,7 +36,6 @@ docker run -v ./res:/cdmo/results cdmo
 --instances=<instance-number>
 [--mem-limit=<ram-limit>]
 [--verbose]
->>>>>>> main
 
 
 ## Results
@@ -47,7 +43,6 @@ docker run -v ./res:/cdmo/results cdmo
 <!-- begin-status -->
 | Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MIP](./method-statuses/mip-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
-<<<<<<< cp
 | $2$ | $\color{red}\text{Inconsistent}$ | | | | 
 | $3$ | $\color{red}\text{Inconsistent}$ | | | | 
 | $4$ | $\color{red}\text{Inconsistent}$ | | | | 
@@ -59,13 +54,3 @@ docker run -v ./res:/cdmo/results cdmo
 | $10$ | $\color{red}\text{Inconsistent}$ | | | | 
 
 <!-- end-status -->
-=======
-| $1$ |  |  |  |  | 
-| $2$ |  |  |  |  | 
-| $3$ |  |  |  |  | 
-| $4$ |  |  |  |  | 
-| $5$ |  |  |  |  | 
-| ... |  |  |  |  | 
-<!-- end-status -->
-
->>>>>>> main
