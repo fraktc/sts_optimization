@@ -3,6 +3,9 @@
 # from .total_cumconstr_sat import Unified_CumulativeConstr_Model
 # from .total_diff_enc_sat import Unified_HeuleEnc_Model
 # from .matrix_sat import Matrix_Model
+
+from .sat_z3_1 import Unified_Z3_Model
+
 import time
 import multiprocessing
 import logging
@@ -59,7 +62,7 @@ def modelRunner(ModelClass, instance, timeout, random_seed, queue):
 
 def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwargs):
     
-    models = {}
+    models = {'z3-model': Unified_Z3_Model,}
     # models = {
     #     'un-model': Unified_Model,
     #     'un-symm-model': Unified_Symm_Model,
@@ -106,6 +109,5 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
             }
         else:
             results[model] = res
-    print(results)
 
     return results
