@@ -179,11 +179,6 @@ def main(args):
 
         instances_status[subfolder] = {}
 
-        for instance in [2,3,4,5,6,7,8,9,10]:
-            instances_status[subfolder][instance] = {}
-
-        # print(instances_status[subfolder])
-
         # print(f"\nChecking results in {folder} folder")
         for results_file in sorted(os.listdir(folder)):
             if results_file.startswith("."):

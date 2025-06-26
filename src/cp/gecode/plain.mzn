@@ -49,10 +49,3 @@ constraint max_imbalance >= 1;
 
 % Search strategy
 solve :: restart_luby(200) :: int_search(matches, dom_w_deg, indomain_random, complete) minimize max_imbalance;
-
-% Output
-% output [
-%  "HOME: \n" ++ show2d([ [matches[p, w, 1] | p in PERIODS] | w in WEEKS ]) ++ "\n" ++
-%  "AWAY: \n" ++ show2d([ [matches[p, w, 2] | p in PERIODS] | w in WEEKS ]) ++ "\n" ++
-%  "MAX_IMBALANCE: \n" ++ show(max_imbalance)
-%];
