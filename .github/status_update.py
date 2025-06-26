@@ -19,7 +19,8 @@ def formatMethodStatusFileName(method):
 
 
 def generateOverallStatus(checks, to_display_methods, method_status_path):
-    num_instances = len(checks[to_display_methods[0]])
+    # num_instances = len(checks[to_display_methods[0]])
+    instances = checks[to_display_methods[0]].keys()
     status_md = ""
 
     # status_md = f"| Instance | {' | '.join(to_display_methods)} |\n"
@@ -27,8 +28,8 @@ def generateOverallStatus(checks, to_display_methods, method_status_path):
     status_md += f"|:-:| {''.join([':---:|']*(len(to_display_methods)))}\n"
 
     # Format overall results
-    for i in range(num_instances):
-        instance = f"{i+1}"
+    for instance in instances:
+        # instance = f"{i+1}"
 
         status_md += f"| ${instance}$ | "
         for method in to_display_methods:
@@ -80,16 +81,18 @@ def generateOverallStatus(checks, to_display_methods, method_status_path):
 
 def generateSpecificStatus(checks, method):
     num_instances = len(checks[method])
+    instances = checks[method].keys()
     status_md = ""
 
     # status_md = f"| Instance | {' | '.join(to_display_methods)} |\n"
     status_md = f"| $\\text{{Model}}$ | {' | '.join([f'${i+1}$' for i in range(num_instances)])} |\n"
     status_md += f"|:-:| {''.join([':---:|']*num_instances)}\n"
 
-    for model in checks[method]["1"].keys():
+    models = checks[method][list(checks[method].keys())[0]].keys()
+    for model in models:
         status_md += "$\\text{"+ model.replace('_', '-') +"}$ | "
-        for i in range(num_instances):
-            instance = f"{i+1}"
+        for instance in instances:
+            # instance = f"{i+1}"
             entry = ""
             status = checks[method][instance][model]["status"]
             obj = checks[method][instance][model]["obj"]
@@ -126,6 +129,7 @@ if __name__ == "__main__":
 
     for i in range(1, len(to_display_methods)):
         assert to_display_methods[i] in checks
+        # print(checks[to_display_methods[i]], checks[to_display_methods[0]])
         assert len(checks[to_display_methods[i]]) == len(checks[to_display_methods[0]])
 
     os.makedirs((args.method_status_dir), exist_ok=True)
@@ -134,9 +138,15 @@ if __name__ == "__main__":
     # Update overall readme
     with open(args.readme_file, "r+") as f: 
         overall_status_md = generateOverallStatus(checks, to_display_methods, args.method_status_git)
-        
+        # print(overall_status_md)
         markdown = f.read()
+        # print(markdown)
         f.seek(0)
+        print(re.sub(
+                r"<!-- begin-status -->[\s\S]*<!-- end-status -->", 
+                "<!-- begin-status -->\n" + overall_status_md.replace('\\', '\\\\') + "\n<!-- end-status -->", 
+                markdown
+            ))
         f.write(
             re.sub(
                 r"<!-- begin-status -->[\s\S]*<!-- end-status -->", 
