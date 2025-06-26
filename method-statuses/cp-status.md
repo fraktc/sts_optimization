@@ -1,3 +1,4 @@
 # CP status
 | $\text{Model}$ | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ | $7$ | $8$ | $9$ |
 |:-:| :---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+$\text{aaa}$ | $\color{red}\text{I}$ | $\color{red}\text{I}$ | $\color{red}\text{I}$ | $\color{red}\text{I}$ | $\color{red}\text{I}$ | $\color{red}\text{I}$ | $\color{red}\text{I}$ | $\color{red}\text{I}$ | $\color{red}\text{I}$ | 
