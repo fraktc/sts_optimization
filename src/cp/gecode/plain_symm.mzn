@@ -2,9 +2,9 @@ include "globals.mzn";
 
 % Parameters
 int: n;
-set of int: TEAMS = 1..(2*n);
-set of int: WEEKS = 1..(2*n-1);
-set of int: PERIODS = 1..n;
+set of int: TEAMS = 1..(n);
+set of int: WEEKS = 1..(n-1);
+set of int: PERIODS = 1..n/2;
 set of int: SLOTS = 1..2;
 
 % Decision variables
@@ -41,7 +41,7 @@ constraint forall(p in PERIODS)(
   matches[p, 1, 1] = p
 );
 
-constraint forall(w in 1..(2*n - 2))(
+constraint forall(w in 1..(n - 2))(
   lex_less([matches[p, w, 1] | p in PERIODS], [matches[p, w+1, 1] | p in PERIODS])
 );
 
