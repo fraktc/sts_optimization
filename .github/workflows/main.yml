@@ -1,5 +1,8 @@
 name: Instances checks
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
@@ -79,10 +82,22 @@ jobs:
             --method-status-git=./method-statuses
 
 
+      # - name: Push status
+      #   run: |
+      #     git config --global user.name "github-actions[bot]"
+      #     git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      #     git add ${GITHUB_WORKSPACE}/README.md
+      #     git add ${GITHUB_WORKSPACE}/results/*
+      #     git add ${GITHUB_WORKSPACE}/method-statuses/*
+      #     git commit -m "Update status" || true
+      #     git push || true
       - name: Push status
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git
           git add ${GITHUB_WORKSPACE}/README.md
           git add ${GITHUB_WORKSPACE}/results/*
           git add ${GITHUB_WORKSPACE}/method-statuses/*

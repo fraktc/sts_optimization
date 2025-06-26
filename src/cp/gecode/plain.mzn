@@ -1,6 +1,5 @@
 include "globals.mzn";
 
-
 % Parameters
 int: n;
 set of int: TEAMS = 1..(2*n);
