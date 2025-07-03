@@ -7,6 +7,7 @@
 from .sat_z3_1 import Unified_Z3_Model
 
 import time
+import math
 import multiprocessing
 import logging
 import traceback
@@ -29,6 +30,7 @@ def modelRunner(ModelClass, instance, timeout, random_seed, queue):
         
         objective, solution, optimality, solve_time, restart, max_memory, mk_bool_var, conflicts = def_model.solve(timeout-model_init_time, random_seed)
         solve_time = solve_time + model_init_time
+        solve_time = math.ceil(solve_time)
     except Exception as e:
         logger.error(f"Exception {e}")
         print(traceback.format_exc())

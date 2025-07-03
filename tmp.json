@@ -33,15 +33,69 @@
         "20": {}
     },
     "SAT": {
-        "4": {},
-        "6": {},
-        "8": {},
-        "10": {},
-        "12": {},
-        "14": {},
-        "16": {},
-        "18": {},
-        "20": {}
+        "4": {
+            "z3-model": {
+                "status": "inconsistent",
+                "time": -1,
+                "obj": 2147483647
+            }
+        },
+        "6": {
+            "z3-model": {
+                "status": "optimal",
+                "time": 1,
+                "obj": 1
+            }
+        },
+        "8": {
+            "z3-model": {
+                "status": "optimal",
+                "time": 5.036776542663574,
+                "obj": 1
+            }
+        },
+        "10": {
+            "z3-model": {
+                "status": "inconsistent",
+                "time": -1,
+                "obj": 2147483647
+            }
+        },
+        "12": {
+            "z3-model": {
+                "status": "inconsistent",
+                "time": -1,
+                "obj": 2147483647
+            }
+        },
+        "14": {
+            "z3-model": {
+                "status": "inconsistent",
+                "time": -1,
+                "obj": 2147483647
+            }
+        },
+        "16": {
+            "z3-model": {
+                "status": "inconsistent",
+                "time": -1,
+                "obj": 2147483647
+            }
+        },
+        "18": {
+            "z3-model": {
+                "status": "inconsistent",
+                "time": -1,
+                "obj": 2147483647
+            }
+        },
+        "20": {
+            "z3-model": {
+                "status": "inconsistent",
+                "time": -1,
+                "obj": 2147483647
+            }
+        }
     },
     "SMT": {
         "4": {},
