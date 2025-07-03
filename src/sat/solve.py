@@ -14,7 +14,6 @@ import traceback
 logger = logging.getLogger(__name__)
 
 
-
 def modelRunner(ModelClass, instance, timeout, random_seed, queue):
     objective = None
     solution = None
