@@ -147,7 +147,7 @@ def check_solution(solution: list):
         # every team plays at most twice during the period
         if any([teams_per_period.count(tp) > 2 for tp in teams_per_period]):
             errors.append('Some teams play more than twice in the period')
-
+    
     return (True, None) if len(errors) == 0 else (False, errors)
 
 def isSuboptimal(result):
