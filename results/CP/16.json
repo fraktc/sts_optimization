@@ -1,0 +1,82 @@
+{
+   "plain-gecode": {
+      "time": 300,
+      "optimal": false,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 7680,
+               "flatIntVars": 8113,
+               "flatBoolConstraints": 7680,
+               "flatIntConstraints": 15704,
+               "evaluatedReifiedConstraints": 7680,
+               "evaluatedHalfReifiedConstraints": 3840,
+               "eliminatedImplications": 7680,
+               "method": "minimize",
+               "flatTime": 1.64828
+            },
+            "solver": {
+               "initTime": 0.1529,
+               "solveTime": 297.351,
+               "solutions": 0,
+               "variables": 15793,
+               "propagators": 23384,
+               "propagations": 731589801,
+               "nodes": 3067600,
+               "failures": 1409191,
+               "restarts": 1533,
+               "peakDepth": 203
+            },
+            "solution": {
+               "nSolutions": 0
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": null,
+         "runner": "github-action"
+      }
+   },
+   "plain-gecode-symm": {
+      "time": 300,
+      "optimal": false,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 7424,
+               "flatIntVars": 7977,
+               "flatBoolConstraints": 7424,
+               "flatIntConstraints": 15326,
+               "evaluatedReifiedConstraints": 7544,
+               "evaluatedHalfReifiedConstraints": 3712,
+               "eliminatedImplications": 7424,
+               "method": "minimize",
+               "flatTime": 1.50989
+            },
+            "solver": {
+               "initTime": 0.104761,
+               "solveTime": 297.489,
+               "solutions": 0,
+               "variables": 15433,
+               "propagators": 22238,
+               "propagations": 1322175382,
+               "nodes": 1498689,
+               "failures": 712774,
+               "restarts": 851,
+               "peakDepth": 182
+            },
+            "solution": {
+               "nSolutions": 0
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": null,
+         "runner": "github-action"
+      }
+   }
+}
