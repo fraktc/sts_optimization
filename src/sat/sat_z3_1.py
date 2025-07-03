@@ -239,12 +239,12 @@ def solve_sports_tournament(n, timeout):
     best_imbalance = None
     best_model = None
     optimality = False
-    
+    # print("Starting to solve the sports tournament scheduling problem...")
     while True:
         if best_imbalance is not None:
-            solver.add(max_imbalance < best_imbalance)
+            solver.add(max_imb < best_imbalance)
         
-        
+        # print("Checking for a solution with current constraints...")
         remaining_time = timeout - (time.time() - start_time)
         if remaining_time <= 0:
             break
@@ -253,13 +253,14 @@ def solve_sports_tournament(n, timeout):
 
         if solver.check() == sat:
             best_model = solver.model()
-            best_imbalance = best_model.evaluate(max_imbalance).as_long()
+            best_imbalance = best_model.evaluate(max_imb).as_long()
             print(f"Found solution with max imbalance: {best_imbalance}")
         else:
             # If no more solution, we found the best one
             optimality = True
             break
         
+    # print("Finished solving the sports tournament scheduling problem.")
     if best_model is None:
         return None
     
@@ -273,6 +274,28 @@ def solve_sports_tournament(n, timeout):
         "max_imbalance": best_imbalance,
         "optimality": optimality
     }
+
+        # Extract the solution from the boolean variables
+    for w in weeks:
+        week_matches = []
+        for p in periods:
+            home_team = None
+            away_team = None
+            for t in teams:
+                if best_model.evaluate(X[p][w][1][t]):
+                    home_team = t
+                if best_model.evaluate(X[p][w][2][t]):
+                    away_team = t
+            
+            # Add the match to the week's matches
+            if home_team is not None and away_team is not None:
+                week_matches.append((home_team, away_team))
+        
+        # Add the week's matches to the solution
+        solution["solution"].append(week_matches)
+    # print("Solution extracted successfully")
+    return solution
+
     # solution = {
     #     'home_schedule': {},
     #     'away_schedule': {},
@@ -334,6 +357,8 @@ class Unified_Z3_Model:
         start = time.time()
         solution = None
         try:
+            # print(f"Solving sports tournament with {self.n} teams, timeout: {timeout} seconds")
+            # Call the Z3 solver function
             solution = solve_sports_tournament(self.n, timeout)
         except Exception as e:
             # solver errors are propagated as no solution
