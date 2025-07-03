@@ -43,14 +43,14 @@ docker run -v ./res:/cdmo/results cdmo
 <!-- begin-status -->
 | Instance | [CP](./method-statuses\cp-status.md) | [SAT](./method-statuses\sat-status.md) | [SMT](./method-statuses\smt-status.md) | [MIP](./method-statuses\mip-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
-| $4$ | | $\color{red}\text{Inconsistent}$ | | | 
-| $6$ | | $\color{green}\text{1 s (obj: 1)}$</br>$\color{green}\text{z3-model}$ | | | 
-| $8$ | | $\color{green}\text{5.036776542663574 s (obj: 1)}$</br>$\color{green}\text{z3-model}$ | | | 
+| $4$ | | $\color{lightgray}\text{Timeout}$ | | | 
+| $6$ | | $\color{red}\text{Inconsistent}$ | | | 
+| $8$ | | $\color{red}\text{Inconsistent}$ | | | 
 | $10$ | | $\color{red}\text{Inconsistent}$ | | | 
-| $12$ | | $\color{red}\text{Inconsistent}$ | | | 
-| $14$ | | $\color{red}\text{Inconsistent}$ | | | 
-| $16$ | | $\color{red}\text{Inconsistent}$ | | | 
-| $18$ | | $\color{red}\text{Inconsistent}$ | | | 
-| $20$ | | $\color{red}\text{Inconsistent}$ | | | 
+| $12$ | | $\color{lightgray}\text{Timeout}$ | | | 
+| $14$ | | $\color{lightgray}\text{Timeout}$ | | | 
+| $16$ | | $\color{lightgray}\text{Timeout}$ | | | 
+| $18$ | | $\color{lightgray}\text{Timeout}$ | | | 
+| $20$ | | $\color{lightgray}\text{Timeout}$ | | | 
 
 <!-- end-status -->
