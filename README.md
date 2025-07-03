@@ -44,9 +44,9 @@ docker run -v ./res:/cdmo/results cdmo
 | Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MIP](./method-statuses/mip-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
 | $4$ | | $\color{lightgray}\text{Timeout}$ | | | 
-| $6$ | | $\color{lightgray}\text{Timeout}$ | | | 
-| $8$ | | $\color{lightgray}\text{Timeout}$ | | | 
-| $10$ | | $\color{lightgray}\text{Timeout}$ | | | 
+| $6$ | | $\color{red}\text{Inconsistent}$ | | | 
+| $8$ | | $\color{red}\text{Inconsistent}$ | | | 
+| $10$ | | $\color{red}\text{Inconsistent}$ | | | 
 | $12$ | | $\color{lightgray}\text{Timeout}$ | | | 
 | $14$ | | $\color{lightgray}\text{Timeout}$ | | | 
 | $16$ | | $\color{lightgray}\text{Timeout}$ | | | 
