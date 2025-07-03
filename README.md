@@ -43,10 +43,10 @@ docker run -v ./res:/cdmo/results cdmo
 <!-- begin-status -->
 | Instance | [CP](./method-statuses\cp-status.md) | [SAT](./method-statuses\sat-status.md) | [SMT](./method-statuses\smt-status.md) | [MIP](./method-statuses\mip-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
-| $4$ | $\color{red}\text{Inconsistent}$ | | | | 
-| $6$ | $\color{red}\text{Inconsistent}$ | | | | 
-| $8$ | $\color{red}\text{Inconsistent}$ | | | | 
-| $10$ | $\color{red}\text{Inconsistent}$ | | | | 
+| $4$ | | | | | 
+| $6$ | | | | | 
+| $8$ | | | | | 
+| $10$ | | | | | 
 | $12$ | | | | | 
 | $14$ | | | | | 
 | $16$ | | | | | 

@@ -1,33 +1,9 @@
 {
     "CP": {
-        "4": {
-            "aaa": {
-                "status": "inconsistent",
-                "time": -1,
-                "obj": 2147483647
-            }
-        },
-        "6": {
-            "aaa": {
-                "status": "inconsistent",
-                "time": -1,
-                "obj": 2147483647
-            }
-        },
-        "8": {
-            "aaa": {
-                "status": "inconsistent",
-                "time": -1,
-                "obj": 2147483647
-            }
-        },
-        "10": {
-            "aaa": {
-                "status": "inconsistent",
-                "time": -1,
-                "obj": 2147483647
-            }
-        },
+        "4": {},
+        "6": {},
+        "8": {},
+        "10": {},
         "12": {},
         "14": {},
         "16": {},
