@@ -28,9 +28,7 @@ def modelRunner(ModelClass, instance, timeout, random_seed, queue):
         model_init_time = round(time.time() - start_model_init)
         logger.info(f"Model created")
         
-        # objective, solution, optimality, solve_time, restart, max_memory, mk_bool_var, conflicts = def_model.solve(timeout-model_init_time, random_seed)
-        # Create a dummy solution4
-        objective, solution, optimality, solve_time, restart, max_memory, mk_bool_var, conflicts = None, None, False, 1, None, None, None, None
+        objective, solution, optimality, solve_time, restart, max_memory, mk_bool_var, conflicts = def_model.solve(timeout-model_init_time, random_seed)
         solve_time = solve_time + model_init_time
     except Exception as e:
         logger.error(f"Exception {e}")

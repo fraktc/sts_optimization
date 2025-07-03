@@ -129,9 +129,6 @@ if __name__ == "__main__":
     with open(args.checks_file, "r") as f: 
         checks = json.load(f)
 
-    print("Checking consistency of checks...")
-    print(checks)
-
     for i in range(1, len(to_display_methods)):
         assert to_display_methods[i] in checks
         # print(checks[to_display_methods[i]], checks[to_display_methods[0]])
