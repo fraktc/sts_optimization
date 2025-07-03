@@ -235,6 +235,7 @@ def solve_sports_tournament(n, timeout):
     max_imb = Int('max_imbalance')
     solver.add([max_imb >= im for im in imbalance_vars])
     
+    
     # Solve with optimization
     best_imbalance = None
     best_model = None
