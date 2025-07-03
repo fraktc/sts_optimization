@@ -41,7 +41,7 @@ docker run -v ./res:/cdmo/results cdmo
 ## Results
 <!-- Do NOT remove the comments below -->
 <!-- begin-status -->
-| Instance | [CP](./method-statuses\cp-status.md) | [SAT](./method-statuses\sat-status.md) | [SMT](./method-statuses\smt-status.md) | [MIP](./method-statuses\mip-status.md) |
+| Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MIP](./method-statuses/mip-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
 | $4$ | | $\color{lightgray}\text{Timeout}$ | | | 
 | $6$ | | $\color{red}\text{Inconsistent}$ | | | 
