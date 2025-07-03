@@ -23,7 +23,6 @@ def modelRunner(ModelClass, instance, timeout, random_seed, queue):
     try:
         start_model_init = time.time()
 
-
         def_model = ModelClass(instance)
         model_init_time = round(time.time() - start_model_init)
         logger.info(f"Model created")
