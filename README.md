@@ -45,7 +45,7 @@ docker run -v ./res:/cdmo/results cdmo
 |:-:| :---:|:---:|:---:|:---:|
 | $4$ | | $\color{lightgray}\text{Timeout}$ | | | 
 | $6$ | | $\color{green}\text{1 s (obj: 1)}$</br>$\color{green}\text{z3-model}$ | | | 
-| $8$ | | $\color{green}\text{5 s (obj: 1)}$</br>$\color{green}\text{z3-model}$ | | | 
+| $8$ | | $\color{green}\text{4 s (obj: 1)}$</br>$\color{green}\text{z3-model}$ | | | 
 | $10$ | | $\color{green}\text{301 s (obj: 1)}$</br>$\color{green}\text{z3-model}$ | | | 
 | $12$ | | $\color{lightgray}\text{Timeout}$ | | | 
 | $14$ | | $\color{lightgray}\text{Timeout}$ | | | 
