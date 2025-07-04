@@ -112,6 +112,7 @@ def solve_sports_tournament(n, timeout):
     max_imb = Int('max_imbalance')
     solver.add([max_imb >= im for im in imbalance_vars])
     
+    
     # Solve with optimization
     best_imbalance = None
     best_model = None
@@ -153,9 +154,9 @@ def solve_sports_tournament(n, timeout):
     }
 
         # Extract the solution from the boolean variables
-    for w in weeks:
-        week_matches = []
-        for p in periods:
+    for p in periods:
+        period_matches = []
+        for w in weeks:
             home_team = None
             away_team = None
             for t in teams:
@@ -166,10 +167,10 @@ def solve_sports_tournament(n, timeout):
             
             # Add the match to the week's matches
             if home_team is not None and away_team is not None:
-                week_matches.append((home_team, away_team))
+                period_matches.append((home_team, away_team))
         
         # Add the week's matches to the solution
-        solution["solution"].append(week_matches)
+        solution["solution"].append(period_matches)
     # print("Solution extracted successfully")
     return solution
 

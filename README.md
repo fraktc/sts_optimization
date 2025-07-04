@@ -43,14 +43,14 @@ docker run -v ./res:/cdmo/results cdmo
 <!-- begin-status -->
 | Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MIP](./method-statuses/mip-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
-| $2$ | $\color{red}\text{Inconsistent}$ | | | | 
-| $3$ | $\color{red}\text{Inconsistent}$ | | | | 
-| $4$ | $\color{red}\text{Inconsistent}$ | | | | 
-| $5$ | $\color{red}\text{Inconsistent}$ | | | | 
-| $6$ | $\color{red}\text{Inconsistent}$ | | | | 
-| $7$ | $\color{red}\text{Inconsistent}$ | | | | 
-| $8$ | $\color{red}\text{Inconsistent}$ | | | | 
-| $9$ | $\color{red}\text{Inconsistent}$ | | | | 
-| $10$ | $\color{red}\text{Inconsistent}$ | | | | 
+| $4$ | | $\color{lightgray}\text{Timeout}$ | | | 
+| $6$ | | $\color{green}\text{1 s (obj: 1)}$</br>$\color{green}\text{z3-model}$ | | | 
+| $8$ | | $\color{green}\text{5 s (obj: 1)}$</br>$\color{green}\text{z3-model}$ | | | 
+| $10$ | | $\color{green}\text{301 s (obj: 1)}$</br>$\color{green}\text{z3-model}$ | | | 
+| $12$ | | $\color{lightgray}\text{Timeout}$ | | | 
+| $14$ | | $\color{lightgray}\text{Timeout}$ | | | 
+| $16$ | | $\color{lightgray}\text{Timeout}$ | | | 
+| $18$ | | $\color{lightgray}\text{Timeout}$ | | | 
+| $20$ | | $\color{lightgray}\text{Timeout}$ | | | 
 
 <!-- end-status -->

@@ -85,7 +85,7 @@ def generateSpecificStatus(checks, method):
     status_md = ""
 
     # status_md = f"| Instance | {' | '.join(to_display_methods)} |\n"
-    status_md = f"| $\\text{{Model}}$ | {' | '.join([f'${i+1}$' for i in range(num_instances)])} |\n"
+    status_md = f"| $\\text{{Model}}$ | {' | '.join([f'${i}$' for i in instances])} |\n"
     status_md += f"|:-:| {''.join([':---:|']*num_instances)}\n"
 
     models = checks[method][list(checks[method].keys())[0]].keys()
@@ -93,6 +93,8 @@ def generateSpecificStatus(checks, method):
         status_md += "$\\text{"+ model.replace('_', '-') +"}$ | "
         for instance in instances:
             # instance = f"{i+1}"
+            if model not in checks[method][instance]:
+                continue
             entry = ""
             status = checks[method][instance][model]["status"]
             obj = checks[method][instance][model]["obj"]
