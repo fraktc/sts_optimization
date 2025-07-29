@@ -1,7 +1,7 @@
 from cp.solve import solve as cp_solve
 from sat.solve import solve as sat_solve
 from smt.solve import solve as smt_solve
-from milp.solve import solve as milp_solve
+from milp.solve_1 import solve as milp_solve
 from input_parser import parseInstanceFile
 import argparse
 import os
@@ -49,7 +49,7 @@ if __name__ == "__main__":
     # instances = [ (i+1, parseInstanceFile(os.path.join(args.instances_path, f))) for i, f in enumerate(sorted(os.listdir(args.instances_path))) ]
     # if len(args.instances) != 0:
         # instances = [ (num, inst) for num, inst in instances if num in args.instances]
-    INSTANCES = [4,6,8,10,12,14,16,18,20]
+    INSTANCES = [4,6,8]
 
     # Set memory limit if needed
     if args.mem_limit >= 0 and platform.system() != "Windows":
