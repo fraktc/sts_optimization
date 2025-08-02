@@ -41,6 +41,9 @@ cp -r yices-2.6.5/etc/* /usr/local/etc &&\
 cp -r yices-2.6.5/include/* /usr/local/include &&\
 cp -r yices-2.6.5/lib/* /usr/local/lib
 
+# Install PuLP 3.2.1
+RUN python3 -m pip install pulp==3.2.1 --no-cache-dir
+
 # Install amplpy and all necessary amplpy.modules:
 # ARG AMPL_KEY 
 # RUN python3 -m pip install amplpy --no-cache-dir # Install amplpy
