@@ -1,5 +1,5 @@
 # MILP status
 | $\text{Model}$ | $4$ | $6$ | $8$ | $10$ | $12$ | $14$ | $16$ | $18$ | $20$ |
 |:-:| :---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-$\text{milp-model-1-CBC}$ | $-$ | $-$ | $-$ | 
-$\text{milp-model-1-HiGHS}$ | $-$ | $-$ | $-$ | 
+$\text{milp-model-1-CBC}$ | $\color{red}\text{I}$ | $\color{red}\text{I}$ | $\color{red}\text{I}$ | 
+$\text{milp-model-1-HiGHS}$ | $\color{red}\text{I}$ | $\color{red}\text{I}$ | $\color{red}\text{I}$ | 
