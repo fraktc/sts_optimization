@@ -1,3 +1,4 @@
+# Current implementation of a sports tournament scheduling solver using Z3.
 import time
 from z3 import *
 
