@@ -125,7 +125,7 @@ if __name__ == "__main__":
     parser.add_argument("--method-status-git", type=str, required=True)
     args = parser.parse_args()
 
-    to_display_methods = ["CP", "SAT", "SMT", "MIP"]
+    to_display_methods = ["CP", "SAT", "SMT", "MILP"]
     with open(args.checks_file, "r") as f: 
         checks = json.load(f)
 

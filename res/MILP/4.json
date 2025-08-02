@@ -1,0 +1,20 @@
+{
+   "milp-model-1_CBC": {
+      "time": 300,
+      "optimal": false,
+      "obj": null,
+      "sol": [],
+      "_extras": {
+         "runner": ""
+      }
+   },
+   "milp-model-1_HiGHS": {
+      "time": 300,
+      "optimal": false,
+      "obj": null,
+      "sol": [],
+      "_extras": {
+         "runner": ""
+      }
+   }
+}

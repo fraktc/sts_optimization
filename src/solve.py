@@ -34,7 +34,7 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, required=False, default=42, help="Seed for random operations")
     parser.add_argument("--mem-limit", type=int, required=False, default=-1, help="Memory usage limit in MB")
     parser.add_argument("--runner-label", type=str, required=False, default="", help="Name of the machine that is executing")
-    parser.add_argument("--methods", type=lambda arg: arg.split(","), required=False, default=["cp", "sat", "smt", "mip"], 
+    parser.add_argument("--methods", type=lambda arg: arg.split(","), required=False, default=["cp", "sat", "smt", "milp"], 
                         help="Methods to run, comma separated")
     parser.add_argument("--submit-mode", action="store_true", help="If set, the output results will be in the format required for submission")
     args = parser.parse_args()
@@ -60,7 +60,7 @@ if __name__ == "__main__":
     cp_dir = os.path.join(results_dir, "CP/")
     sat_dir = os.path.join(results_dir, "SAT/")
     smt_dir = os.path.join(results_dir, "SMT/")
-    milp_dir = os.path.join(results_dir, "MIP/")
+    milp_dir = os.path.join(results_dir, "MILP/")
 
     for dir in [results_dir, cp_dir, sat_dir, smt_dir, milp_dir]:
         os.makedirs((dir), exist_ok=True)
@@ -79,7 +79,7 @@ if __name__ == "__main__":
     if "cp" in args.methods: experiments_setup.append((cp_dir, cp_solve))
     if "sat" in args.methods: experiments_setup.append((sat_dir, sat_solve))
     if "smt" in args.methods: experiments_setup.append((smt_dir, smt_solve))
-    if "mip" in args.methods: experiments_setup.append((milp_dir, milp_solve))
+    if "milp" in args.methods: experiments_setup.append((milp_dir, milp_solve))
 
     for out_dir, solve_fn in experiments_setup:
         logger.info(f"Starting processing for {out_dir}")
