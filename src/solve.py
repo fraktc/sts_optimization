@@ -20,6 +20,7 @@ def __loadCache(results_file_path):
         return json.load(f)
 
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(prog="Instance solver")
     # parser.add_argument("--instances-path", type=str, default="./instances", help="Path to the input instances")
