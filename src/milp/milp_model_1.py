@@ -1,3 +1,5 @@
+# Current Milp Model for STS Optimization
+
 from pulp import *
 from timeit import default_timer as timer
 
