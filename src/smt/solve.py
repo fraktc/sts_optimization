@@ -1,59 +1,15 @@
-# from .models.z3.model_plain import SMT_plain
-# from .models.z3.model_twosolver import SMT_twosolver 
-# from .models.z3.model_local_search import SMT_local_search
-# from .models.z3.model_plain_mtz import SMT_plain_mtz
-# from .solve_smtlib import solve as solve_smtlib
+from .models.z3.test import SMT_plain
 import gc
 
 import logging
 logger = logging.getLogger(__name__)
 
-# experiments = [
-#     {
-#         "name": "plain",
-#         "model": SMT_plain,
-#         "symmetry_breaking": False,
-#         "implied_constraints": False,
-#     },
-#     {
-#         "name": "plain_symm",
-#         "model": SMT_plain,
-#         "symmetry_breaking": True,
-#         "implied_constraints": False,
-#     },
-#     {
-#         "name": "plain_impl",
-#         "model": SMT_plain,
-#         "symmetry_breaking": False,
-#         "implied_constraints": True,
-#     },
-#     {
-#         "name": "twosolver",
-#         "model": SMT_twosolver,
-#         "symmetry_breaking": False,
-#         "implied_constraints": False,
-#     },
-#     {
-#         "name": "twosolver_symm",
-#         "model": SMT_twosolver,
-#         "symmetry_breaking": True,
-#         "implied_constraints": False,
-#     },
-#     {
-#         "name": "twosolver_impl",
-#         "model": SMT_twosolver,
-#         "symmetry_breaking": False,
-#         "implied_constraints": True,
-#     },
-#     {
-#         "name": "local_search",
-#         "model": SMT_local_search,
-#         "symmetry_breaking": False,
-#         "implied_constraints": False,
-#     }
-# ]
-
-experiments = []
+experiments = [{
+    "name": "plain",
+    "model": SMT_plain,
+    "symmetry_breaking": False,
+    "implied_constraints": False,
+}]
 
 def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwargs):
     results = {}
@@ -81,20 +37,16 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
             continue
             
         
-        results[name] = model(instance["m"],
-                              instance["n"],
-                              instance["l"],
-                              instance["s"],
-                              instance["D"],
+        results[name] = model(instance,
                               timeout=timeout,
                               implied_constraints=implied_constraints,
                               symmetry_breaking=symmetry_breaking,
                               **kwargs)
 
         gc.collect()
-    smtlib_results = {}
-    # smtlib_results = solve_smtlib(instance, instance_number, timeout, cache, random_seed, models_filter, **kwargs)
-    for key in smtlib_results:
-        results[key] = smtlib_results[key]
+    # smtlib_results = {}
+    # # smtlib_results = solve_smtlib(instance, instance_number, timeout, cache, random_seed, models_filter, **kwargs)
+    # for key in smtlib_results:
+    #     results[key] = smtlib_results[key]
 
     return results
