@@ -74,15 +74,6 @@ def SMT_plain(instance, timeout=300, implied_constraints=False,
                     week_appearances.append(away[p][w] == t)
                 solver.add(PbEq([(cond, 1) for cond in week_appearances], 1))
         
-        # Constraint 3: Every team plays at most twice in the same period across all weeks
-        for p in range(n_periods):
-            for t in range(1, n_teams + 1):
-                period_appearances = []
-                for w in range(n_weeks):
-                    period_appearances.append(home[p][w] == t)
-                    period_appearances.append(away[p][w] == t)
-                solver.add(PbLe([(cond, 1) for cond in period_appearances], 2))
-        
         # Constraint 4: All teams in each period of each week must be different
         for w in range(n_weeks):
             for p in range(n_periods):
@@ -90,31 +81,6 @@ def SMT_plain(instance, timeout=300, implied_constraints=False,
                 for pp in range(n_periods):
                     all_teams_in_period.extend([home[pp][w], away[pp][w]])
                 solver.add(Distinct(all_teams_in_period))
-        
-        # Add implied constraints if requested
-        if implied_constraints:
-            logger.info("Adding implied constraints")
-            # Implied constraint: Each team plays exactly (n_teams-1)/2 home games and (n_teams-1)/2 away games
-            # This only works if n_teams-1 is even (which it is when n_teams is odd)
-            if (n_teams - 1) % 2 == 0:
-                target_home_games = (n_teams - 1) // 2
-                for t in range(1, n_teams + 1):
-                    home_games = []
-                    away_games = []
-                    for p in range(n_periods):
-                        for w in range(n_weeks):
-                            home_games.append(home[p][w] == t)
-                            away_games.append(away[p][w] == t)
-                    solver.add(PbEq([(cond, 1) for cond in home_games], target_home_games))
-                    solver.add(PbEq([(cond, 1) for cond in away_games], target_home_games))
-        
-        # Add symmetry breaking constraints if requested
-        if symmetry_breaking:
-            logger.info("Adding symmetry breaking constraints")
-            # Fix team 1 to play at home in period 1 of week 1
-            solver.add(home[0][0] == 1)
-            # Fix team 1's opponent in first game to be team 2
-            solver.add(away[0][0] == 2)
         
         # Solve the problem
         logger.info("Starting to solve...")

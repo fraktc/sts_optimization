@@ -8,22 +8,16 @@ logger = logging.getLogger(__name__)
 
 
 
-def _solutionExtractor(instance, variables):
-    COURIERS = range(instance["m"])
-    DEPOT = instance["n"]
-    paths = []
-
-    for c in COURIERS:
-        loc = DEPOT
-        path = []
-        if variables[f"carry_num_{c}"] > 0:
-            while True:
-                loc = variables[f"path_{c}_{loc}"]
-                if loc == DEPOT: break
-                path.append( loc+1 )
-        paths.append(path)
-
-    return paths
+def _solutionExtractor(smt_model, n):
+    schedule = []
+    for period in range(n//2):
+        period_schedule = []
+        for week in range(n-1):
+            home = smt_model[home[week][period]].as_long() + 1
+            away = smt_model[away[week][period]].as_long() + 1
+            period_schedule.append([home, away])
+        schedule.append(period_schedule)
+    return schedule
 
 
 def linearOptimization(instance, solver, model):
