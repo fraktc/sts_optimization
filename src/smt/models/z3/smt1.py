@@ -115,18 +115,21 @@ class STSSolver:
         if self.incremental: 
             self.solver.check()
         self.add_ACC3()
-        self.solver.check()
+        status = self.solver.check()
         
         end_time = time.time()
         exec_time = end_time - start_time
-
-        model = self.solver.model()
-
+        if status == sat:
+            model = self.solver.model()
+            sol = [[[model.eval(self.teams[w][p][s]) for s in self.SLOTS] for p in self.PERIODS] for w in self.WEEKS]
+        else:
+            sol = None
+        
         results = {
             "time": exec_time,
             "opt": False,
             "obj": None,
-            "sol": [[[model.eval(self.teams[w][p][s]) for s in self.SLOTS] for p in self.PERIODS] for w in self.WEEKS],
+            "sol": sol,
         }
         return results
 
