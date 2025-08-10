@@ -1,15 +1,25 @@
-from .models.z3.test import SMT_plain
+from .models.z3.smt1 import STSSolver
 import gc
 
 import logging
 logger = logging.getLogger(__name__)
 
-experiments = [{
-    "name": "plain",
-    "model": SMT_plain,
-    "symmetry_breaking": False,
-    "implied_constraints": False,
-}]
+experiments = [
+    {
+        "name": "plain",
+        "model": STSSolver,
+        "symmetry_breaking": False,
+        "implied_constraints": False,
+        "incremental": False
+    },
+    {
+        "name": "plain",
+        "model": STSSolver,
+        "symmetry_breaking": False,
+        "implied_constraints": False,
+        "incremental": True
+    },
+]
 
 def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwargs):
     results = {}
@@ -41,7 +51,7 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
                               timeout=timeout,
                               implied_constraints=implied_constraints,
                               symmetry_breaking=symmetry_breaking,
-                              **kwargs)
+                              **kwargs).solve()
 
         gc.collect()
     # smtlib_results = {}
