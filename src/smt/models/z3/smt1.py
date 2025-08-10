@@ -102,7 +102,7 @@ class STSSolver:
         if self.implied_constraint_mask[0]:
             # No team plays against itself
             for t in self.TEAMS:
-                solver.add(Select(Select(self.match_count, t),t) == 0)
+                self.solver.add(Select(Select(self.match_count, t),t) == 0)
     
     def solve(self):
         start_time = time.time()
