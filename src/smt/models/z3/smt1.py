@@ -121,7 +121,7 @@ class STSSolver:
         exec_time = end_time - start_time
         if status == sat:
             model = self.solver.model()
-            sol = [[[model.eval(self.teams[w][p][s]) for s in self.SLOTS] for p in self.PERIODS] for w in self.WEEKS]
+            sol = [[[model.eval(self.teams[w][p][s]).as_long() for s in self.SLOTS] for p in self.PERIODS] for w in self.WEEKS]
         else:
             sol = None
         
