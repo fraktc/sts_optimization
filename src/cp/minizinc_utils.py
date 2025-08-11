@@ -27,7 +27,7 @@ def __formatCommand(model_path, data_path, solver, timeout_ms, seed, free_search
         "minizinc",
         "--json-stream",
         "--output-mode", "json",
-        "--all",
+        # "--all",
         "--statistics",
         "--solver", f"{solver}",
         "--time-limit", f"{timeout_ms}",
