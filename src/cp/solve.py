@@ -43,26 +43,58 @@ experiments_chuffed = [
         "preprocessing": [],
         "free_search": False
     },
+    {
+        "name": "round_robin_plain_free_search_chuffed",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_plain.mzn"),
+        "solver": "chuffed",
+        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+        "preprocessing": [],
+        "free_search": True
+    },
+    {
+        "name": "round_robin_impl_chuffed",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_impl.mzn"),
+        "solver": "chuffed",
+        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "round_robin_symm_chuffed",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_symm.mzn"),
+        "solver": "chuffed",
+        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "round_robin_full_chuffed",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_full.mzn"),
+        "solver": "chuffed",
+        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+        "preprocessing": [],
+        "free_search": False
+    },
 ]
 
-experiments_gecode = [
-    {
-        "name": "plain-gecode",
-        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./gecode/plain.mzn"),
-        "solver": "gecode",
-        "solution_extractor_fn": _solutionExtractorFromForwardPath,
-        "preprocessing": [],
-        "free_search": False
-    },
-    {
-        "name": "plain-gecode-symm",
-        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./gecode/plain_symm.mzn"),
-        "solver": "gecode",
-        "solution_extractor_fn": _solutionExtractorFromForwardPath,
-        "preprocessing": [],
-        "free_search": False
-    },
-]
+# experiments_gecode = [
+#     {
+#         "name": "plain-gecode",
+#         "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./gecode/plain.mzn"),
+#         "solver": "gecode",
+#         "solution_extractor_fn": _solutionExtractorFromForwardPath,
+#         "preprocessing": [],
+#         "free_search": False
+#     },
+#     {
+#         "name": "plain-gecode-symm",
+#         "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./gecode/plain_symm.mzn"),
+#         "solver": "gecode",
+#         "solution_extractor_fn": _solutionExtractorFromForwardPath,
+#         "preprocessing": [],
+#         "free_search": False
+#     },
+# ]
 # experiments_setup = (
 #     experiments_gecode +
 #     experiments_chuffed
@@ -124,9 +156,7 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
             solution = None
             crash_reason = outcome["crash_reason"]
         else:
-            overall_time = timeout if outcome["mz_status"] in ["UNKNOWN", "SATISFIED"] else math.floor(solve_time)
-            # optimality = outcome["mz_status"] == "OPTIMAL_SOLUTION"
-            print(solutions[-1]["variables"])
+            overall_time = math.floor(solve_time)
             objective = solutions[-1]["variables"]["max_imbalance"]
             optimality = objective == 1
             solution = experiment["solution_extractor_fn"](solutions[-1]["variables"])

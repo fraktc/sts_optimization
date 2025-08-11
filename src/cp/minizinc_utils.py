@@ -85,7 +85,6 @@ def minizincSolve(model_path: str, data_path: str, solver: str, timeout_ms: int,
                     logger.warning("Unknown solver")
             elif data["type"] == "solution":
                 # MiniZinc's automatic decision-variable JSON
-                print(data)
                 vars_auto = data["output"].get("json", {})
 
                 # Your manual output block (string from `output [...]`)
@@ -96,9 +95,6 @@ def minizincSolve(model_path: str, data_path: str, solver: str, timeout_ms: int,
                     manual_vars = json.loads(text_output) if text_output.startswith("{") else {}
                 except json.JSONDecodeError:
                     manual_vars = {}
-
-                for key, value in manual_vars.items():
-                    print(f"Manual variable '{key}': {value}")
 
                 # Merge both sources (manual overrides automatic if keys match)
                 merged_vars = {**vars_auto, **manual_vars}
