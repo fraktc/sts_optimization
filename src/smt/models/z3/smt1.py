@@ -3,6 +3,7 @@ import time
 
 class STSSolver:
     def __init__(self, instance, timeout=300, incremental=False, implied_constraint_mask=[False], symmetry_breaking=False, optimization=False, **kwargs):
+        self.timeout = timeout
         self.incremental = incremental
         
         self.n = instance
@@ -106,6 +107,7 @@ class STSSolver:
     
     def solve(self):
         start_time = time.time()
+        self.solver.set("timeout", int(self.timeout * 1000))  # Set timeout in milliseconds
         
         self.create_solver()
         self.create_variables()
