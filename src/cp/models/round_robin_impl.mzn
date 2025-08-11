@@ -124,3 +124,15 @@ array[TEAMS] of var 0..weeks: imbalance =
 var 0..weeks: max_imbalance = max(t in TEAMS)(imbalance[t]);
 
 solve satisfy;
+
+output [
+  "{",
+  "\"rr_home\":", show(rr_home), ",\n",
+  "\"rr_away\":", show(rr_away), ",\n",
+  "\"period_slot\":", show(period_slot), ",\n",
+  "\"team_period\":", show(team_period), ",\n",
+  "\"periods\":", show(periods), ",\n",
+  "\"weeks\":", show(weeks), ",\n",
+  "\"max_imbalance\":", show(max_imbalance),
+  "}"
+];
