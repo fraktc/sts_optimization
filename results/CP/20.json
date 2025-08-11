@@ -1,0 +1,47 @@
+{
+   "round_robin_plain_chuffed": {
+      "time": 300,
+      "optimal": false,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 1900,
+               "flatIntVars": 2090,
+               "flatIntConstraints": 4019,
+               "evaluatedReifiedConstraints": 1900,
+               "method": "satisfy",
+               "flatTime": 0.17956
+            },
+            "solver": {
+               "nodes": 17793832,
+               "failures": 14806230,
+               "restarts": 0,
+               "variables": 17482,
+               "intVars": 2090,
+               "boolVariables": 15390,
+               "propagators": 239,
+               "propagations": 83791962,
+               "peakDepth": 145,
+               "nogoods": 14806230,
+               "backjumps": 2987539,
+               "peakMem": 0.0,
+               "time": 298.858,
+               "initTime": 0.039,
+               "solveTime": 298.819,
+               "baseMem": 0.0,
+               "trailMem": 0.05,
+               "randomSeed": 42
+            },
+            "solution": {
+               "nSolutions": 0
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": null,
+         "runner": "github-action"
+      }
+   }
+}

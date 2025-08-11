@@ -41,28 +41,16 @@ docker run -v ./res:/cdmo/results cdmo
 ## Results
 <!-- Do NOT remove the comments below -->
 <!-- begin-status -->
-| Instance | [CP](./method-statuses\cp-status.md) | [SAT](./method-statuses\sat-status.md) | [SMT](./method-statuses\smt-status.md) | [MIP](./method-statuses\mip-status.md) |
+| Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MIP](./method-statuses/mip-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
-<<<<<<< HEAD
 | $4$ | | $\color{lightgray}\text{Timeout}$ | | | 
-| $6$ | | $\color{red}\text{Inconsistent}$ | | | 
-| $8$ | | $\color{red}\text{Inconsistent}$ | | | 
-| $10$ | | $\color{red}\text{Inconsistent}$ | | | 
-| $12$ | | $\color{lightgray}\text{Timeout}$ | | | 
-| $14$ | | $\color{lightgray}\text{Timeout}$ | | | 
-| $16$ | | $\color{lightgray}\text{Timeout}$ | | | 
-| $18$ | | $\color{lightgray}\text{Timeout}$ | | | 
-| $20$ | | $\color{lightgray}\text{Timeout}$ | | | 
-=======
-| $4$ | $\color{lightgray}\text{Timeout}$ | | | | 
-| $6$ | $\color{green}\text{0 s (obj: 1)}$</br>$\color{green}\text{plain-gecode}$ | | | | 
-| $8$ | $\color{green}\text{1 s (obj: 1)}$</br>$\color{green}\text{plain-gecode}$ | | | | 
-| $10$ | $\color{green}\text{29 s (obj: 1)}$</br>$\color{green}\text{plain-gecode}$ | | | | 
-| $12$ | $\color{lightgray}\text{Timeout}$ | | | | 
-| $14$ | $\color{lightgray}\text{Timeout}$ | | | | 
-| $16$ | $\color{lightgray}\text{Timeout}$ | | | | 
-| $18$ | $\color{lightgray}\text{Timeout}$ | | | | 
-| $20$ | $\color{lightgray}\text{Timeout}$ | | | | 
->>>>>>> 80dc4ec473bbaf899a627820ead3ec6935efac0f
+| $6$ | $\color{green}\text{300 s (obj: 1)}$</br>$\color{green}\text{round-robin-plain-chuffed}$ | $\color{red}\text{Inconsistent}$ | | | 
+| $8$ | $\color{green}\text{300 s (obj: 1)}$</br>$\color{green}\text{round-robin-plain-chuffed}$ | $\color{red}\text{Inconsistent}$ | | | 
+| $10$ | $\color{green}\text{300 s (obj: 1)}$</br>$\color{green}\text{round-robin-plain-chuffed}$ | $\color{red}\text{Inconsistent}$ | | | 
+| $12$ | $\color{green}\text{300 s (obj: 1)}$</br>$\color{green}\text{round-robin-plain-chuffed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $14$ | $\color{green}\text{300 s (obj: 1)}$</br>$\color{green}\text{round-robin-plain-chuffed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $16$ | $\color{green}\text{300 s (obj: 1)}$</br>$\color{green}\text{round-robin-plain-chuffed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $18$ | $\color{green}\text{300 s (obj: 1)}$</br>$\color{green}\text{round-robin-plain-chuffed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $20$ | $\color{lightgray}\text{Timeout}$ | $\color{lightgray}\text{Timeout}$ | | | 
 
 <!-- end-status -->
