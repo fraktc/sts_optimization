@@ -20,6 +20,8 @@ class STSSolver:
     
     def create_solver(self):
         self.solver = Solver()
+        self.solver.set("timeout", int(self.timeout * 1000))  # Set timeout in milliseconds
+
 
     def create_variables(self):
         # Create representations
@@ -107,7 +109,6 @@ class STSSolver:
     
     def solve(self):
         start_time = time.time()
-        self.solver.set("timeout", int(self.timeout * 1000))  # Set timeout in milliseconds
         
         self.create_solver()
         self.create_variables()
