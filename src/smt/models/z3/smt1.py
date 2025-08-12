@@ -27,31 +27,31 @@ class STSSolver:
         # Create representations
         
         self.teams = [[[
-            Int(f"team_{w}_{p}_{s}") 
-        for s in self.SLOTS] 
-        for p in self.PERIODS] 
+            Int(f"team_{p}_{w}_{s}") 
+        for s in self.SLOTS]  
         for w in self.WEEKS]
+        for p in self.PERIODS]
         
         self.match_count = Array('match_count', IntSort(), ArraySort(IntSort(), IntSort()))
         self.period_count = Array('period_count', IntSort(), ArraySort(IntSort(), IntSort()))
         self.week_count = Array('week_count', IntSort(), ArraySort(IntSort(), IntSort()))
 
         # Define domains
-        for w in self.WEEKS:
-            for p in self.PERIODS:
+        for p in self.PERIODS:
+            for w in self.WEEKS:
                 for s in self.SLOTS:
-                    self.solver.add(And(self.teams[w][p][s] >= 0, self.teams[w][p][s] <= self.n - 1))
+                    self.solver.add(And(self.teams[p][w][s] >= 0, self.teams[p][w][s] <= self.n - 1))
 
         # Consistency between self.teams and self.match_count
         for t1 in self.TEAMS:
             for t2 in self.TEAMS:
                 matches_12 = Sum([
                     If(And(
-                        self.teams[w][p][0] == t1,
-                        self.teams[w][p][1] == t2
+                        self.teams[p][w][0] == t1,
+                        self.teams[p][w][1] == t2
                     ), 1, 0)
-                    for w in self.WEEKS
                     for p in self.PERIODS
+                    for w in self.WEEKS
                 ])
                 self.solver.add(Select(Select(self.match_count, t1), t2) == matches_12)
         
@@ -60,8 +60,8 @@ class STSSolver:
             for p in self.PERIODS:
                 matches_tp = Sum([
                     If(Or(
-                        self.teams[w][p][0] == t,
-                        self.teams[w][p][1] == t
+                        self.teams[p][w][0] == t,
+                        self.teams[p][w][1] == t
                     ), 1, 0)
                     for w in self.WEEKS
                 ])
@@ -72,8 +72,8 @@ class STSSolver:
             for w in self.WEEKS:
                 matches_tw = Sum([
                     If(Or(
-                        self.teams[w][p][0] == t,
-                        self.teams[w][p][1] == t
+                        self.teams[p][w][0] == t,
+                        self.teams[p][w][1] == t
                     ), 1, 0)
                     for p in self.PERIODS
                 ])
@@ -124,7 +124,7 @@ class STSSolver:
         exec_time = end_time - start_time
         if status == sat:
             model = self.solver.model()
-            sol = [[[model.eval(self.teams[w][p][s]).as_long() for s in self.SLOTS] for p in self.PERIODS] for w in self.WEEKS]
+            sol = [[[model.eval(self.teams[p][w][s]).as_long() for s in self.SLOTS] for w in self.WEEKS] for p in self.PERIODS]
         else:
             sol = None
         
