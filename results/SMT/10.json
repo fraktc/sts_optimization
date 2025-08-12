@@ -1,0 +1,11 @@
+{
+   "plain": {
+      "time": 301.17797327041626,
+      "opt": false,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   }
+}
