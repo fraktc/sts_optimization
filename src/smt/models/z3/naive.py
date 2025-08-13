@@ -1,7 +1,7 @@
 from z3 import *
 import time
 
-class STSSolver:
+class Naive:
     def __init__(self, instance, timeout=300, incremental=False, implied_constraint_mask=[False], symmetry_breaking=False, optimization=False, **kwargs):
         self.timeout = timeout
         self.incremental = incremental

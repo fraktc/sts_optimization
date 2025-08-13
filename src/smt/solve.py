@@ -1,4 +1,4 @@
-from .models.z3.smt1 import STSSolver
+from .models.z3.naive import Naive
 import gc
 
 import logging
@@ -7,16 +7,16 @@ logger = logging.getLogger(__name__)
 experiments = [
     {
         "name": "naive",
-        "model": STSSolver,
+        "model": Naive,
         "symmetry_breaking": False,
-        "implied_constraints": False,
+        "implied_constraints": [False],
         "incremental": False
     },
     {
         "name": "naive incremental",
-        "model": STSSolver,
+        "model": Naive,
         "symmetry_breaking": False,
-        "implied_constraints": False,
+        "implied_constraints": [False],
         "incremental": True
     },
 ]
