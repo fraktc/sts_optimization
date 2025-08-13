@@ -1,4 +1,5 @@
-from .models.z3.naive import Naive
+from .models.z3.naive import NaiveSolver
+from .models.z3.bitvec import BitVecSolver
 import gc
 
 import logging
@@ -7,14 +8,28 @@ logger = logging.getLogger(__name__)
 experiments = [
     {
         "name": "naive",
-        "model": Naive,
+        "model": NaiveSolver,
         "symmetry_breaking": False,
         "implied_constraints": [False],
         "incremental": False
     },
     {
         "name": "naive incremental",
-        "model": Naive,
+        "model": NaiveSolver,
+        "symmetry_breaking": False,
+        "implied_constraints": [False],
+        "incremental": True
+    },
+    {
+        "name": "bitvec",
+        "model": BitVecSolver,
+        "symmetry_breaking": False,
+        "implied_constraints": [False],
+        "incremental": True
+    },
+    {
+        "name": "bitvec incremental",
+        "model": BitVecSolver,
         "symmetry_breaking": False,
         "implied_constraints": [False],
         "incremental": True

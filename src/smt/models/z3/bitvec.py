@@ -1,12 +1,13 @@
 from z3 import *
 import time
+import math
 
-class NaiveSolver:
+class BitVecSolver:
     def __init__(self, instance, timeout=300, incremental=False, implied_constraint_mask=[False], symmetry_breaking=False, optimization=False, **kwargs):
-        self.timeout = timeout
         self.incremental = incremental
-        
+
         self.n = instance
+        self.bits = math.ceil(math.log2(self.n))
         self.weeks = self.n - 1
         self.periods = self.n // 2
         self.slots = 2
@@ -17,29 +18,28 @@ class NaiveSolver:
         self.SLOTS = range(self.slots)
 
         self.implied_constraint_mask = implied_constraint_mask
-    
+
     def create_solver(self):
         self.solver = Solver()
-        self.solver.set("timeout", int(self.timeout * 1000))  # Set timeout in milliseconds
 
     def create_variables(self):
         # Create representations
-        
+
         self.teams = [[[
-            Int(f"team_{p}_{w}_{s}") 
-        for s in self.SLOTS]  
+            BitVec(f"team_{p}_{w}_{s}", self.bits)
+        for s in self.SLOTS]
         for w in self.WEEKS]
         for p in self.PERIODS]
-        
-        self.match_count = Array('match_count', IntSort(), ArraySort(IntSort(), IntSort()))
-        self.period_count = Array('period_count', IntSort(), ArraySort(IntSort(), IntSort()))
-        self.week_count = Array('week_count', IntSort(), ArraySort(IntSort(), IntSort()))
+
+        self.match_count = Array('match_count', BitVecSort(self.bits), ArraySort(BitVecSort(self.bits), IntSort()))
+        self.period_count = Array('period_count', BitVecSort(self.bits), ArraySort(IntSort(), IntSort()))
+        self.week_count = Array('week_count', BitVecSort(self.bits), ArraySort(IntSort(), IntSort()))
 
         # Define domains
-        for p in self.PERIODS:
-            for w in self.WEEKS:
+        for w in self.WEEKS:
+            for p in self.PERIODS:
                 for s in self.SLOTS:
-                    self.solver.add(And(self.teams[p][w][s] >= 0, self.teams[p][w][s] <= self.n - 1))
+                    self.solver.add(ULE(self.teams[p][w][s], self.n - 1))
 
         # Consistency between self.teams and self.match_count
         for t1 in self.TEAMS:
@@ -53,7 +53,7 @@ class NaiveSolver:
                     for w in self.WEEKS
                 ])
                 self.solver.add(Select(Select(self.match_count, t1), t2) == matches_12)
-        
+
         # Consistency between self.teams and self.period_count
         for t in self.TEAMS:
             for p in self.PERIODS:
@@ -87,13 +87,13 @@ class NaiveSolver:
                             (Select(Select(self.match_count, t1), t2) == 1) !=
                             (Select(Select(self.match_count, t2), t1) == 1)
                         )
-    
+
     def add_ACC2(self):
         # ACC2: Every team plays at most once a week
         for w in self.WEEKS:
             for t in self.TEAMS:
                     self.solver.add(Select(Select(self.week_count, t), w) <= 1)
-    
+
     def add_ACC3(self):
         # ACC3: Every team plays at most 2 matches in any given period
         for t in self.TEAMS:
@@ -104,34 +104,30 @@ class NaiveSolver:
         if self.implied_constraint_mask[0]:
             # No team plays against itself
             for t in self.TEAMS:
-                self.solver.add(Select(Select(self.match_count, t),t) == 0)
-    
+                solver.add(Select(Select(self.match_count, t),t) == 0)
+
     def solve(self):
         start_time = time.time()
-        
+
         self.create_solver()
         self.create_variables()
         self.add_ACC1()
         self.add_ACC2()
         self.add_implied()
-        if self.incremental: 
+        if self.incremental:
             self.solver.check()
         self.add_ACC3()
-        status = self.solver.check()
-        
+        self.solver.check()
+
         end_time = time.time()
         exec_time = end_time - start_time
-        if status == sat:
-            model = self.solver.model()
-            sol = [[[model.eval(self.teams[p][w][s]).as_long() + 1 for s in self.SLOTS] for w in self.WEEKS] for p in self.PERIODS]
-        else:
-            sol = None
-        
+
+        model = self.solver.model()
+
         results = {
             "time": exec_time,
             "optimal": False,
             "obj": None,
-            "sol": sol,
+            "sol": [[[model.eval(self.teams[p][w][s]).as_long() + 1 for s in self.SLOTS] for w in self.WEEKS] for p in self.PERIODS],
         }
         return results
-
