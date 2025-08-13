@@ -6,14 +6,14 @@ logger = logging.getLogger(__name__)
 
 experiments = [
     {
-        "name": "plain",
+        "name": "naive",
         "model": STSSolver,
         "symmetry_breaking": False,
         "implied_constraints": False,
         "incremental": False
     },
     {
-        "name": "plain",
+        "name": "naive incremental",
         "model": STSSolver,
         "symmetry_breaking": False,
         "implied_constraints": False,
