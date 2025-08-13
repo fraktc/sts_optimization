@@ -1,4 +1,4 @@
 # SMT status
 | $\text{Model}$ | $4$ | $6$ | $8$ | $10$ | $12$ | $14$ | $16$ | $18$ | $20$ |
 |:-:| :---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-$\text{plain}$ | $\color{red}\text{I}$ | $\color{red}\text{I}$ | $\color{red}\text{I}$ | $-$ | $-$ | $-$ | $-$ | $-$ | $-$ | 
+$\text{plain}$ | $\color{red}\text{I}$ | $\color{red}\text{I}$ | $\color{red}\text{I}$ | 

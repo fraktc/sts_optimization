@@ -46,11 +46,11 @@ docker run -v ./res:/cdmo/results cdmo
 | $4$ | | $\color{lightgray}\text{Timeout}$ | $\color{red}\text{Inconsistent}$ | | 
 | $6$ | | $\color{red}\text{Inconsistent}$ | $\color{red}\text{Inconsistent}$ | | 
 | $8$ | | $\color{red}\text{Inconsistent}$ | $\color{red}\text{Inconsistent}$ | | 
-| $10$ | | $\color{red}\text{Inconsistent}$ | $\color{lightgray}\text{Timeout}$ | | 
-| $12$ | | $\color{lightgray}\text{Timeout}$ | $\color{lightgray}\text{Timeout}$ | | 
-| $14$ | | $\color{lightgray}\text{Timeout}$ | $\color{lightgray}\text{Timeout}$ | | 
-| $16$ | | $\color{lightgray}\text{Timeout}$ | $\color{lightgray}\text{Timeout}$ | | 
-| $18$ | | $\color{lightgray}\text{Timeout}$ | $\color{lightgray}\text{Timeout}$ | | 
-| $20$ | | $\color{lightgray}\text{Timeout}$ | $\color{lightgray}\text{Timeout}$ | | 
+| $10$ | | $\color{red}\text{Inconsistent}$ | | | 
+| $12$ | | $\color{lightgray}\text{Timeout}$ | | | 
+| $14$ | | $\color{lightgray}\text{Timeout}$ | | | 
+| $16$ | | $\color{lightgray}\text{Timeout}$ | | | 
+| $18$ | | $\color{lightgray}\text{Timeout}$ | | | 
+| $20$ | | $\color{lightgray}\text{Timeout}$ | | | 
 
 <!-- end-status -->
