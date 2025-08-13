@@ -129,7 +129,7 @@ class STSSolver:
         
         results = {
             "time": exec_time,
-            "opt": False,
+            "optimal": False,
             "obj": None,
             "sol": sol,
         }
