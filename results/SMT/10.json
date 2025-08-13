@@ -1,0 +1,20 @@
+{
+   "naive": {
+      "time": 301.1716649532318,
+      "optimal": false,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "naive incremental": {
+      "time": 301.179486989975,
+      "optimal": false,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   }
+}
