@@ -22,7 +22,6 @@ class STSSolver:
         self.solver = Solver()
         self.solver.set("timeout", int(self.timeout * 1000))  # Set timeout in milliseconds
 
-
     def create_variables(self):
         # Create representations
         
@@ -124,7 +123,7 @@ class STSSolver:
         exec_time = end_time - start_time
         if status == sat:
             model = self.solver.model()
-            sol = [[[model.eval(self.teams[p][w][s]).as_long() for s in self.SLOTS] for w in self.WEEKS] for p in self.PERIODS]
+            sol = [[[model.eval(self.teams[p][w][s]).as_long() + 1 for s in self.SLOTS] for w in self.WEEKS] for p in self.PERIODS]
         else:
             sol = None
         
