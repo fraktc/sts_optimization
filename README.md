@@ -44,9 +44,9 @@ docker run -v ./res:/cdmo/results cdmo
 | Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MIP](./method-statuses/mip-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
 | $4$ | | $\color{lightgray}\text{Timeout}$ | $\color{red}\text{Inconsistent}$ | | 
-| $6$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{0.4899871349334717 s (obj: None)}$</br>$\color{orange}\text{plain}$ | | 
-| $8$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{5.095419883728027 s (obj: None)}$</br>$\color{orange}\text{plain}$ | | 
-| $10$ | | $\color{red}\text{Inconsistent}$ | | | 
+| $6$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{0.3975093364715576 s (obj: None)}$</br>$\color{orange}\text{naive}$ | | 
+| $8$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{4.781149625778198 s (obj: None)}$</br>$\color{orange}\text{naive incremental}$ | | 
+| $10$ | | $\color{red}\text{Inconsistent}$ | $\color{lightgray}\text{Timeout}$ | | 
 | $12$ | | $\color{lightgray}\text{Timeout}$ | | | 
 | $14$ | | $\color{lightgray}\text{Timeout}$ | | | 
 | $16$ | | $\color{lightgray}\text{Timeout}$ | | | 
