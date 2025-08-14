@@ -117,17 +117,20 @@ class BitVecSolver:
         if self.incremental:
             self.solver.check()
         self.add_ACC3()
-        self.solver.check()
+        status = self.solver.check()
 
         end_time = time.time()
         exec_time = end_time - start_time
-
-        model = self.solver.model()
-
+        if status == sat:
+            model = self.solver.model()
+            sol = [[[model.eval(self.teams[p][w][s]).as_long() + 1 for s in self.SLOTS] for w in self.WEEKS] for p in self.PERIODS]
+        else:
+            sol = None
+        
         results = {
             "time": exec_time,
             "optimal": False,
             "obj": None,
-            "sol": [[[model.eval(self.teams[p][w][s]).as_long() + 1 for s in self.SLOTS] for w in self.WEEKS] for p in self.PERIODS],
+            "sol": sol,
         }
         return results
