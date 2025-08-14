@@ -6,20 +6,20 @@ import logging
 logger = logging.getLogger(__name__)
 
 experiments = [
-    # {
-    #     "name": "naive",
-    #     "model": NaiveSolver,
-    #     "symmetry_breaking": False,
-    #     "implied_constraints": [False],
-    #     "incremental": False
-    # },
-    # {
-    #     "name": "naive incremental",
-    #     "model": NaiveSolver,
-    #     "symmetry_breaking": False,
-    #     "implied_constraints": [False],
-    #     "incremental": True
-    # },
+    {
+        "name": "naive",
+        "model": NaiveSolver,
+        "symmetry_breaking": False,
+        "implied_constraints": [False],
+        "incremental": False
+    },
+    {
+        "name": "naive incremental",
+        "model": NaiveSolver,
+        "symmetry_breaking": False,
+        "implied_constraints": [False],
+        "incremental": True
+    },
     {
         "name": "bitvec",
         "model": BitVecSolver,
