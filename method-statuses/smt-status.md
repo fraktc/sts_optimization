@@ -1,5 +1,7 @@
 # SMT status
 | $\text{Model}$ | $4$ | $6$ | $8$ | $10$ | $12$ | $14$ | $16$ | $18$ | $20$ |
 |:-:| :---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-$\text{bitvec}$ | $\color{red}\text{I}$ | $\color{orange}\text{None (0.5256917476654053 s)}$ | $\color{orange}\text{None (2.955731153488159 s)}$ | $\color{orange}\text{None (110.3217306137085 s)}$ | 
-$\text{bitvec incremental}$ | $\color{red}\text{I}$ | $\color{orange}\text{None (0.498992919921875 s)}$ | $\color{orange}\text{None (5.417744874954224 s)}$ | $\color{orange}\text{None (445.56009435653687 s)}$ | 
+$\text{naive}$ | $\color{red}\text{I}$ | $\color{orange}\text{None (0.3410789966583252 s)}$ | $\color{orange}\text{None (3.2194888591766357 s)}$ | $-$ | 
+$\text{naive incremental}$ | $\color{red}\text{I}$ | $\color{orange}\text{None (0.3441469669342041 s)}$ | $\color{orange}\text{None (8.81975245475769 s)}$ | $-$ | 
+$\text{bitvec}$ | $\color{red}\text{I}$ | $\color{orange}\text{None (0.4082667827606201 s)}$ | $\color{orange}\text{None (6.3475775718688965 s)}$ | $\color{orange}\text{None (183.39112782478333 s)}$ | 
+$\text{bitvec incremental}$ | $\color{red}\text{I}$ | $\color{orange}\text{None (0.5217206478118896 s)}$ | $\color{orange}\text{None (6.156921625137329 s)}$ | $\color{orange}\text{None (356.76019954681396 s)}$ | 
