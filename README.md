@@ -44,9 +44,9 @@ docker run -v ./res:/cdmo/results cdmo
 | Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MIP](./method-statuses/mip-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
 | $4$ | | $\color{lightgray}\text{Timeout}$ | $\color{red}\text{Inconsistent}$ | | 
-| $6$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{0.3914642333984375 s (obj: None)}$</br>$\color{orange}\text{naive}$ | | 
-| $8$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{4.695975303649902 s (obj: None)}$</br>$\color{orange}\text{naive incremental}$ | | 
-| $10$ | | $\color{red}\text{Inconsistent}$ | $\color{lightgray}\text{Timeout}$ | | 
+| $6$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{0.498992919921875 s (obj: None)}$</br>$\color{orange}\text{bitvec incremental}$ | | 
+| $8$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{2.955731153488159 s (obj: None)}$</br>$\color{orange}\text{bitvec}$ | | 
+| $10$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{110.3217306137085 s (obj: None)}$</br>$\color{orange}\text{bitvec}$ | | 
 | $12$ | | $\color{lightgray}\text{Timeout}$ | | | 
 | $14$ | | $\color{lightgray}\text{Timeout}$ | | | 
 | $16$ | | $\color{lightgray}\text{Timeout}$ | | | 
