@@ -1,5 +1,6 @@
 from .models.z3.naive import NaiveSolver
 from .models.z3.bitvec import BitVecSolver
+from .models.z3.round_robin import RoundRobinSolver
 import gc
 
 import logging
@@ -7,32 +8,10 @@ logger = logging.getLogger(__name__)
 
 experiments = [
     {
-        "name": "naive",
-        "model": NaiveSolver,
+        "name": "round_robin",
+        "model": RoundRobinSolver,
         "symmetry_breaking": False,
         "implied_constraints": [False],
-        "incremental": False
-    },
-    {
-        "name": "naive incremental",
-        "model": NaiveSolver,
-        "symmetry_breaking": False,
-        "implied_constraints": [False],
-        "incremental": True
-    },
-    {
-        "name": "bitvec",
-        "model": BitVecSolver,
-        "symmetry_breaking": False,
-        "implied_constraints": [False],
-        "incremental": False
-    },
-    {
-        "name": "bitvec incremental",
-        "model": BitVecSolver,
-        "symmetry_breaking": False,
-        "implied_constraints": [False],
-        "incremental": True
     },
 ]
 
