@@ -165,19 +165,17 @@ def create_milp_model(n, timeout=300):
             imbalance = {t: abs(home_count[t] - away_count[t]) for t in TEAMS}
             max_imbalance = max(imbalance.values())
             
-            # Format solution as 3D array: [week][period][home_team, away_team]
+            # Format solution as 2D array: [period][week] = [home, away]
             sol = []
-            for w in range(1, weeks + 1):
-                week_matches = []
-                for pr in range(1, periods + 1):
-                    # Find which match is assigned to this period in this week
+            for pr in range(1, periods + 1):
+                period_matches = []
+                for w in range(1, weeks + 1):
+                    # Find which original match is assigned to this period in this week
                     for p in range(1, periods + 1):
                         if solution_period_slot[w, p] == pr:
-                            home_team = rr_home[w, p] - 1  # Convert to 0-based if needed, but keeping 1-based as requested
-                            away_team = rr_away[w, p] - 1  # Convert to 0-based if needed, but keeping 1-based as requested
-                            week_matches.append([rr_home[w, p], rr_away[w, p]])  # Keep 1-based
+                            period_matches.append([rr_home[w, p], rr_away[w, p]])
                             break
-                sol.append(week_matches)
+                sol.append(period_matches)
             
             results[solver_name] = {
                 "time": solve_time,
@@ -202,8 +200,8 @@ def print_schedule(result):
     """Helper function to print the schedule table"""
     if result and result.get('sol'):
         sol = result['sol']
-        weeks = len(sol)
-        periods = len(sol[0]) if sol else 0
+        periods = len(sol)
+        weeks = len(sol[0]) if sol else 0
         
         print(f"{'Period':<8}", end="")
         for w in range(1, weeks + 1):
@@ -214,7 +212,7 @@ def print_schedule(result):
         for pr in range(periods):
             print(f"P{pr+1:<7}", end="")
             for w in range(weeks):
-                home_team, away_team = sol[w][pr]
+                home_team, away_team = sol[pr][w]
                 print(f"{home_team}v{away_team:<9}", end="")
             print()
     else:
