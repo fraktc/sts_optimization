@@ -1,6 +1,6 @@
 from .models.z3.naive import NaiveSolver
 from .models.z3.bitvec import BitVecSolver
-from .models.z3.round_robin import RoundRobinSolver
+from .models.z3.round_robin import RoundRobinSolver, BitVecRoundRobinSolver
 import gc
 
 import logging
@@ -10,6 +10,12 @@ experiments = [
     {
         "name": "round_robin",
         "model": RoundRobinSolver,
+        "symmetry_breaking": False,
+        "implied_constraints": [False],
+    },
+    {
+        "name": "round_robin_bitvec",
+        "model": BitVecRoundRobinSolver,
         "symmetry_breaking": False,
         "implied_constraints": [False],
     },
