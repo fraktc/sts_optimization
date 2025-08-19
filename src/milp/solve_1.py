@@ -50,7 +50,7 @@ def run_milp_model(model_file, solver, number_of_teams, timeout, random_seed):
 models_setup = [
     {
         "name": "milp-model-1",
-        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./milp_model_2.py"),
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./milp_model_1.py"),
     },
     # You can add more models here following the same pattern:
     # {
