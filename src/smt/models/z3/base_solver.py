@@ -1,7 +1,7 @@
 import time
 from z3 import *
 
-class BaseSolver:
+class SMTSolver:
     """Base class to solve (up to satisfiability) the STS with z3 SMT.
     
     How to use:
@@ -94,7 +94,7 @@ class BaseSolver:
         # Create output dictionary
         self.results = {
             "time": self.exec_time,
-            "opt": self.optimal,
+            "optimal": self.optimal,
             "obj": self.obj,
             "sol": self.sol,
         }
