@@ -1,4 +1,4 @@
-from base_solver import BaseSolver
+from .base_solver import BaseSolver
 from z3 import *
 
 class RoundRobinSolver(BaseSolver):
