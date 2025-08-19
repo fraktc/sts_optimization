@@ -44,13 +44,13 @@ docker run -v ./res:/cdmo/results cdmo
 | Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MIP](./method-statuses/mip-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
 | $4$ | | $\color{lightgray}\text{Timeout}$ | $\color{red}\text{Inconsistent}$ | | 
-| $6$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{0.11210274696350098 s (obj: 5)}$</br>$\color{orange}\text{round-robin}$ | | 
-| $8$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{0.38524866104125977 s (obj: 7)}$</br>$\color{orange}\text{round-robin}$ | | 
-| $10$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{1.64607834815979 s (obj: 9)}$</br>$\color{orange}\text{round-robin}$ | | 
-| $12$ | | $\color{lightgray}\text{Timeout}$ | | | 
-| $14$ | | $\color{lightgray}\text{Timeout}$ | | | 
-| $16$ | | $\color{lightgray}\text{Timeout}$ | | | 
-| $18$ | | $\color{lightgray}\text{Timeout}$ | | | 
-| $20$ | | $\color{lightgray}\text{Timeout}$ | | | 
+| $6$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{0.1038975715637207 s (obj: 5)}$</br>$\color{orange}\text{round-robin}$ | | 
+| $8$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{0.3659050464630127 s (obj: 7)}$</br>$\color{orange}\text{round-robin}$ | | 
+| $10$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{1.5714373588562012 s (obj: 9)}$</br>$\color{orange}\text{round-robin}$ | | 
+| $12$ | | $\color{lightgray}\text{Timeout}$ | $\color{orange}\text{9.965622901916504 s (obj: 11)}$</br>$\color{orange}\text{round-robin}$ | | 
+| $14$ | | $\color{lightgray}\text{Timeout}$ | $\color{orange}\text{57.436009645462036 s (obj: 13)}$</br>$\color{orange}\text{round-robin}$ | | 
+| $16$ | | $\color{lightgray}\text{Timeout}$ | $\color{lightgray}\text{Timeout}$ | | 
+| $18$ | | $\color{lightgray}\text{Timeout}$ | $\color{lightgray}\text{Timeout}$ | | 
+| $20$ | | $\color{lightgray}\text{Timeout}$ | $\color{lightgray}\text{Timeout}$ | | 
 
 <!-- end-status -->
