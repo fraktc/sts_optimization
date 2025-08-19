@@ -165,22 +165,26 @@ def create_milp_model(n, timeout=300):
             imbalance = {t: abs(home_count[t] - away_count[t]) for t in TEAMS}
             max_imbalance = max(imbalance.values())
             
-            # Format solution
-            sol = {
-                "rr_home": [[rr_home[w, p] for p in range(1, periods + 1)] for w in range(1, weeks + 1)],
-                "rr_away": [[rr_away[w, p] for p in range(1, periods + 1)] for w in range(1, weeks + 1)],
-                "period_slot": [[solution_period_slot[w, p] for p in range(1, periods + 1)] for w in range(1, weeks + 1)],
-                "team_period": [[solution_team_period[t, w] for w in range(1, weeks + 1)] for t in TEAMS],
-                "periods": periods,
-                "weeks": weeks,
-                "max_imbalance": max_imbalance
-            }
+            # Format solution as 3D array: [week][period][home_team, away_team]
+            sol = []
+            for w in range(1, weeks + 1):
+                week_matches = []
+                for pr in range(1, periods + 1):
+                    # Find which match is assigned to this period in this week
+                    for p in range(1, periods + 1):
+                        if solution_period_slot[w, p] == pr:
+                            home_team = rr_home[w, p] - 1  # Convert to 0-based if needed, but keeping 1-based as requested
+                            away_team = rr_away[w, p] - 1  # Convert to 0-based if needed, but keeping 1-based as requested
+                            week_matches.append([rr_home[w, p], rr_away[w, p]])  # Keep 1-based
+                            break
+                sol.append(week_matches)
             
             results[solver_name] = {
                 "time": solve_time,
                 "optimal": True,
-                "obj": max_imbalance,  # Using max_imbalance as objective value
-                "sol": sol
+                "obj": max_imbalance,
+                "sol": sol,
+                "_extras": {"runner": ""}
             }
             
         else:
@@ -188,7 +192,8 @@ def create_milp_model(n, timeout=300):
                 "time": solve_time,
                 "optimal": False,
                 "obj": None,
-                "sol": None
+                "sol": None,
+                "_extras": {"runner": ""}
             }
     
     return results
@@ -197,22 +202,20 @@ def print_schedule(result):
     """Helper function to print the schedule table"""
     if result and result.get('sol'):
         sol = result['sol']
+        weeks = len(sol)
+        periods = len(sol[0]) if sol else 0
+        
         print(f"{'Period':<8}", end="")
-        for w in range(1, sol['weeks'] + 1):
+        for w in range(1, weeks + 1):
             print(f"Week {w:<10}", end="")
         print()
-        print("-" * (8 + sol['weeks'] * 10))
+        print("-" * (8 + weeks * 10))
         
-        for pr in range(1, sol['periods'] + 1):
-            print(f"P{pr:<7}", end="")
-            for w in range(1, sol['weeks'] + 1):
-                # Find which match is played in this period for this week
-                for p in range(1, sol['periods'] + 1):
-                    if sol['period_slot'][w-1][p-1] == pr:
-                        home_team = sol['rr_home'][w-1][p-1]
-                        away_team = sol['rr_away'][w-1][p-1]
-                        print(f"{home_team}v{away_team:<9}", end="")
-                        break
+        for pr in range(periods):
+            print(f"P{pr+1:<7}", end="")
+            for w in range(weeks):
+                home_team, away_team = sol[w][pr]
+                print(f"{home_team}v{away_team:<9}", end="")
             print()
     else:
         print("No solution found!")
