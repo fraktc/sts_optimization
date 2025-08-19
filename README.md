@@ -44,9 +44,9 @@ docker run -v ./res:/cdmo/results cdmo
 | Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MIP](./method-statuses/mip-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
 | $4$ | | $\color{lightgray}\text{Timeout}$ | $\color{red}\text{Inconsistent}$ | | 
-| $6$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{0.3410789966583252 s (obj: None)}$</br>$\color{orange}\text{naive}$ | | 
-| $8$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{3.2194888591766357 s (obj: None)}$</br>$\color{orange}\text{naive}$ | | 
-| $10$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{183.39112782478333 s (obj: None)}$</br>$\color{orange}\text{bitvec}$ | | 
+| $6$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{0.11210274696350098 s (obj: 5)}$</br>$\color{orange}\text{round-robin}$ | | 
+| $8$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{0.38524866104125977 s (obj: 7)}$</br>$\color{orange}\text{round-robin}$ | | 
+| $10$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{1.64607834815979 s (obj: 9)}$</br>$\color{orange}\text{round-robin}$ | | 
 | $12$ | | $\color{lightgray}\text{Timeout}$ | | | 
 | $14$ | | $\color{lightgray}\text{Timeout}$ | | | 
 | $16$ | | $\color{lightgray}\text{Timeout}$ | | | 
