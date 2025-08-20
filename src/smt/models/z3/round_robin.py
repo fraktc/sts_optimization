@@ -19,12 +19,14 @@ class RoundRobinSolver(BaseSolver):
         for w in self.WEEKS:
             for p in self.PERIODS:
                 team_a, team_b = circle[p], circle[self.n - p - 1]
+                team_a, team_b = min(team_a, team_b), max(team_a, team_b)
                 if (team_a + team_b) % 2 == 1: # Use parity rule for balancing
                     team_a, team_b = team_b, team_a
                 self.solver.add(self.teams[p][w][0] == team_a, self.teams[p][w][1] == team_b)
             circle = circle[:1] + circle[-1:] + circle[1:-1]
 
         # Create decision variables
+        # self.new_periods represents a permutation of the matches of each week across the periods
         self.new_periods = [[Int(f"new_periods_{p}_{w}") for w in self.WEEKS] for p in self.PERIODS]
         for p in self.PERIODS:
             for w in self.WEEKS:
@@ -75,7 +77,7 @@ class BitVecRoundRobinSolver(BaseSolver):
     self.new_times is an array that maps a period, week combination to a new period, week combination.
     The match at self.teams[p][w] is supposed to actually take place at self.new_times[p][w].
 
-    Use BitVec variables to store periods.
+    Use BitVec variables to store periods for greater efficiency.
     """
 
     def create_parameters(self):
@@ -89,12 +91,14 @@ class BitVecRoundRobinSolver(BaseSolver):
         for w in self.WEEKS:
             for p in self.PERIODS:
                 team_a, team_b = circle[p], circle[self.n - p - 1]
+                team_a, team_b = min(team_a, team_b), max(team_a, team_b)
                 if (team_a + team_b) % 2 == 1: # Use parity rule for balancing
                     team_a, team_b = team_b, team_a
                 self.solver.add(self.teams[p][w][0] == team_a, self.teams[p][w][1] == team_b)
             circle = circle[:1] + circle[-1:] + circle[1:-1]
 
         # Create decision variables
+        # self.new_periods represents a permutation of the matches of each week across the periods
         self.new_periods = [[BitVec(f"new_periods_{p}_{w}", self.bits) for w in self.WEEKS] for p in self.PERIODS]
         for p in self.PERIODS:
             for w in self.WEEKS:
