@@ -44,13 +44,13 @@ docker run -v ./res:/cdmo/results cdmo
 | Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MILP](./method-statuses/milp-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
 | $4$ | | | | $\color{lightgray}\text{Timeout}$ | 
-| $6$ | | | | $\color{green}\text{0.00791311264038086 s (obj: 1)}$</br>$\color{green}\text{milp-model-1-HiGHS}$ | 
-| $8$ | | | | $\color{green}\text{0.013290166854858398 s (obj: 1)}$</br>$\color{green}\text{milp-model-1-HiGHS}$ | 
-| $10$ | | | | | 
-| $12$ | | | | | 
-| $14$ | | | | | 
-| $16$ | | | | | 
-| $18$ | | | | | 
-| $20$ | | | | | 
+| $6$ | | | | $\color{green}\text{0.00798797607421875 s (obj: 1)}$</br>$\color{green}\text{milp-model-1-CBC}$ | 
+| $8$ | | | | $\color{green}\text{0.014053106307983398 s (obj: 1)}$</br>$\color{green}\text{milp-model-1-HiGHS}$ | 
+| $10$ | | | | $\color{green}\text{0.036565542221069336 s (obj: 1)}$</br>$\color{green}\text{milp-model-1-CBC}$ | 
+| $12$ | | | | $\color{green}\text{4.100900411605835 s (obj: 1)}$</br>$\color{green}\text{milp-model-1-HiGHS}$ | 
+| $14$ | | | | $\color{green}\text{21.69497776031494 s (obj: 1)}$</br>$\color{green}\text{milp-model-1-HiGHS}$ | 
+| $16$ | | | | $\color{lightgray}\text{Timeout}$ | 
+| $18$ | | | | $\color{lightgray}\text{Timeout}$ | 
+| $20$ | | | | $\color{lightgray}\text{Timeout}$ | 
 
 <!-- end-status -->
