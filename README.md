@@ -44,12 +44,12 @@ docker run -v ./res:/cdmo/results cdmo
 | Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MIP](./method-statuses/mip-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
 | $4$ | | $\color{lightgray}\text{Timeout}$ | $\color{red}\text{Inconsistent}$ | | 
-| $6$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{0.09888935089111328 s (obj: 5)}$</br>$\color{orange}\text{round-robin}$ | | 
-| $8$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{0.3235342502593994 s (obj: 7)}$</br>$\color{orange}\text{round-robin}$ | | 
-| $10$ | | $\color{red}\text{Inconsistent}$ | $\color{orange}\text{0.7740840911865234 s (obj: 9)}$</br>$\color{orange}\text{round-robin-bitvec}$ | | 
-| $12$ | | $\color{lightgray}\text{Timeout}$ | $\color{orange}\text{3.6668541431427 s (obj: 11)}$</br>$\color{orange}\text{round-robin-bitvec}$ | | 
-| $14$ | | $\color{lightgray}\text{Timeout}$ | $\color{orange}\text{10.474308729171753 s (obj: 13)}$</br>$\color{orange}\text{round-robin-bitvec}$ | | 
-| $16$ | | $\color{lightgray}\text{Timeout}$ | $\color{orange}\text{52.426164865493774 s (obj: 15)}$</br>$\color{orange}\text{round-robin-bitvec}$ | | 
+| $6$ | | $\color{red}\text{Inconsistent}$ | $\color{green}\text{0.09532856941223145 s (obj: 1)}$</br>$\color{green}\text{round-robin-bitvec}$ | | 
+| $8$ | | $\color{red}\text{Inconsistent}$ | $\color{green}\text{0.29624223709106445 s (obj: 1)}$</br>$\color{green}\text{round-robin-bitvec}$ | | 
+| $10$ | | $\color{red}\text{Inconsistent}$ | $\color{green}\text{0.9514327049255371 s (obj: 1)}$</br>$\color{green}\text{round-robin-bitvec}$ | | 
+| $12$ | | $\color{lightgray}\text{Timeout}$ | $\color{green}\text{3.1190645694732666 s (obj: 1)}$</br>$\color{green}\text{round-robin-bitvec}$ | | 
+| $14$ | | $\color{lightgray}\text{Timeout}$ | $\color{green}\text{23.698692798614502 s (obj: 1)}$</br>$\color{green}\text{round-robin}$ | | 
+| $16$ | | $\color{lightgray}\text{Timeout}$ | $\color{green}\text{252.8207037448883 s (obj: 1)}$</br>$\color{green}\text{round-robin}$ | | 
 | $18$ | | $\color{lightgray}\text{Timeout}$ | $\color{lightgray}\text{Timeout}$ | | 
 | $20$ | | $\color{lightgray}\text{Timeout}$ | $\color{lightgray}\text{Timeout}$ | | 
 

@@ -1,0 +1,20 @@
+{
+   "round_robin": {
+      "time": 310.3186650276184,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "round_robin_bitvec": {
+      "time": 309.8089647293091,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   }
+}
