@@ -40,7 +40,7 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
         if (models_filter is not None) and (experiment["name"] not in models_filter):
             continue
         logger.info(f"Starting model {experiment['name']}")
-        name, model, symmetry_breaking, implied_constraints = experiment["name"], experiment["model"], experiment["symmetry_breaking"], experiment["implied_constraints"]
+        name, model, symmetry_constraint_mask, implied_constraint_mask = experiment["name"], experiment["model"], experiment["symmetry_constraint_mask"], experiment["implied_constraint_mask"]
 
         # Check if result is in cache
         if name in cache:
@@ -61,8 +61,8 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
         
         results[name] = model(instance,
                               timeout=timeout,
-                              implied_constraints=implied_constraints,
-                              symmetry_breaking=symmetry_breaking,
+                              implied_constraint_mask=implied_constraint_mask,
+                              symmetry_constraint_mask=symmetry_constraint_mask,
                               **kwargs).solve()
 
         gc.collect()
