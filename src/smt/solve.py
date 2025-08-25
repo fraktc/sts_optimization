@@ -10,14 +10,26 @@ experiments = [
     {
         "name": "round_robin",
         "model": RoundRobinSolver,
-        "symmetry_breaking": False,
-        "implied_constraints": [False],
+        "symmetry_constraint_mask": [False],
+        "implied_constraint_mask": None,
+    },
+    {
+        "name": "round_robin",
+        "model": RoundRobinSolver,
+        "symmetry_constraint_mask": [True],
+        "implied_constraint_mask": None,
     },
     {
         "name": "round_robin_bitvec",
         "model": BitVecRoundRobinSolver,
-        "symmetry_breaking": False,
-        "implied_constraints": [False],
+        "symmetry_constraint_mask": [False],
+        "implied_constraint_mask": None,
+    },
+    {
+        "name": "round_robin_bitvec",
+        "model": BitVecRoundRobinSolver,
+        "symmetry_constraint_mask": [True],
+        "implied_constraint_mask": None,
     },
 ]
 

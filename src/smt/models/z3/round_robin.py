@@ -54,6 +54,19 @@ class RoundRobinSolver(BaseSolver):
                 ])
                 self.constraint_batches[0].append(count <= 2)
 
+        # **** IMPLIED CONSTRAINTS ****
+        if self.implied_constraint_mask is not None:
+            pass
+
+        # **** SYMMETRY-BREAKING CONSTRAINTS ****
+        if self.symmetry_constraint_mask is not None:
+            
+            # The order of matches in the first week is left as is 
+            if self.symmetry_constraint_mask[0]:
+                for p in self.PERIODS:
+                    self.constraint_batches[0].append(self.new_periods[p][0] == p)
+
+
     def format_solution(self):
         # Initialize solution
         self.sol = [[None for w in self.WEEKS] for p in self.PERIODS]
@@ -125,6 +138,19 @@ class BitVecRoundRobinSolver(BaseSolver):
                     for p_old in self.PERIODS for w in self.WEEKS
                 ])
                 self.constraint_batches[0].append(count <= 2)
+        
+        # **** IMPLIED CONSTRAINTS ****
+        if self.implied_constraint_mask is not None:
+            pass
+
+        # **** SYMMETRY-BREAKING CONSTRAINTS ****
+        if self.symmetry_constraint_mask is not None:
+            
+            # The order of matches in the first week is left as is 
+            if self.symmetry_constraint_mask[0]:
+                for p in self.PERIODS:
+                    self.constraint_batches[0].append(self.new_periods[p][0] == p)
+
 
     def format_solution(self):
         # Initialize solution

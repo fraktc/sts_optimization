@@ -9,7 +9,7 @@ class BaseSolver:
         - Append batches of constraints to self.constraint_batches
         - Each batch should come as a list of constraints which are later added to the inner solver by the solve method
     """
-    def __init__(self, instance, timeout=300, implied_constraint_mask=[False], symmetry_breaking=False, optimization=False, **kwargs):
+    def __init__(self, instance, timeout=300, implied_constraint_mask=None, symmetry_constraint_mask=None, optimization=False, **kwargs):
         # Start timer
         self.start_time = time.time()
 
@@ -17,6 +17,7 @@ class BaseSolver:
         self.n = instance
         self.timeout = timeout
         self.implied_constraint_mask = implied_constraint_mask
+        self.symmetry_constraint_mask = symmetry_constraint_mask
 
         # Create model
         self.create_parameters()
