@@ -1,0 +1,38 @@
+{
+   "round_robin": {
+      "time": 310.43824338912964,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "round_robin_symm": {
+      "time": 310.52991461753845,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "round_robin_bitvec": {
+      "time": 309.9467122554779,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "round_robin_bitvec_symm": {
+      "time": 310.0801725387573,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   }
+}
