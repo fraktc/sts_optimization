@@ -1,5 +1,5 @@
 # SMT status
 | $\text{Model}$ | $4$ | $6$ | $8$ | $10$ | $12$ | $14$ | $16$ | $18$ | $20$ |
 |:-:| :---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-$\text{round-robin}$ | $\color{red}\text{I}$ | $\color{green}\text{1 (0.10863661766052246 s)}$ | $\color{green}\text{1 (0.3551769256591797 s)}$ | $\color{green}\text{1 (1.0621838569641113 s)}$ | $\color{green}\text{1 (5.970981121063232 s)}$ | $\color{green}\text{1 (23.698692798614502 s)}$ | $\color{green}\text{1 (252.8207037448883 s)}$ | $-$ | $-$ | 
-$\text{round-robin-bitvec}$ | $\color{red}\text{I}$ | $\color{green}\text{1 (0.09532856941223145 s)}$ | $\color{green}\text{1 (0.29624223709106445 s)}$ | $\color{green}\text{1 (0.9514327049255371 s)}$ | $\color{green}\text{1 (3.1190645694732666 s)}$ | $\color{green}\text{1 (24.034767389297485 s)}$ | $\color{green}\text{1 (262.6261670589447 s)}$ | $-$ | $-$ | 
+$\text{round-robin}$ | $\color{red}\text{I}$ | $\color{green}\text{1 (0.0994729995727539 s)}$ | $\color{green}\text{1 (0.30561375617980957 s)}$ | $\color{green}\text{1 (0.9865596294403076 s)}$ | $\color{green}\text{1 (2.1844005584716797 s)}$ | $\color{green}\text{1 (20.159233808517456 s)}$ | $\color{green}\text{1 (150.6662335395813 s)}$ | $-$ | $-$ | 
+$\text{round-robin-bitvec}$ | $\color{red}\text{I}$ | $\color{green}\text{1 (0.09238028526306152 s)}$ | $\color{green}\text{1 (0.30577516555786133 s)}$ | $\color{green}\text{1 (0.8443813323974609 s)}$ | $\color{green}\text{1 (5.315750360488892 s)}$ | $\color{green}\text{1 (14.635933637619019 s)}$ | $-$ | $-$ | $-$ | 
