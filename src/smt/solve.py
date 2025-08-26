@@ -14,7 +14,7 @@ experiments = [
         "implied_constraint_mask": None,
     },
     {
-        "name": "round_robin",
+        "name": "round_robin_symm",
         "model": RoundRobinSolver,
         "symmetry_constraint_mask": [True],
         "implied_constraint_mask": None,
@@ -26,7 +26,7 @@ experiments = [
         "implied_constraint_mask": None,
     },
     {
-        "name": "round_robin_bitvec",
+        "name": "round_robin_bitvec_symm",
         "model": BitVecRoundRobinSolver,
         "symmetry_constraint_mask": [True],
         "implied_constraint_mask": None,

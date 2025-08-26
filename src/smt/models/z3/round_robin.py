@@ -1,15 +1,16 @@
 from .base_solver import BaseSolver
 from z3 import *
+import math
 
 class RoundRobinSolver(BaseSolver):
     """Use the Round Robin method to generate an initial solution.
 
     The period constraint does not hold in the initial solution and is imposed though SMT.
     The initial solution already satisfies the optimality requirement.
-
     The solver assigns values to the decision variables contained in self.new_periods.
     self.new_periods is an array that maps a period, week combination to a new period.
     The match at self.teams[p][w] is supposed to actually take place during period self.new_periods[p][w] in the same week.
+    The period constraint is solved by such period permutations.
     """
 
     def create_variables(self):
@@ -83,14 +84,7 @@ class RoundRobinSolver(BaseSolver):
 class BitVecRoundRobinSolver(BaseSolver):
     """Use the Round Robin method to generate an initial solution.
 
-    The period constraint does not hold in the initial solution and is imposed though SMT.
-    The initial solution already satisfies the optimality requirement.
-
-    The solver assigns values to the decision variables contained in self.new_times.
-    self.new_times is an array that maps a period, week combination to a new period, week combination.
-    The match at self.teams[p][w] is supposed to actually take place at self.new_times[p][w].
-
-    Use BitVec variables to store periods for greater efficiency.
+    Like RoundRobinSolver, but uses BitVec to represent periods.
     """
 
     def create_parameters(self):
