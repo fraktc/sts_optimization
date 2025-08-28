@@ -41,16 +41,16 @@ docker run -v ./res:/cdmo/results cdmo
 ## Results
 <!-- Do NOT remove the comments below -->
 <!-- begin-status -->
-| Instance | [CP](./method-statuses\cp-status.md) | [SAT](./method-statuses\sat-status.md) | [SMT](./method-statuses\smt-status.md) | [MIP](./method-statuses\mip-status.md) |
+| Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MIP](./method-statuses/mip-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
-| $4$ | | $\color{lightgray}\text{Timeout}$ | | | 
-| $6$ | | $\color{red}\text{Inconsistent}$ | | | 
-| $8$ | | $\color{red}\text{Inconsistent}$ | | | 
-| $10$ | | $\color{red}\text{Inconsistent}$ | | | 
-| $12$ | | $\color{lightgray}\text{Timeout}$ | | | 
-| $14$ | | $\color{lightgray}\text{Timeout}$ | | | 
-| $16$ | | $\color{lightgray}\text{Timeout}$ | | | 
-| $18$ | | $\color{lightgray}\text{Timeout}$ | | | 
-| $20$ | | $\color{lightgray}\text{Timeout}$ | | | 
+| $4$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $6$ | $\color{pink}\text{Crashed}$ | $\color{red}\text{Inconsistent}$ | | | 
+| $8$ | $\color{pink}\text{Crashed}$ | $\color{red}\text{Inconsistent}$ | | | 
+| $10$ | $\color{pink}\text{Crashed}$ | $\color{red}\text{Inconsistent}$ | | | 
+| $12$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $14$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $16$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $18$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $20$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
 
 <!-- end-status -->
