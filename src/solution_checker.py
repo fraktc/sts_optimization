@@ -1,10 +1,66 @@
-from itertools import combinations
-
 import os
+import re
 import sys
 import json
-import argparse
+from itertools import combinations
 
+
+TIMEOUT = 300
+
+OPTIMAL_STR = "optimal"
+SUBOPTIMAL_STR = "suboptimal"
+INCONSISTENT_STR = "inconsistent"
+TIMEOUT_STR = "timeout"
+OUT_OF_MEMORY_STR = "out-of-memory"
+CRASHED_STR = "crashed"
+
+
+def read_json_file(file_path):
+    try:
+        with open(file_path, "r") as file:
+            data = json.load(file)
+            return data
+    except FileNotFoundError:
+        print(f"Error: File '{file_path}' not found.")
+        return None
+    except json.JSONDecodeError:
+        print(f"Error: Unable to parse JSON from file '{file_path}'.")
+        return None
+
+
+def didTimeout(result):
+    return (result["time"] >= TIMEOUT) and (result["sol"] is None)
+
+
+def isOutOfMemory(result):
+    if ("_extras" in result) and ("crash_reason" in result["_extras"]):
+        return (result["_extras"]["crash_reason"] == "out-of-memory") and (result["sol"] is None)
+    return False
+
+
+def didCrash(result):
+    if ("_extras" in result) and ("crash_reason" in result["_extras"]):
+        return (result["_extras"]["crash_reason"] != None) and (result["sol"] is None)
+    return False
+
+
+def isInconsistent(result):
+    # result = result["sol"]
+    if "sol" not in result or not result["sol"] or result["sol"] == "N/A":
+        return True
+
+    solution = result["sol"]
+
+    # print(check_solution(solution))
+    # print(solution)
+
+    res, errors = check_solution(solution)
+
+    if not res:
+        # print(f"Inconsistent solution found: {errors}")
+        return True
+    else:
+        return False
 
 def get_elements(solution, list_condition_funct, n=None):
     elements = []
@@ -91,33 +147,98 @@ def check_solution(solution: list):
         # every team plays at most twice during the period
         if any([teams_per_period.count(tp) > 2 for tp in teams_per_period]):
             errors.append('Some teams play more than twice in the period')
+    
+    return (True, None) if len(errors) == 0 else (False, errors)
 
-    return 'Valid solution' if len(errors) == 0 else errors
-
-
-def load_json(path):
-    try:
-        with open(path, 'r') as f:
-            return json.load(f)
-    except Exception as e:
-        print(f"Error reading {path}: {e}")
-        sys.exit(1)
+def isSuboptimal(result):
+    return (not result["optimal"]) and (result["sol"] is not None)
 
 
-if __name__ == '__main__':
+def isOptimal(result):
+    return (result["optimal"]) and (result["sol"] is not None)
 
-    parser = argparse.ArgumentParser(description="Check the validity of a STS solution JSON file.")
-    parser.add_argument("json_file_directory", help="Path to the directory containing .json solution files")
-    args = parser.parse_args()
 
-    directory = args.json_file_directory
 
-    for f in filter(lambda x: x.endswith('.json'), os.listdir(directory)):
-        json_data = load_json(f'{directory}/{f}')
+def main(args):
+    """
+    check_solution.py <results folder>
+    """
+    # FIXME: The results folder contains the .json file of each approach.
+    #        No other file should appear in these folders.
+    # errors = []
+    # warnings = []
 
-        for approach, result in json_data.items():
-            sol = result.get("sol")
-            message = check_solution(sol)
-            status = "VALID" if type(message) == str else "INVALID"
-            print(f"Approach: {approach}\n  Status: {status}\n  Reason: {message if status == 'VALID' else '\n\t  '.join(message)}\n")
+    instances_status = {}
 
+    results_folder = args[1]
+    for subfolder in os.listdir(results_folder):
+        if subfolder.startswith("."):
+            # Skip hidden folders.
+            continue
+        folder = os.path.join(results_folder, subfolder)
+
+        instances_status[subfolder] = {}
+
+        for instance in [4,6,8,10,12,14,16,18,20]:
+            instances_status[subfolder][instance] = {}
+
+        # print(instances_status[subfolder])
+
+        # print(f"\nChecking results in {folder} folder")
+        for results_file in sorted(os.listdir(folder)):
+            if results_file.startswith("."):
+                # Skip hidden folders.
+                continue
+            results = read_json_file(folder + "/" + results_file)
+            # print(f"\tChecking results for instance {results_file}")
+            inst_number = re.search(r"\d+", results_file).group()
+
+
+            inst_number_int = int(inst_number)
+            instances_status[subfolder][inst_number_int] = {}
+
+            for solver, result in results.items():
+                if isOutOfMemory(result):
+                    instances_status[subfolder][inst_number_int][solver] = {
+                        "status": OUT_OF_MEMORY_STR,
+                        "time": -1,
+                        "obj": 2**31-1
+                    }
+                elif didCrash(result):
+                    instances_status[subfolder][inst_number_int][solver] = {
+                        "status": CRASHED_STR,
+                        "time": -1,
+                        "obj": 2**31-1
+                    }
+                elif didTimeout(result):
+                    instances_status[subfolder][inst_number_int][solver] = {
+                        "status": TIMEOUT_STR,
+                        "time": -1,
+                        "obj": 2**31-1
+                    }
+                elif isInconsistent(result):
+                    instances_status[subfolder][inst_number_int][solver] = {
+                        "status": INCONSISTENT_STR,
+                        "time": -1,
+                        "obj": 2**31-1
+                    }
+                elif isSuboptimal(result):
+                    instances_status[subfolder][inst_number_int][solver] = {
+                        "status": SUBOPTIMAL_STR,
+                        "time": result["time"],
+                        "obj": result["obj"]
+                    }
+                elif isOptimal(result):
+                    instances_status[subfolder][inst_number_int][solver] = {
+                        "status": OPTIMAL_STR,
+                        "time": result["time"],
+                        "obj": result["obj"]
+                    }
+                else:
+                    raise Exception("Case not handled")
+
+    print(json.dumps(instances_status, indent=4))
+
+
+if __name__ == "__main__":
+    main(sys.argv)
