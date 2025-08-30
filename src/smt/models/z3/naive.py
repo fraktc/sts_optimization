@@ -1,7 +1,7 @@
 from .base_solver import BaseSolver
 from z3 import *
 
-class SuperSimplifiedNaiveSolver(BaseSolver):
+class NaiveSolver(BaseSolver):
     """
     """
 
