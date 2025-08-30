@@ -1,3 +1,6 @@
+import time
+from z3 import *
+
 class BaseSolver:
     """Base class to solve (up to satisfiability) the STS with z3 SMT.
 
