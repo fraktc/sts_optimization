@@ -1,60 +1,59 @@
+from .base_solver import BaseSolver
 from z3 import *
-import time
 
-class NaiveSolver:
-    def __init__(self, instance, timeout=300, incremental=False, implied_constraint_mask=[False], symmetry_breaking=False, optimization=False, **kwargs):
-        self.timeout = timeout
-        self.incremental = incremental
-        
-        self.n = instance
-        self.weeks = self.n - 1
-        self.periods = self.n // 2
-        self.slots = 2
-
-        self.TEAMS = range(self.n)
-        self.WEEKS = range(self.weeks)
-        self.PERIODS = range(self.periods)
-        self.SLOTS = range(self.slots)
-
-        self.implied_constraint_mask = implied_constraint_mask
-    
-    def create_solver(self):
-        self.solver = Solver()
-        self.solver.set("timeout", int(self.timeout * 1000))  # Set timeout in milliseconds
+class SuperSimplifiedNaiveSolver(BaseSolver):
+    """
+    """
 
     def create_variables(self):
         # Create representations
-        
         self.teams = [[[
             Int(f"team_{p}_{w}_{s}") 
         for s in self.SLOTS]  
         for w in self.WEEKS]
         for p in self.PERIODS]
         
-        self.match_count = Array('match_count', IntSort(), ArraySort(IntSort(), IntSort()))
-        self.period_count = Array('period_count', IntSort(), ArraySort(IntSort(), IntSort()))
-        self.week_count = Array('week_count', IntSort(), ArraySort(IntSort(), IntSort()))
-
         # Define domains
         for p in self.PERIODS:
             for w in self.WEEKS:
                 for s in self.SLOTS:
-                    self.solver.add(And(self.teams[p][w][s] >= 0, self.teams[p][w][s] <= self.n - 1))
+                    self.solver.add(And(self.teams[p][w][s] >= 0, self.teams[p][w][s] < self.n))
 
-        # Consistency between self.teams and self.match_count
+    def team_weight(self, t):
+            return t + 1
+
+    def create_constraints(self):
+        self.constraint_batches = [[]]
+
+        # **** CORE CONSTRAINTS ****
+
+        # ACC1: Every team plays against every other team over the course of the turnament
         for t1 in self.TEAMS:
             for t2 in self.TEAMS:
-                matches_12 = Sum([
-                    If(And(
-                        self.teams[p][w][0] == t1,
-                        self.teams[p][w][1] == t2
+                if t1 < t2:
+                    matches_12 = Sum([
+                        If(Or(
+                            And(self.teams[p][w][0] == t1, self.teams[p][w][1] == t2),
+                            And(self.teams[p][w][0] == t2, self.teams[p][w][1] == t1)
+                        ), 1, 0)
+                        for p in self.PERIODS
+                        for w in self.WEEKS
+                    ])
+                    self.constraint_batches[0].append(matches_12 == 1)
+    
+        # ACC2: Every team plays at most once a week
+        for w in self.WEEKS:
+            for t in self.TEAMS:
+                matches_tw = Sum([
+                    If(Or(
+                        self.teams[p][w][0] == t,
+                        self.teams[p][w][1] == t
                     ), 1, 0)
                     for p in self.PERIODS
-                    for w in self.WEEKS
                 ])
-                self.solver.add(Select(Select(self.match_count, t1), t2) == matches_12)
-        
-        # Consistency between self.teams and self.period_count
+                self.constraint_batches[0].append(matches_tw <= 1)
+    
+        # ACC3: Every team plays at most 2 matches in any given period
         for t in self.TEAMS:
             for p in self.PERIODS:
                 matches_tp = Sum([
@@ -64,74 +63,47 @@ class NaiveSolver:
                     ), 1, 0)
                     for w in self.WEEKS
                 ])
-                self.solver.add(Select(Select(self.period_count, t), p) == matches_tp)
+                self.constraint_batches[0].append(matches_tp <= 2)
 
-        # Consistency between self.teams and self.week_count
-        for t in self.TEAMS:
+        # **** IMPLIED CONSTRAINTS ****
+        if self.implied_constraint_mask is not None:
+            if self.implied_constraint_mask[0]:
+                # No team plays against itself
+                for t in self.TEAMS:
+                    matches_tt = Sum([
+                        If(And(
+                            self.teams[p][w][0] == t,
+                            self.teams[p][w][1] == t
+                        ), 1, 0)
+                        for p in self.PERIODS
+                        for w in self.WEEKS
+                    ])
+                    self.constraint_batches[0].append(matches_tt == 0)
+
+        # **** SYMMETRY-BREAKING CONSTRAINTS ****
+        if self.symmetry_constraint_mask is not None:
+            if self.symmetry_constraint_mask[0]:
+                # 
+                week_weights = []
+                for w in self.WEEKS:
+                    week_weights.append(
+                        Sum([
+                            If(self.teams[p][w][s] == t, self.team_weight(t), 0)
+                            for s in self.SLOTS
+                            for t in self.TEAMS
+                            for p in self.PERIODS
+                        ])
+                    )
+                for w in range(self.weeks - 1):
+                    self.constraint_batches[0].append(week_weights[w] <= week_weights[w + 1])
+
+    def format_solution(self):
+        # Initialize solution
+        self.sol = [[None for w in self.WEEKS] for p in self.PERIODS]
+
+        # Populate solution
+        for p in self.PERIODS:
             for w in self.WEEKS:
-                matches_tw = Sum([
-                    If(Or(
-                        self.teams[p][w][0] == t,
-                        self.teams[p][w][1] == t
-                    ), 1, 0)
-                    for p in self.PERIODS
-                ])
-                self.solver.add(Select(Select(self.week_count, t), p) == matches_tw)
-
-    def add_ACC1(self):
-        # ACC1: Every team plays against every other team over the course of the turnament
-        for t1 in self.TEAMS:
-            for t2 in self.TEAMS:
-                if t1 != t2:
-                    self.solver.add(
-                            (Select(Select(self.match_count, t1), t2) == 1) !=
-                            (Select(Select(self.match_count, t2), t1) == 1)
-                        )
-    
-    def add_ACC2(self):
-        # ACC2: Every team plays at most once a week
-        for w in self.WEEKS:
-            for t in self.TEAMS:
-                    self.solver.add(Select(Select(self.week_count, t), w) <= 1)
-    
-    def add_ACC3(self):
-        # ACC3: Every team plays at most 2 matches in any given period
-        for t in self.TEAMS:
-            for p in self.PERIODS:
-                self.solver.add(Select(Select(self.period_count, t), p) <= 2)
-
-    def add_implied(self):
-        if self.implied_constraint_mask[0]:
-            # No team plays against itself
-            for t in self.TEAMS:
-                self.solver.add(Select(Select(self.match_count, t),t) == 0)
-    
-    def solve(self):
-        start_time = time.time()
-        
-        self.create_solver()
-        self.create_variables()
-        self.add_ACC1()
-        self.add_ACC2()
-        self.add_implied()
-        if self.incremental: 
-            self.solver.check()
-        self.add_ACC3()
-        status = self.solver.check()
-        
-        end_time = time.time()
-        exec_time = end_time - start_time
-        if status == sat:
-            model = self.solver.model()
-            sol = [[[model.eval(self.teams[p][w][s]).as_long() + 1 for s in self.SLOTS] for w in self.WEEKS] for p in self.PERIODS]
-        else:
-            sol = None
-        
-        results = {
-            "time": exec_time,
-            "optimal": False,
-            "obj": None,
-            "sol": sol,
-        }
-        return results
-
+                team_a = self.model.eval(self.teams[p][w][0]).as_long() + 1
+                team_b = self.model.eval(self.teams[p][w][1]).as_long() + 1
+                self.sol[p][w] = [team_a, team_b]

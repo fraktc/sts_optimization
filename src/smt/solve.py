@@ -8,28 +8,74 @@ logger = logging.getLogger(__name__)
 
 experiments = [
     {
+        "name": "naive",
+        "model": NaiveSolver,
+        "symmetry_constraint_mask": [False],
+        "implied_constraint_mask": None,
+        "optimization": False,
+    },
+    {
+        "name": "naive_symm",
+        "model": NaiveSolver,
+        "symmetry_constraint_mask": [False],
+        "implied_constraint_mask": None,
+        "optimization": False,
+    },
+    {
+        "name": "naive_implied",
+        "model": NaiveSolver,
+        "symmetry_constraint_mask": [False],
+        "implied_constraint_mask": None,
+        "optimization": False,
+    },
+    {
+        "name": "naive_optim",
+        "model": NaiveSolver,
+        "symmetry_constraint_mask": [False],
+        "implied_constraint_mask": None,
+        "optimization": True,
+    },
+    {
+        "name": "naive_symm_optim",
+        "model": NaiveSolver,
+        "symmetry_constraint_mask": [False],
+        "implied_constraint_mask": None,
+        "optimization": True,
+    },
+    {
+        "name": "naive_implied_optim",
+        "model": NaiveSolver,
+        "symmetry_constraint_mask": [False],
+        "implied_constraint_mask": None,
+        "optimization": True,
+    },
+    {
         "name": "round_robin",
         "model": RoundRobinSolver,
         "symmetry_constraint_mask": [False],
         "implied_constraint_mask": None,
+        "optimization": False,
     },
     {
         "name": "round_robin_symm",
         "model": RoundRobinSolver,
         "symmetry_constraint_mask": [True],
         "implied_constraint_mask": None,
+        "optimization": False,
     },
     {
         "name": "round_robin_bitvec",
         "model": BitVecRoundRobinSolver,
         "symmetry_constraint_mask": [False],
         "implied_constraint_mask": None,
+        "optimization": False,
     },
     {
         "name": "round_robin_bitvec_symm",
         "model": BitVecRoundRobinSolver,
         "symmetry_constraint_mask": [True],
         "implied_constraint_mask": None,
+        "optimization": False,
     },
 ]
 
@@ -40,9 +86,9 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
         if (models_filter is not None) and (experiment["name"] not in models_filter):
             continue
         logger.info(f"Starting model {experiment['name']}")
-        name, model, symmetry_constraint_mask, implied_constraint_mask = experiment["name"], experiment["model"], experiment["symmetry_constraint_mask"], experiment["implied_constraint_mask"]
+        name, model, symmetry_constraint_mask, implied_constraint_mask, optimization = experiment["name"], experiment["model"], experiment["symmetry_constraint_mask"], experiment["implied_constraint_mask"], experiment["optimization"]
 
-        # Check if result is in cache
+        # Check if result is in cache00
         if name in cache:
             logger.info(f"Cache hit")
             results[name] = cache[name]
