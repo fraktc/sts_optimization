@@ -49,18 +49,21 @@ array[1..weeks, 1..periods] of int: rr_away =
 
 % ===========================
 % DECISION VARIABLES
+%
+% period_slot: used to compute a permutation of matches in each week
+% team_period: auxiliary variable to count, for each team and week, in which period the team plays
 % ===========================
+
 array[1..weeks, 1..periods] of var 1..periods: period_slot;
+array[TEAMS, 1..weeks] of var 1..periods: team_period;
 
 
-% Each match in a week gets a distinct final period
+% Make sure that period_slot is a valid permutation of matches
 constraint
     forall(w in 1..weeks) (
         all_different([period_slot[w,p] | p in 1..periods])
     );
 
-
-array[TEAMS, 1..weeks] of var 1..periods: team_period;
 
 % Link team_period to period_slot using fixed round-robin data
 constraint
@@ -80,7 +83,6 @@ constraint
     forall(t in TEAMS, pr in 1..periods) (
         sum(w in 1..weeks) (bool2int(team_period[t,w] == pr)) <= 2
     );
-
 
 
 % ============================
@@ -108,7 +110,7 @@ array[TEAMS] of var 0..weeks: away_count =
 array[TEAMS] of var 0..weeks: imbalance =
     [ abs(home_count[t] - away_count[t]) | t in TEAMS ];
 
-var 0..weeks: objective = max(t in TEAMS)(imbalance[t]);
+var 0..weeks: max_imbalance = max(t in TEAMS)(imbalance[t]);
 
 solve satisfy;
 
