@@ -50,16 +50,42 @@ def run_milp_model(model_file, solver, number_of_teams, timeout, random_seed):
 models_setup = [
     {
         "name": "milp-model-1",
-        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./milp_model_3.py"),
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./RR_milp_model_full.py"),
     },
-    # You can add more models here following the same pattern:
-    # {
-    #     "name": "milp-model-2",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./milp_model_2.py"),
-    # },
+    {
+        "name": "milp-model-2",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./RR_milp_model_implied.py"),
+    },
+    {
+        "name": "milp-model-3",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./RR_milp_model_plain.py"),
+    },
+    {
+        "name": "milp-model-4",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./RR_milp_model_SB.py"),
+    },
+        {
+        "name": "milp-model-5",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./Naive_milp_model_full.py"),
+    },
+        {
+        "name": "milp-model-6",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./Naive_milp_model_implied.py"),
+    },
+        {
+        "name": "milp-model-7",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./Naive_milp_model_plain.py"),
+    },
+        {
+        "name": "milp-model-8",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./Naive_milp_model_SB.py"),
+    }
+    
+
+
 ]
 
-def solve(instance, timeout=300, cache={}, random_seed=42, models_filter=None, **kwargs):
+def solve(instance, timeout=10, cache={}, random_seed=42, models_filter=None, **kwargs):
     """
     Main solve function called by the framework
     

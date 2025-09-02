@@ -55,22 +55,8 @@ def create_milp_model(n, timeout=60):
     # ===========================
     prob = pulp.LpProblem("RoundRobinSchedule", pulp.LpMinimize)
     
-    # Decision Variables
-    # period_slot[w,p] = final period for match p in week w
-    # period_slot = {}
-    # for w in range(1, weeks + 1):
-    #     for p in range(1, periods + 1):
-    #         for pr in range(1, periods + 1):
-    #             period_slot[w, p, pr] = pulp.LpVariable(f"period_slot_{w}_{p}_{pr}", cat='Binary')
-    
-    # # team_period[t,w] = period when team t plays in week w
-    # team_period = {}
-    # for t in TEAMS:
-    #     for w in range(1, weeks + 1):
-    #         for pr in range(1, periods + 1):
-    #             team_period[t, w, pr] = pulp.LpVariable(f"team_period_{t}_{w}_{pr}", cat='Binary')
-
-    # Decision Variables - use more efficient variable creation
+          # Decision Variables 
+          
     period_slot = pulp.LpVariable.dicts("period_slot", 
                                     [(w, p, pr) for w in range(1, weeks + 1) 
                                         for p in range(1, periods + 1) 
@@ -82,11 +68,11 @@ def create_milp_model(n, timeout=60):
                                         for w in range(1, weeks + 1) 
                                         for pr in range(1, periods + 1)],
                                     cat='Binary')
-    
-    # ===========================
-    # CONSTRAINTS
-    # ===========================
-    
+
+        # ===========================
+        # CONSTRAINTS
+        # ===========================
+
     # Each match in a week gets exactly one period slot
     for w in range(1, weeks + 1):
         for p in range(1, periods + 1):
@@ -114,18 +100,11 @@ def create_milp_model(n, timeout=60):
                 
                 if match_in_period:  # Should always be true since each team plays once per week
                     prob += team_period[t, w, pr] == pulp.lpSum(match_in_period)
-    
-    # Each team plays in any period at most twice across all weeks
-    for t in TEAMS:
-        for pr in range(1, periods + 1):
-            prob += pulp.lpSum(team_period[t, w, pr] for w in range(1, weeks + 1)) <= 2
-
-        # Tighter bound: Teams can play at most ceil(weeks/periods) times in any period
-    max_times_per_period = (weeks + periods - 1) // periods
-    for t in TEAMS:
-        for pr in range(1, periods + 1):
-            prob += pulp.lpSum(team_period[t, w, pr] for w in range(1, weeks + 1)) <= max_times_per_period
-    
+        
+        # ===========================
+        # SYMMETRY BREAKING CONSTRAINTS
+        # ===========================
+            
     # Symmetry breaking: fix first week's period assignment
     for p in range(1, periods + 1):
         prob += period_slot[1, p, p] == 1
