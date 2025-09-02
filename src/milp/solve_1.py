@@ -23,7 +23,7 @@ def run_milp_model(model_file, solver, number_of_teams, timeout, random_seed):
         spec.loader.exec_module(model_module)
         
         # Call the create_milp_model function with timeout parameter
-        all_results = model_module.create_milp_model(number_of_teams, timeout)
+        all_results = model_module.create_milp_model(number_of_teams, solver, timeout)
         
         # Extract result for the specific solver
         if solver in all_results:
