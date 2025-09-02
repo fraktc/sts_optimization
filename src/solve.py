@@ -27,8 +27,6 @@ if __name__ == "__main__":
     parser.add_argument("--output-path", type=str, default="./res", help="Results directory")
     parser.add_argument("--verbose", action="store_true")
     parser.add_argument("--overwrite-old", action="store_true", help="If set, old results with the same name will be run again")
-    # parser.add_argument("--instances", type=lambda arg: sorted([*map(int, arg.split(","))]), required=False, default=[], 
-                        # help="Number of the instances to run, comma separated")
     parser.add_argument("--models", type=lambda arg: arg.split(","), required=False, default=None, 
                         help="Name of the models to run, comma separated")
     parser.add_argument("--seed", type=int, required=False, default=42, help="Seed for random operations")
