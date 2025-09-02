@@ -2,7 +2,7 @@ import pulp
 import json
 import time
 
-def create_milp_model(n, timeout=60):
+def create_milp_model(n,solver, timeout=60):
     """
     Create MILP model for round-robin scheduling problem
     n: even number of teams
@@ -118,6 +118,14 @@ def create_milp_model(n, timeout=60):
     solvers = {
         'CBC': pulp.PULP_CBC_CMD(msg=0, timeLimit=timeout),
         'HiGHS': pulp.COIN_CMD(msg=0, timeLimit=timeout) if pulp.COIN_CMD().available() else pulp.PULP_CBC_CMD(msg=0, timeLimit=timeout)
+    }
+
+
+    if solver not in solvers:
+        raise ValueError(f"Solver {solver} not recognized. Available solvers: {list(solvers.keys())}")
+
+    solvers = {
+        solver: solvers[solver]
     }
     
     results = {}

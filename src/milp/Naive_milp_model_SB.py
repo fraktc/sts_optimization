@@ -1,7 +1,7 @@
 import pulp
 import time
 
-def create_milp_model(n, timeout=60):
+def create_milp_model(n,solver, timeout=60):
     """
     Naive MIP model for Sports Tournament Scheduling (STS)
     - Direct assignment of teams to (period, week, slot)
@@ -101,6 +101,14 @@ def create_milp_model(n, timeout=60):
     solvers = {
         'CBC': pulp.PULP_CBC_CMD(msg=0, timeLimit=timeout),
         'HiGHS': pulp.COIN_CMD(msg=0, timeLimit=timeout) if pulp.COIN_CMD().available() else pulp.PULP_CBC_CMD(msg=0, timeLimit=timeout)
+    }
+
+
+    if solver not in solvers:
+        raise ValueError(f"Solver {solver} not recognized. Available solvers: {list(solvers.keys())}")
+
+    solvers = {
+        solver: solvers[solver]
     }
 
     # Remove HiGHS if not available
