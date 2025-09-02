@@ -1,5 +1,5 @@
 # MILP status
 | $\text{Model}$ | $4$ | $6$ | $8$ | $10$ | $12$ | $14$ | $16$ | $18$ | $20$ |
 |:-:| :---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-$\text{milp-model-1-CBC}$ | $-$ | $\color{green}\text{1 (0.00798797607421875 s)}$ | $\color{green}\text{1 (0.014088153839111328 s)}$ | $\color{green}\text{1 (0.036565542221069336 s)}$ | $\color{green}\text{1 (5.105626821517944 s)}$ | $\color{green}\text{1 (40.85862421989441 s)}$ | $-$ | $-$ | $-$ | 
-$\text{milp-model-1-HiGHS}$ | $-$ | $\color{green}\text{1 (0.00803232192993164 s)}$ | $\color{green}\text{1 (0.014053106307983398 s)}$ | $\color{green}\text{1 (0.042405128479003906 s)}$ | $\color{green}\text{1 (4.100900411605835 s)}$ | $\color{green}\text{1 (21.69497776031494 s)}$ | $-$ | $-$ | $-$ | 
+$\text{milp-model-1-CBC}$ | $-$ | $\color{green}\text{1 (0.008866310119628906 s)}$ | $\color{green}\text{1 (0.05449485778808594 s)}$ | $\color{green}\text{1 (0.10744023323059082 s)}$ | $\color{green}\text{1 (2.659865617752075 s)}$ | $\color{green}\text{1 (0.38759803771972656 s)}$ | $\color{green}\text{1 (32.59202432632446 s)}$ | $-$ | $-$ | 
+$\text{milp-model-1-HiGHS}$ | $-$ | $\color{green}\text{1 (0.009007930755615234 s)}$ | $\color{green}\text{1 (0.0505061149597168 s)}$ | $\color{green}\text{1 (0.8508172035217285 s)}$ | $\color{green}\text{1 (0.2605116367340088 s)}$ | $\color{green}\text{1 (21.975619792938232 s)}$ | $-$ | $-$ | $-$ | 
