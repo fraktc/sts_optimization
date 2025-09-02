@@ -43,14 +43,14 @@ docker run -v ./res:/cdmo/results cdmo
 <!-- begin-status -->
 | Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MILP](./method-statuses/milp-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
-| $4$ | | | | $\color{lightgray}\text{Timeout}$ | 
-| $6$ | | | | $\color{green}\text{0.008866310119628906 s (obj: 1)}$</br>$\color{green}\text{milp-model-1-CBC}$ | 
-| $8$ | | | | $\color{green}\text{0.0505061149597168 s (obj: 1)}$</br>$\color{green}\text{milp-model-1-HiGHS}$ | 
-| $10$ | | | | $\color{green}\text{0.10744023323059082 s (obj: 1)}$</br>$\color{green}\text{milp-model-1-CBC}$ | 
-| $12$ | | | | $\color{green}\text{0.2605116367340088 s (obj: 1)}$</br>$\color{green}\text{milp-model-1-HiGHS}$ | 
-| $14$ | | | | $\color{green}\text{0.38759803771972656 s (obj: 1)}$</br>$\color{green}\text{milp-model-1-CBC}$ | 
-| $16$ | | | | $\color{green}\text{32.59202432632446 s (obj: 1)}$</br>$\color{green}\text{milp-model-1-CBC}$ | 
-| $18$ | | | | $\color{lightgray}\text{Timeout}$ | 
-| $20$ | | | | $\color{lightgray}\text{Timeout}$ | 
+| $4$ | | | | $\color{green}\text{0.004520416259765625 s (obj: 1)}$</br>$\color{green}\text{milp-model-4-CBC}$ | 
+| $6$ | | | | $\color{green}\text{0.006869077682495117 s (obj: 1)}$</br>$\color{green}\text{milp-model-4-CBC}$ | 
+| $8$ | | | | $\color{green}\text{0.01304173469543457 s (obj: 1)}$</br>$\color{green}\text{milp-model-4-CBC}$ | 
+| $10$ | | | | $\color{green}\text{0.016774415969848633 s (obj: 1)}$</br>$\color{green}\text{milp-model-3-CBC}$ | 
+| $12$ | | | | $\color{green}\text{0.027431964874267578 s (obj: 1)}$</br>$\color{green}\text{milp-model-4-CBC}$ | 
+| $14$ | | | | $\color{green}\text{0.03797340393066406 s (obj: 1)}$</br>$\color{green}\text{milp-model-4-CBC}$ | 
+| $16$ | | | | $\color{green}\text{0.05627918243408203 s (obj: 1)}$</br>$\color{green}\text{milp-model-4-CBC}$ | 
+| $18$ | | | | $\color{green}\text{0.07897543907165527 s (obj: 1)}$</br>$\color{green}\text{milp-model-4-CBC}$ | 
+| $20$ | | | | $\color{green}\text{0.10719943046569824 s (obj: 1)}$</br>$\color{green}\text{milp-model-3-CBC}$ | 
 
 <!-- end-status -->
