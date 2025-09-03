@@ -34,7 +34,7 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
         if (models_filter is not None) and (experiment["name"] not in models_filter):
             continue
         logger.info(f"Starting model {experiment['name']}")
-        name, model, symmetry_constraint_mask, implied_constraint_mask, optimization = experiment["name"], experiment["model"], experiment["symmetry_constraint_mask"], experiment["implied_constraint_mask"], experiment["optimization"]
+        name, model, at_most_one_encoding, at_most_k_encoding = experiment["name"], experiment["model"], experiment["at_most_one_encoding"], experiment["at_most_k_encoding"]
 
         # Check if result is in cache00
         if name in cache:
@@ -55,9 +55,9 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
         
         results[name] = model(instance,
                               timeout=timeout,
-                              implied_constraint_mask=implied_constraint_mask,
-                              symmetry_constraint_mask=symmetry_constraint_mask,
-                              **kwargs).solve()
+                              at_most_one_encoding=at_most_one_encoding,
+                              at_most_k_encoding=at_most_k_encoding,
+                        ).solve()
 
         gc.collect()
 
