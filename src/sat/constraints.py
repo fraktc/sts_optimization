@@ -1,4 +1,5 @@
 from z3 import *
+import itertools
 
 class CardinalityConstraints:
     """Helper class that implements various cardinality constraints for a Z3-based SAT."""
