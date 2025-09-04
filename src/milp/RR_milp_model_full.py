@@ -73,6 +73,7 @@ def create_milp_model(n,solver, timeout=60):
         # CONSTRAINTS
         # ===========================
 
+
     # Each match in a week gets exactly one period slot
     for w in range(1, weeks + 1):
         for p in range(1, periods + 1):
