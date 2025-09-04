@@ -61,6 +61,10 @@ class CardinalityConstraints:
     
     def at_most_k_pairwise(self, vars, k):
         n = len(vars)
+        if k == 0:
+            return And(*[Not(v) for v in vars])
+        if n <= k:
+            return BoolVal(True)
         constraints = []
         
         for combo in itertools.combinations(range(n), k + 1):
@@ -71,6 +75,10 @@ class CardinalityConstraints:
 
     def at_most_k_sequential(self, vars, k):
         n = len(vars)
+        if k == 0:
+            return And(*[Not(v) for v in vars])
+        if n <= k:
+            return BoolVal(True)
         constraints = []
 
         s = [[FreshBool(f's_{i}_{j}') for j in range(k)] for i in range(n)]
@@ -80,10 +88,10 @@ class CardinalityConstraints:
         for i in range(1, n - 1):
             constraints.append(Implies(Or(vars[i], s[i-1][0]), s[i][0]))
             for j in range(1, k):
-                constraints.append(And(
-                    Implies(Or(And(vars[i], s[i-1][j-1]), s[i-1][j]), s[i][j]), 
-                    Implies(s[i-1][k-1], Not(vars[i])))
+                constraints.append(
+                    Implies(Or(And(vars[i], s[i-1][j-1]), s[i-1][j]), s[i][j])
                 )
+            constraints.append(Implies(s[i-1][k-1], Not(vars[i])))
         constraints.append(Implies(s[n-2][k-1], Not(vars[n-1])))
 
         return And(*constraints)
