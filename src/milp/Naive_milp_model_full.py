@@ -57,12 +57,13 @@ def create_milp_model(n,solver, timeout=60):
         for w in WEEKS:
             prob += pulp.lpSum(x[p, w, s, t] for p in PERIODS for s in SLOTS) == 1
 
+    #this is an implied constraint
     # 3. No team plays itself: in each (p,w), the two teams are different
-    for p in PERIODS:
-        for w in WEEKS:
-            for t in TEAMS:
-                # Cannot have team t in both slots
-                prob += x[p, w, 1, t] + x[p, w, 2, t] <= 1
+    # for p in PERIODS:
+    #     for w in WEEKS:
+    #         for t in TEAMS:
+    #             # Cannot have team t in both slots
+    #             prob += x[p, w, 1, t] + x[p, w, 2, t] <= 1
 
     # 4. Count home and away games per team
     for t in TEAMS:
@@ -212,8 +213,8 @@ def print_schedule(result):
 # Example Usage
 # ===========================
 if __name__ == "__main__":
-    n = 10 
-    results = create_milp_model(n, timeout=60)
+    n = 6 
+    results = create_milp_model(n,solver="CBC", timeout=60)
 
     for solver_name, result in results.items():
         print(f"\n=== {solver_name} SOLVER ===")

@@ -88,6 +88,10 @@ def create_milp_model(n,solver, timeout=60):
         for w in range(1, weeks + 1):
             prob += pulp.lpSum(team_period[t, w, pr] for pr in range(1, periods + 1)) == 1
 
+    # Each team plays in any period at most twice across all weeks
+    for t in TEAMS:
+        for pr in range(1, periods + 1):
+            prob += pulp.lpSum(team_period[t, w, pr] for w in range(1, weeks + 1)) <= 2
 
         # ===========================
         # LINKING CONSTRAINTS
@@ -105,11 +109,6 @@ def create_milp_model(n,solver, timeout=60):
                 
                 if match_in_period:  # Should always be true since each team plays once per week
                     prob += team_period[t, w, pr] == pulp.lpSum(match_in_period)
-
-    # Each team plays in any period at most twice across all weeks
-    for t in TEAMS:
-        for pr in range(1, periods + 1):
-            prob += pulp.lpSum(team_period[t, w, pr] for w in range(1, weeks + 1)) <= 2
 
     
         # ===========================
@@ -246,9 +245,9 @@ def print_schedule(result):
 
 # Example usage
 if __name__ == "__main__":
-    n = 10  # Number of teams (must be even)
-    results = create_milp_model(n, timeout=30)
-    
+    n = 4  # Number of teams (must be even)
+    results = create_milp_model(n, solver="CBC", timeout=30)
+
     # Print results for each solver
     for solver_name, result in results.items():
         print(f"\n=== {solver_name} SOLVER ===")

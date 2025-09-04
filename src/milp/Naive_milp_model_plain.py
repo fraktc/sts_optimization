@@ -197,8 +197,8 @@ def print_schedule(result):
 # Example Usage
 # ===========================
 if __name__ == "__main__":
-    n = 10 
-    results = create_milp_model(n, timeout=60)
+    n = 4
+    results = create_milp_model(n, solver="CBC", timeout=60)
 
     for solver_name, result in results.items():
         print(f"\n=== {solver_name} SOLVER ===")
