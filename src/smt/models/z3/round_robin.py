@@ -2,14 +2,15 @@ from .base_solver import BaseSolver
 from z3 import *
 
 class RoundRobinSolver(BaseSolver):
-    """Use the Round Robin method to generate an initial solution.
+    """Use the circle method (=round robin method) to generate an initial solution.
 
     The period constraint does not hold in the initial solution and is imposed though SMT.
     The initial solution already satisfies the optimality requirement.
     The solver assigns values to the decision variables contained in self.new_periods.
-    self.new_periods is an array that maps a period, week combination to a new period.
-    The match at self.teams[p][w] is supposed to actually take place during period self.new_periods[p][w] in the same week.
-    The period constraint is solved by such period permutations.
+    self.new_periods is an array that maps a period, week combination to a new period, thus permuting matches
+    within the same week.
+    More precisely, in the final solution, the match at self.teams[p][w] is supposed to actually take place 
+    during period self.new_periods[p][w] in the same week.
     """
 
     def create_variables(self):
@@ -26,15 +27,12 @@ class RoundRobinSolver(BaseSolver):
             circle = circle[:1] + circle[-1:] + circle[1:-1]
 
         # Create decision variables
-        # self.new_periods represents a permutation of the matches of each week across the periods
         self.new_periods = [[Int(f"new_periods_{p}_{w}") for w in self.WEEKS] for p in self.PERIODS]
         for p in self.PERIODS:
             for w in self.WEEKS:
                 self.solver.add(self.new_periods[p][w] >= 0, self.new_periods[p][w] < self.periods)
 
     def create_constraints(self):
-        self.constraint_batches = [[]]
-
         # Each time slot (period, week) gets exactly one match
         for p in self.PERIODS:
             for w in self.WEEKS:
@@ -42,7 +40,7 @@ class RoundRobinSolver(BaseSolver):
                     If(self.new_periods[p_old][w] == p, 1, 0)
                     for p_old in self.PERIODS
                 ])
-                self.constraint_batches[0].append(count == 1)
+                self.solver.add(count == 1)
 
         # Each team plays at most twice in the same period
         for t in self.TEAMS:
@@ -52,19 +50,13 @@ class RoundRobinSolver(BaseSolver):
                            Or(self.teams[p_old][w][0] == t, self.teams[p_old][w][1] == t)), 1, 0)
                     for p_old in self.PERIODS for w in self.WEEKS
                 ])
-                self.constraint_batches[0].append(count <= 2)
-
-        # **** IMPLIED CONSTRAINTS ****
-        if self.implied_constraint_mask is not None:
-            pass
+                self.solver.add(count <= 2)
 
         # **** SYMMETRY-BREAKING CONSTRAINTS ****
-        if self.symmetry_constraint_mask is not None:
-            
-            # The order of matches in the first week is left as is 
-            if self.symmetry_constraint_mask[0]:
-                for p in self.PERIODS:
-                    self.constraint_batches[0].append(self.new_periods[p][0] == p)
+        if self.symmetry_constraints:
+            # Fix the order of matches in the first week
+            for p in self.PERIODS:
+                self.solver.add(self.new_periods[p][0] == p)
 
 
     def format_solution(self):
@@ -120,7 +112,7 @@ class BitVecRoundRobinSolver(BaseSolver):
                     If(self.new_periods[p_old][w] == p, 1, 0)
                     for p_old in self.PERIODS
                 ])
-                self.constraint_batches[0].append(count == 1)
+                self.solver.add(count == 1)
 
         # Each team plays at most twice in the same period
         for t in self.TEAMS:
@@ -130,19 +122,13 @@ class BitVecRoundRobinSolver(BaseSolver):
                            Or(self.teams[p_old][w][0] == t, self.teams[p_old][w][1] == t)), 1, 0)
                     for p_old in self.PERIODS for w in self.WEEKS
                 ])
-                self.constraint_batches[0].append(count <= 2)
+                self.solver.add(count <= 2)
         
-        # **** IMPLIED CONSTRAINTS ****
-        if self.implied_constraint_mask is not None:
-            pass
-
         # **** SYMMETRY-BREAKING CONSTRAINTS ****
-        if self.symmetry_constraint_mask is not None:
-            
-            # The order of matches in the first week is left as is 
-            if self.symmetry_constraint_mask[0]:
-                for p in self.PERIODS:
-                    self.constraint_batches[0].append(self.new_periods[p][0] == p)
+        if self.symmetry_constraints:
+            # Fix the order of matches in the first week 
+            for p in self.PERIODS:
+                self.solver.add(self.new_periods[p][0] == p)
 
 
     def format_solution(self):

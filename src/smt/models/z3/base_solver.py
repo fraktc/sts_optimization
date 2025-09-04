@@ -2,23 +2,19 @@ import time
 from z3 import *
 
 class BaseSolver:
-    """Base class to solve (up to satisfiability) the STS with z3 SMT.
-
-    How to use:
-        - Implement create_solver, create_variables, and create_constraints methods
-        - If optimization is set to False, append batches of constraints to self.constraint_batches
-        - Each batch should come as a list of constraints which are later added to the inner solver by the solve method
-        - If optimization is set to True, add all constraints in a single batch
+    """Base class to solve (up to satisfiability or optimization) the STS problem with z3 SMT.
+    
+    To subclass, implement missing functions.
     """
-    def __init__(self, instance, timeout=300, implied_constraint_mask=None, symmetry_constraint_mask=None, optimization=False, **kwargs):
+    def __init__(self, instance, timeout=300, implied_constraints=False, symmetry_constraints=False, optimization=False, **kwargs):
         # Start timer
         self.start_time = time.time()
 
         # Store parameters
         self.n = instance
         self.timeout = timeout
-        self.implied_constraint_mask = implied_constraint_mask
-        self.symmetry_constraint_mask = symmetry_constraint_mask
+        self.implied_constraints = implied_constraints
+        self.symmetry_constraints = symmetry_constraints
         self.optimization = optimization
 
         # Create model
@@ -86,13 +82,8 @@ class BaseSolver:
         if self.optimization:
             self.solver.minimize(self.max_imbalance)
 
-        # Do intermediate check after adding every constraint batch
-        # Stop adding constraints if unsat
-        for constraint_batch in self.constraint_batches:
-            self.solver.add(constraint_batch)
-            status = self.solver.check()
-            if status == unsat:
-                break
+        # Look for solution
+        status = self.solver.check()
 
         # End timer and compute execution time
         end_time = time.time()
