@@ -29,7 +29,7 @@ def run_milp_model(model_file, solver, number_of_teams, timeout, random_seed):
         if solver in all_results:
             result = all_results[solver]
             return {
-                "time": result["time"] if result["optimal"] else timeout,
+                "time": round(result["time"], 4) if result["optimal"] else round(timeout, 4),
                 "optimal": result["optimal"],
                 "obj": result["obj"],
                 "sol": result["sol"]

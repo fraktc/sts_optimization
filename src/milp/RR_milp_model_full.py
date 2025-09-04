@@ -246,7 +246,7 @@ def print_schedule(result):
 
 # Example usage
 if __name__ == "__main__":
-    n = 4  # Number of teams (must be even)
+    n = 14  # Number of teams (must be even)
     results = create_milp_model(n, solver="CBC", timeout=30)
 
     # Print results for each solver
