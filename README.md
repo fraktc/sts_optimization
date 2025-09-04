@@ -43,9 +43,9 @@ docker run -v ./res:/cdmo/results cdmo
 <!-- begin-status -->
 | Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MILP](./method-statuses/milp-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
-| $4$ | | | | $\color{green}\text{0.004520416259765625 s (obj: 1)}$</br>$\color{green}\text{milp-model-4-CBC}$ | 
-| $6$ | | | | $\color{green}\text{0.006869077682495117 s (obj: 1)}$</br>$\color{green}\text{milp-model-4-CBC}$ | 
-| $8$ | | | | $\color{green}\text{0.01304173469543457 s (obj: 1)}$</br>$\color{green}\text{milp-model-4-CBC}$ | 
+| $4$ | | | | $\color{lightgray}\text{Timeout}$ | 
+| $6$ | | | | $\color{green}\text{0.007212638854980469 s (obj: 1)}$</br>$\color{green}\text{milp-model-3-CBC}$ | 
+| $8$ | | | | $\color{green}\text{0.014292478561401367 s (obj: 1)}$</br>$\color{green}\text{milp-model-4-CBC}$ | 
 | $10$ | | | | $\color{green}\text{0.016774415969848633 s (obj: 1)}$</br>$\color{green}\text{milp-model-3-CBC}$ | 
 | $12$ | | | | $\color{green}\text{0.027431964874267578 s (obj: 1)}$</br>$\color{green}\text{milp-model-4-CBC}$ | 
 | $14$ | | | | $\color{green}\text{0.03797340393066406 s (obj: 1)}$</br>$\color{green}\text{milp-model-4-CBC}$ | 
