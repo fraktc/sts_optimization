@@ -175,7 +175,7 @@ class SlotBasedSolver(CardinalityConstraints):
         # Create output dictionary
         self.results = {
             "time": self.exec_time,
-            "opt": self.optimal,
+            "optimal": self.optimal,
             "obj": self.obj,
             "sol": self.sol,
         }
@@ -245,7 +245,7 @@ class SlotBasedOptimizer(SlotBasedSolver):
         # Create output dictionary
         self.results = {
             "time": self.exec_time,
-            "opt": self.optimal,
+            "optimal": self.optimal,
             "obj": self.obj,
             "sol": self.sol
         }
