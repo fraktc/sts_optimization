@@ -1,0 +1,272 @@
+{
+   "solver_z3_z3": {
+      "time": 0.03387808799743652,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "solver_z3_pairwise": {
+      "time": 0.026917695999145508,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "solver_z3_sequential": {
+      "time": 0.03433585166931152,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "solver_pairwise_z3": {
+      "time": 0.035421133041381836,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "solver_pairwise_pairwise": {
+      "time": 0.03651928901672363,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "solver_pairwise_sequential": {
+      "time": 0.04087519645690918,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "solver_sequential_z3": {
+      "time": 0.034503936767578125,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "solver_sequential_pairwise": {
+      "time": 0.0345306396484375,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "solver_sequential_sequential": {
+      "time": 0.03893113136291504,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "solver_heule_z3": {
+      "time": 0.0362548828125,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "solver_heule_pairwise": {
+      "time": 0.03689241409301758,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "solver_heule_sequential": {
+      "time": 0.04090523719787598,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "solver_bitwise_z3": {
+      "time": 0.03643441200256348,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "solver_bitwise_pairwise": {
+      "time": 0.036296844482421875,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "solver_bitwise_sequential": {
+      "time": 0.04070615768432617,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "optimizer_z3_z3": {
+      "time": 0.028989315032958984,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "optimizer_z3_pairwise": {
+      "time": 0.042136430740356445,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "optimizer_z3_sequential": {
+      "time": 0.05713248252868652,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "optimizer_pairwise_z3": {
+      "time": 0.041268110275268555,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "optimizer_pairwise_pairwise": {
+      "time": 0.049985647201538086,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "optimizer_pairwise_sequential": {
+      "time": 0.06316685676574707,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "optimizer_sequential_z3": {
+      "time": 0.040045976638793945,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "optimizer_sequential_pairwise": {
+      "time": 0.04818534851074219,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "optimizer_sequential_sequential": {
+      "time": 0.06673216819763184,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "optimizer_heule_z3": {
+      "time": 0.039885520935058594,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "optimizer_heule_pairwise": {
+      "time": 0.05027914047241211,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "optimizer_heule_sequential": {
+      "time": 0.06143522262573242,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "optimizer_bitwise_z3": {
+      "time": 0.04065227508544922,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "optimizer_bitwise_pairwise": {
+      "time": 0.05040144920349121,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   },
+   "optimizer_bitwise_sequential": {
+      "time": 0.06571173667907715,
+      "optimal": null,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "runner": "github-action"
+      }
+   }
+}
