@@ -1,5 +1,4 @@
 from .models.z3.naive import NaiveSolver
-from .models.z3.bitvec import BitVecSolver
 from .models.z3.round_robin import RoundRobinSolver, BitVecRoundRobinSolver
 import gc
 
@@ -154,9 +153,5 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
                               **kwargs).solve()
 
         gc.collect()
-    # smtlib_results = {}
-    # # smtlib_results = solve_smtlib(instance, instance_number, timeout, cache, random_seed, models_filter, **kwargs)
-    # for key in smtlib_results:
-    #     results[key] = smtlib_results[key]
 
     return results
