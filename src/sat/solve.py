@@ -21,7 +21,8 @@ experiments = [
         "name": f"optimizer_{one_enc}_{k_enc}",
         "model": SlotBasedOptimizer,
         "at_most_one_encoding": one_enc,
-        "at_most_k_encoding": k_enc
+        "at_most_k_encoding": k_enc,
+        "instance_limit": 10
     }
     for one_enc in at_most_one_encodings
     for k_enc in at_most_k_encodings
