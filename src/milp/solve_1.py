@@ -64,22 +64,22 @@ models_setup = [
         "name": "milp-model-4",
         "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./RR_milp_model_SB.py"),
     },
-        {
-        "name": "milp-model-5",
-        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./Naive_milp_model_full.py"),
-    },
-        {
-        "name": "milp-model-6",
-        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./Naive_milp_model_implied.py"),
-    },
-        {
-        "name": "milp-model-7",
-        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./Naive_milp_model_plain.py"),
-    },
-        {
-        "name": "milp-model-8",
-        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./Naive_milp_model_SB.py"),
-    }
+    #     {
+    #     "name": "milp-model-5",
+    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./Naive_milp_model_full.py"),
+    # },
+    #     {
+    #     "name": "milp-model-6",
+    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./Naive_milp_model_implied.py"),
+    # },
+    #     {
+    #     "name": "milp-model-7",
+    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./Naive_milp_model_plain.py"),
+    # },
+    #     {
+    #     "name": "milp-model-8",
+    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./Naive_milp_model_SB.py"),
+    # }
     
 
 

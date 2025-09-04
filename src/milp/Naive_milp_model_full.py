@@ -52,6 +52,58 @@ def create_milp_model(n,solver, timeout=60):
             for s in SLOTS:
                 prob += pulp.lpSum(x[p, w, s, t] for t in TEAMS) == 1
 
+    # # Each team plays against each other exactly once
+    # for t1 in TEAMS:
+    #     for t2 in TEAMS:
+    #         if t1 < t2:
+    #             prob += pulp.lpSum(x[p, w, 1, t1] + x[p, w, 2, t2] + x[p, w, 1, t2] + x[p, w, 2, t1]
+    #                                for p in PERIODS for w in WEEKS) <= 5
+
+    # m= pulp.LpVariable.dicts("m",
+    #                             [(p, w, t1, t2) for p in PERIODS for w in WEEKS for t1 in TEAMS for t2 in TEAMS if t1 != t2],
+    #                             cat='Binary')
+
+    # # 8. Link auxiliary match variables to team assignments
+    # for p in PERIODS:
+    #     for w in WEEKS:
+    #         for t1 in TEAMS:
+    #             for t2 in TEAMS:
+    #                 if t1 != t2:
+    #                     # m[p,w,t1,t2] = 1 iff t1 is home and t2 is away in period p, week w
+    #                     prob += m[p, w, t1, t2] <= x[p, w, 1, t1]
+    #                     prob += m[p, w, t1, t2] <= x[p, w, 2, t2]
+    #                     prob += m[p, w, t1, t2] >= x[p, w, 1, t1] + x[p, w, 2, t2] - 1
+
+    # # 9. NEW: Each team plays against each other exactly once (Round-Robin constraint)
+    # for t1 in TEAMS:
+    #     for t2 in TEAMS:
+    #         if t1 != t2:
+    #             # Team t1 plays against t2 exactly once (either as home or away)
+    #             prob += pulp.lpSum(m[p, w, t1, t2] + m[p, w, t2, t1] 
+    #                             for p in PERIODS for w in WEEKS) == 1
+                
+    m = pulp.LpVariable.dicts("m",
+        [(p, w, t1, t2) for p in PERIODS for w in WEEKS for t1 in TEAMS for t2 in TEAMS if t1 < t2],
+        cat='Binary')
+
+    # Only enforce constraints for t1 < t2
+    for p in PERIODS:
+        for w in WEEKS:
+            for t1 in TEAMS:
+                for t2 in TEAMS:
+                    if t1 < t2:
+                        # m[p, w, t1, t2] = 1 if (t1 vs t2) happens at (p,w)
+                        prob += m[p, w, t1, t2] <= x[p, w, 1, t1] + x[p, w, 1, t2]
+                        prob += m[p, w, t1, t2] <= x[p, w, 2, t1] + x[p, w, 2, t2]
+                        prob += m[p, w, t1, t2] >= x[p, w, 1, t1] + x[p, w, 2, t2] - 1
+                        prob += m[p, w, t1, t2] >= x[p, w, 1, t2] + x[p, w, 2, t1] - 1
+
+    # Now enforce each team pair plays once
+    for t1 in TEAMS:
+        for t2 in TEAMS:
+            if t1 < t2:
+                prob += pulp.lpSum(m[p, w, t1, t2] for p in PERIODS for w in WEEKS) == 1
+
     # 2. Each team plays exactly once per week
     for t in TEAMS:
         for w in WEEKS:
@@ -84,20 +136,20 @@ def create_milp_model(n,solver, timeout=60):
         for p in PERIODS:
             prob += pulp.lpSum(x[p, w, s, t] for w in WEEKS for s in SLOTS) <= 2
 
-    # 8. Symmetry breaking: Fix first week
-    # Assign team p to home in period p of week 1
-    for p in PERIODS:
-        # matches[p,1,1] = p  --> home team in period p, week 1 is team p
-        prob += x[p, 1, 1, p] == 1
-        # Optionally: force away team ≠ p, but already enforced by (3)
+    # # 8. Symmetry breaking: Fix first week
+    # # Assign team p to home in period p of week 1
+    # for p in PERIODS:
+    #     # matches[p,1,1] = p  --> home team in period p, week 1 is team p
+    #     prob += x[p, 1, 1, p] == 1
+    #     # Optionally: force away team ≠ p, but already enforced by (3)
 
-    #9. IMPLIED CONSTRAINTS
-    # Tighter bound: max times a team can play in any single period
-    max_times_per_period = (weeks + periods - 1) // periods  # == ceil(weeks / periods)
-    for t in TEAMS:
-        for p in PERIODS:
-            # Total times team t appears in period p across all weeks
-            prob += pulp.lpSum(x[p, w, s, t] for w in WEEKS for s in SLOTS) <= max_times_per_period
+    # #9. IMPLIED CONSTRAINTS
+    # # Tighter bound: max times a team can play in any single period
+    # max_times_per_period = (weeks + periods - 1) // periods  # == ceil(weeks / periods)
+    # for t in TEAMS:
+    #     for p in PERIODS:
+    #         # Total times team t appears in period p across all weeks
+    #         prob += pulp.lpSum(x[p, w, s, t] for w in WEEKS for s in SLOTS) <= max_times_per_period
 
     # ===========================
     # OBJECTIVE
@@ -213,7 +265,7 @@ def print_schedule(result):
 # Example Usage
 # ===========================
 if __name__ == "__main__":
-    n = 6 
+    n = 8
     results = create_milp_model(n,solver="CBC", timeout=60)
 
     for solver_name, result in results.items():
