@@ -47,7 +47,7 @@ if __name__ == "__main__":
     # instances = [ (i+1, parseInstanceFile(os.path.join(args.instances_path, f))) for i, f in enumerate(sorted(os.listdir(args.instances_path))) ]
     # if len(args.instances) != 0:
         # instances = [ (num, inst) for num, inst in instances if num in args.instances]
-    INSTANCES = [6,8,10,12,14,16,18,20]
+    INSTANCES = [4,6,8,10,12,14,16,18,20]
 
     # Set memory limit if needed
     if args.mem_limit >= 0 and platform.system() != "Windows":
