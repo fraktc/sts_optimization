@@ -1,7 +1,7 @@
 # MILP status
 | $\text{Model}$ | $4$ | $6$ | $8$ | $10$ | $12$ | $14$ | $16$ | $18$ | $20$ |
 |:-:| :---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-$\text{milp-model-1-CBC}$ | $-$ | $\color{green}\text{1 (0.0106 s)}$ | $\color{green}\text{1 (0.0263 s)}$ | $\color{green}\text{1 (0.083 s)}$ | $\color{green}\text{1 (0.2429 s)}$ | $\color{green}\text{1 (23.4179 s)}$ | 
-$\text{milp-model-2-CBC}$ | $-$ | $\color{green}\text{1 (0.0109 s)}$ | $\color{green}\text{1 (0.052 s)}$ | $\color{green}\text{1 (0.7515 s)}$ | $\color{green}\text{1 (2.3261 s)}$ | $\color{green}\text{1 (293.5755 s)}$ | 
-$\text{milp-model-3-CBC}$ | $-$ | $\color{green}\text{1 (0.0093 s)}$ | $\color{green}\text{1 (0.0428 s)}$ | $\color{green}\text{1 (0.0256 s)}$ | $\color{green}\text{1 (2.1966 s)}$ | $\color{green}\text{1 (21.5656 s)}$ | 
-$\text{milp-model-4-CBC}$ | $-$ | $\color{green}\text{1 (0.0099 s)}$ | $\color{green}\text{1 (0.0149 s)}$ | $\color{green}\text{1 (0.0385 s)}$ | $\color{green}\text{1 (3.4254 s)}$ | $\color{green}\text{1 (16.2076 s)}$ | 
+$\text{RR-milp-full-CBC}$ | $-$ | $\color{green}\text{1 (0.01 s)}$ | $\color{green}\text{1 (0.0242 s)}$ | $\color{green}\text{1 (0.0838 s)}$ | $\color{green}\text{1 (0.243 s)}$ | $\color{green}\text{1 (23.5198 s)}$ | $-$ | $-$ | $-$ | 
+$\text{RR-milp-implied-CBC}$ | $-$ | $\color{green}\text{1 (0.0099 s)}$ | $\color{green}\text{1 (0.0539 s)}$ | $\color{green}\text{1 (0.7695 s)}$ | $\color{green}\text{1 (2.3586 s)}$ | $\color{green}\text{1 (292.0286 s)}$ | $-$ | $-$ | $-$ | 
+$\text{RR-milp-plain-CBC}$ | $-$ | $\color{green}\text{1 (0.0086 s)}$ | $\color{green}\text{1 (0.043 s)}$ | $\color{green}\text{1 (0.0258 s)}$ | $\color{green}\text{1 (2.2138 s)}$ | $\color{green}\text{1 (21.2174 s)}$ | $-$ | $-$ | $-$ | 
+$\text{RR-milp-SB-CBC}$ | $-$ | $\color{green}\text{1 (0.0091 s)}$ | $\color{green}\text{1 (0.0152 s)}$ | $\color{green}\text{1 (0.0395 s)}$ | $\color{green}\text{1 (3.4244 s)}$ | $\color{green}\text{1 (15.9383 s)}$ | $-$ | $-$ | $-$ | 
