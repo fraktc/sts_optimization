@@ -44,13 +44,13 @@ docker run -v ./res:/cdmo/results cdmo
 | Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MIP](./method-statuses/mip-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
 | $4$ | | $\color{lightgray}\text{Timeout}$ | | | 
-| $6$ | $\color{green}\text{0 s (obj: 1)}$</br>$\color{green}\text{round-robin-plain-chuffed}$ | $\color{red}\text{Inconsistent}$ | | | 
-| $8$ | $\color{green}\text{0 s (obj: 1)}$</br>$\color{green}\text{round-robin-plain-chuffed}$ | $\color{red}\text{Inconsistent}$ | | | 
-| $10$ | $\color{green}\text{0 s (obj: 1)}$</br>$\color{green}\text{round-robin-plain-chuffed}$ | $\color{red}\text{Inconsistent}$ | | | 
-| $12$ | $\color{green}\text{0 s (obj: 1)}$</br>$\color{green}\text{round-robin-plain-chuffed}$ | $\color{lightgray}\text{Timeout}$ | | | 
-| $14$ | $\color{green}\text{1 s (obj: 1)}$</br>$\color{green}\text{round-robin-plain-chuffed}$ | $\color{lightgray}\text{Timeout}$ | | | 
-| $16$ | $\color{green}\text{3 s (obj: 1)}$</br>$\color{green}\text{round-robin-plain-chuffed}$ | $\color{lightgray}\text{Timeout}$ | | | 
-| $18$ | $\color{green}\text{17 s (obj: 1)}$</br>$\color{green}\text{round-robin-plain-chuffed}$ | $\color{lightgray}\text{Timeout}$ | | | 
-| $20$ | $\color{lightgray}\text{Timeout}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $6$ | $\color{green}\text{0 s (obj: 1)}$</br>$\color{green}\text{RR-CP-plain-chuffed}$ | $\color{red}\text{Inconsistent}$ | | | 
+| $8$ | $\color{green}\text{0 s (obj: 1)}$</br>$\color{green}\text{RR-CP-plain-chuffed}$ | $\color{red}\text{Inconsistent}$ | | | 
+| $10$ | $\color{green}\text{0 s (obj: 1)}$</br>$\color{green}\text{RR-CP-plain-chuffed}$ | $\color{red}\text{Inconsistent}$ | | | 
+| $12$ | $\color{green}\text{0 s (obj: 1)}$</br>$\color{green}\text{RR-CP-plain-chuffed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $14$ | $\color{green}\text{0 s (obj: 1)}$</br>$\color{green}\text{RR-CP-symm-chuffed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $16$ | $\color{green}\text{2 s (obj: 1)}$</br>$\color{green}\text{RR-CP-symm-chuffed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $18$ | $\color{green}\text{1 s (obj: 1)}$</br>$\color{green}\text{RR-CP-symm-chuffed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $20$ | $\color{green}\text{67 s (obj: 1)}$</br>$\color{green}\text{RR-CP-symm-chuffed}$ | $\color{lightgray}\text{Timeout}$ | | | 
 
 <!-- end-status -->
