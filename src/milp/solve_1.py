@@ -10,7 +10,9 @@ import importlib.util
 logger = logging.getLogger(__name__)
 
 # List of solvers
-SOLVERS = ['CBC']
+# SOLVERS = ['CBC']
+SOLVERS = ['HiGHS']
+
 
 def run_milp_model(model_file, solver, number_of_teams, timeout, random_seed):
     """
