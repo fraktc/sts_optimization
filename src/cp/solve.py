@@ -36,7 +36,7 @@ def _solutionExtractorFromForwardPathRoundRobin(variable):
 
 experiments_chuffed = [
     {
-        "name": "round_robin_plain_chuffed",
+        "name": "RR_CP_plain_chuffed",
         "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_plain.mzn"),
         "solver": "chuffed",
         "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
@@ -44,15 +44,7 @@ experiments_chuffed = [
         "free_search": False
     },
     {
-        "name": "round_robin_plain_free_search_chuffed",
-        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_plain.mzn"),
-        "solver": "chuffed",
-        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
-        "preprocessing": [],
-        "free_search": True
-    },
-    {
-        "name": "round_robin_impl_chuffed",
+        "name": "RR_CP_impl_chuffed",
         "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_impl.mzn"),
         "solver": "chuffed",
         "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
@@ -60,7 +52,7 @@ experiments_chuffed = [
         "free_search": False
     },
     {
-        "name": "round_robin_symm_chuffed",
+        "name": "RR_CP_symm_chuffed",
         "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_symm.mzn"),
         "solver": "chuffed",
         "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
@@ -68,7 +60,7 @@ experiments_chuffed = [
         "free_search": False
     },
     {
-        "name": "round_robin_full_chuffed",
+        "name": "RR_CP_full_chuffed",
         "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_full.mzn"),
         "solver": "chuffed",
         "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
@@ -77,30 +69,43 @@ experiments_chuffed = [
     },
 ]
 
-# experiments_gecode = [
-#     {
-#         "name": "plain-gecode",
-#         "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./gecode/plain.mzn"),
-#         "solver": "gecode",
-#         "solution_extractor_fn": _solutionExtractorFromForwardPath,
-#         "preprocessing": [],
-#         "free_search": False
-#     },
-#     {
-#         "name": "plain-gecode-symm",
-#         "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./gecode/plain_symm.mzn"),
-#         "solver": "gecode",
-#         "solution_extractor_fn": _solutionExtractorFromForwardPath,
-#         "preprocessing": [],
-#         "free_search": False
-#     },
-# ]
-# experiments_setup = (
-#     experiments_gecode +
-#     experiments_chuffed
-# )
+experiments_gecode = [
+    {
+        "name": "RR_CP_plain_gecode",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_plain.mzn"),
+        "solver": "gecode",
+        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "RR_CP_impl_gecode",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_impl.mzn"),
+        "solver": "gecode",
+        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "RR_CP_symm_gecode",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_symm.mzn"),
+        "solver": "gecode",
+        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "RR_CP_full_gecode",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_full.mzn"),
+        "solver": "gecode",
+        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+        "preprocessing": [],
+        "free_search": False
+    },
+]
 
-experiments_setup = experiments_chuffed
+
+experiments_setup = experiments_chuffed + experiments_gecode
 
 def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwargs):
     instance_path = os.path.join(pathlib.Path(__file__).parent.resolve(), ".instance.dzn")
@@ -117,14 +122,10 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
             out_results[experiment["name"]] = cache[experiment["name"]]
             continue
 
-        # dzn_content = parseInstanceForMinizinc(instance)
         dzn_content = f"n = {instance};\n"
         start_time = time.time()
 
         # Create instance input file
-        # if len(experiment["preprocessing"]) > 0:
-        #     for prepro_fn in experiment["preprocessing"]:
-        #         dzn_content += prepro_fn(experiment, instance, random_seed)
         with open(instance_path, "w") as f:
             f.write(dzn_content)
         preprocess_time = time.time() - start_time
