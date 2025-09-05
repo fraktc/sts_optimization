@@ -86,34 +86,6 @@ constraint
 
 
 
-% ===============================
-% IMPLIED CONSTRAINTS
-%
-% teams_count_per_period: count of teams playing in each period
-% ===============================
-
-array[TEAMS, 1..periods] of var 1..2: teams_count_per_period;
-
-% Link team_period to teams_count_per_period
-constraint
-    forall(t in TEAMS, pr in 1..periods) (
-        sum(w in 1..weeks) (bool2int(team_period[t,w] == pr)) == teams_count_per_period[t, pr]
-    );
-
-% The number of teams playing just one match in a period are exactly 2
-constraint
-    forall(pr in 1..periods) (
-      sum(t in TEAMS) (bool2int(teams_count_per_period[t,pr] == 1)) == 2
-    );
-
-% Each team plays only one match in exactly one period
-constraint
-    forall(t in TEAMS) (
-      sum(pr in 1..periods) (bool2int(teams_count_per_period[t,pr] == 1)) == 1
-    );
-
-
-
 % =================================
 % IMBALANCE COUNTING
 % =================================

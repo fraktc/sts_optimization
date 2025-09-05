@@ -43,30 +43,30 @@ experiments_chuffed = [
         "preprocessing": [],
         "free_search": False
     },
-    {
-        "name": "RR_CP_impl_chuffed",
-        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_impl.mzn"),
-        "solver": "chuffed",
-        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
-        "preprocessing": [],
-        "free_search": False
-    },
-    {
-        "name": "RR_CP_symm_chuffed",
-        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_symm.mzn"),
-        "solver": "chuffed",
-        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
-        "preprocessing": [],
-        "free_search": False
-    },
-    {
-        "name": "RR_CP_full_chuffed",
-        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_full.mzn"),
-        "solver": "chuffed",
-        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
-        "preprocessing": [],
-        "free_search": False
-    },
+    # {
+    #     "name": "RR_CP_impl_chuffed",
+    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_impl.mzn"),
+    #     "solver": "chuffed",
+    #     "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+    #     "preprocessing": [],
+    #     "free_search": False
+    # },
+    # {
+    #     "name": "RR_CP_symm_chuffed",
+    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_symm.mzn"),
+    #     "solver": "chuffed",
+    #     "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+    #     "preprocessing": [],
+    #     "free_search": False
+    # },
+    # {
+    #     "name": "RR_CP_full_chuffed",
+    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_full.mzn"),
+    #     "solver": "chuffed",
+    #     "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+    #     "preprocessing": [],
+    #     "free_search": False
+    # },
 ]
 
 experiments_gecode = [
@@ -78,30 +78,30 @@ experiments_gecode = [
         "preprocessing": [],
         "free_search": False
     },
-    {
-        "name": "RR_CP_impl_gecode",
-        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_impl.mzn"),
-        "solver": "gecode",
-        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
-        "preprocessing": [],
-        "free_search": False
-    },
-    {
-        "name": "RR_CP_symm_gecode",
-        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_symm.mzn"),
-        "solver": "gecode",
-        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
-        "preprocessing": [],
-        "free_search": False
-    },
-    {
-        "name": "RR_CP_full_gecode",
-        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_full.mzn"),
-        "solver": "gecode",
-        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
-        "preprocessing": [],
-        "free_search": False
-    },
+    # {
+    #     "name": "RR_CP_impl_gecode",
+    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_impl.mzn"),
+    #     "solver": "gecode",
+    #     "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+    #     "preprocessing": [],
+    #     "free_search": False
+    # },
+    # {
+    #     "name": "RR_CP_symm_gecode",
+    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_symm.mzn"),
+    #     "solver": "gecode",
+    #     "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+    #     "preprocessing": [],
+    #     "free_search": False
+    # },
+    # {
+    #     "name": "RR_CP_full_gecode",
+    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_full.mzn"),
+    #     "solver": "gecode",
+    #     "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+    #     "preprocessing": [],
+    #     "free_search": False
+    # },
 ]
 
 
