@@ -12,6 +12,7 @@ def _solutionExtractorFromForwardPath(variables):
     solution = variables["matches"]
     return solution
 
+
 def _solutionExtractorFromForwardPathRoundRobin(variable):
     rr_home, rr_away, period_slot = variable["rr_home"], variable["rr_away"], variable["period_slot"]
     periods = variable["periods"]
