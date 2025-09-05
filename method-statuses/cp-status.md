@@ -2,4 +2,10 @@
 | $\text{Model}$ | $4$ | $6$ | $8$ | $10$ | $12$ | $14$ | $16$ | $18$ | $20$ |
 |:-:| :---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 $\text{RR-CP-plain-chuffed}$ | $-$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (1 s)}$ | $\color{green}\text{1 (4 s)}$ | $\color{green}\text{1 (18 s)}$ | $-$ | 
+$\text{RR-CP-impl-chuffed}$ | $-$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (11 s)}$ | $-$ | $-$ | $-$ | 
+$\text{RR-CP-symm-chuffed}$ | $-$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (2 s)}$ | $\color{green}\text{1 (1 s)}$ | $\color{green}\text{1 (67 s)}$ | 
+$\text{RR-CP-full-chuffed}$ | $-$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (21 s)}$ | $-$ | $-$ | $-$ | 
 $\text{RR-CP-plain-gecode}$ | $-$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (9 s)}$ | $-$ | $-$ | $-$ | 
+$\text{RR-CP-impl-gecode}$ | $-$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (3 s)}$ | $-$ | $-$ | $-$ | 
+$\text{RR-CP-symm-gecode}$ | $-$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (2 s)}$ | $\color{green}\text{1 (291 s)}$ | $-$ | $-$ | 
+$\text{RR-CP-full-gecode}$ | $-$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (1 s)}$ | $\color{green}\text{1 (259 s)}$ | $-$ | $-$ | 
