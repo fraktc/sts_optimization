@@ -541,43 +541,6 @@
          "runner": "github-action"
       }
    },
-   "RR_CP_plain_gecode": {
-      "time": 300,
-      "optimal": false,
-      "obj": null,
-      "sol": null,
-      "_extras": {
-         "statistics": {
-            "compiler": {
-               "paths": 0,
-               "flatBoolVars": 960,
-               "flatIntVars": 1080,
-               "flatIntConstraints": 2063,
-               "evaluatedReifiedConstraints": 960,
-               "method": "satisfy",
-               "flatTime": 0.158973
-            },
-            "solver": {
-               "initTime": 0.0124191,
-               "solveTime": 298.839,
-               "solutions": 0,
-               "variables": 2040,
-               "propagators": 2063,
-               "propagations": 3549951455,
-               "nodes": 24458499,
-               "failures": 12229222,
-               "restarts": 0,
-               "peakDepth": 80
-            },
-            "solution": {
-               "nSolutions": 0
-            }
-         },
-         "crash_reason": null,
-         "time_to_last_solution": null,
-         "runner": "github-action"
-      }
-   },
    "RR_CP_impl_chuffed": {
       "time": 300,
       "optimal": false,
@@ -1200,6 +1163,43 @@
                "baseMem": 0.0,
                "trailMem": 0.04,
                "randomSeed": 42
+            },
+            "solution": {
+               "nSolutions": 0
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": null,
+         "runner": "github-action"
+      }
+   },
+   "RR_CP_plain_gecode": {
+      "time": 300,
+      "optimal": false,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 960,
+               "flatIntVars": 1080,
+               "flatIntConstraints": 2063,
+               "evaluatedReifiedConstraints": 960,
+               "method": "satisfy",
+               "flatTime": 0.158973
+            },
+            "solver": {
+               "initTime": 0.0124191,
+               "solveTime": 298.839,
+               "solutions": 0,
+               "variables": 2040,
+               "propagators": 2063,
+               "propagations": 3549951455,
+               "nodes": 24458499,
+               "failures": 12229222,
+               "restarts": 0,
+               "peakDepth": 80
             },
             "solution": {
                "nSolutions": 0
