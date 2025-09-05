@@ -49,19 +49,19 @@ def run_milp_model(model_file, solver, number_of_teams, timeout, random_seed):
 # Models setup following the original structure
 models_setup = [
     {
-        "name": "milp-model-1",
+        "name": "RR_milp_full",
         "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./RR_milp_model_full.py"),
     },
     {
-        "name": "milp-model-2",
+        "name": "RR_milp_implied",
         "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./RR_milp_model_implied.py"),
     },
     {
-        "name": "milp-model-3",
+        "name": "RR_milp_plain",
         "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./RR_milp_model_plain.py"),
     },
     {
-        "name": "milp-model-4",
+        "name": "RR_milp_SB",
         "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./RR_milp_model_SB.py"),
     },
     #     {
