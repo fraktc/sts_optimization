@@ -1,0 +1,84 @@
+{
+   "RR_CP_plain_chuffed": {
+      "time": 300,
+      "optimal": false,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 12,
+               "flatIntVars": 18,
+               "flatIntConstraints": 35,
+               "evaluatedReifiedConstraints": 12,
+               "method": "satisfy",
+               "flatTime": 0.128301
+            },
+            "solver": {
+               "nodes": 4,
+               "failures": 4,
+               "restarts": 0,
+               "variables": 122,
+               "intVars": 18,
+               "boolVariables": 102,
+               "propagators": 15,
+               "propagations": 52,
+               "peakDepth": 2,
+               "nogoods": 4,
+               "backjumps": 0,
+               "peakMem": 0.0,
+               "time": 0.0,
+               "initTime": 0.0,
+               "solveTime": 0.0,
+               "baseMem": 0.0,
+               "trailMem": 0.0,
+               "randomSeed": 42
+            },
+            "solution": {
+               "nSolutions": 0
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": null,
+         "runner": "github-action"
+      }
+   },
+   "RR_CP_plain_gecode": {
+      "time": 300,
+      "optimal": false,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 12,
+               "flatIntVars": 18,
+               "flatIntConstraints": 35,
+               "evaluatedReifiedConstraints": 12,
+               "method": "satisfy",
+               "flatTime": 0.110917
+            },
+            "solver": {
+               "initTime": 0.000383964,
+               "solveTime": 6.447e-05,
+               "solutions": 0,
+               "variables": 30,
+               "propagators": 35,
+               "propagations": 126,
+               "nodes": 7,
+               "failures": 4,
+               "restarts": 0,
+               "peakDepth": 2
+            },
+            "solution": {
+               "nSolutions": 0
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": null,
+         "runner": "github-action"
+      }
+   }
+}
