@@ -43,14 +43,14 @@ docker run -v ./res:/cdmo/results cdmo
 <!-- begin-status -->
 | Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MIP](./method-statuses/mip-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
-| $4$ | | $\color{lightgray}\text{Timeout}$ | $\color{red}\text{Inconsistent}$ | | 
-| $6$ | | $\color{red}\text{Inconsistent}$ | $\color{green}\text{0.12135481834411621 s (obj: 1)}$</br>$\color{green}\text{round-robin-bitvec-symm}$ | | 
-| $8$ | | $\color{red}\text{Inconsistent}$ | $\color{green}\text{0.3633739948272705 s (obj: 1)}$</br>$\color{green}\text{round-robin-bitvec-full}$ | | 
-| $10$ | | $\color{red}\text{Inconsistent}$ | $\color{green}\text{0.9026052951812744 s (obj: 1)}$</br>$\color{green}\text{round-robin-full}$ | | 
-| $12$ | | $\color{lightgray}\text{Timeout}$ | $\color{green}\text{2.2794203758239746 s (obj: 1)}$</br>$\color{green}\text{round-robin-symm}$ | | 
-| $14$ | | $\color{lightgray}\text{Timeout}$ | $\color{green}\text{12.164509534835815 s (obj: 1)}$</br>$\color{green}\text{round-robin-bitvec-full}$ | | 
-| $16$ | | $\color{lightgray}\text{Timeout}$ | $\color{green}\text{39.08117365837097 s (obj: 1)}$</br>$\color{green}\text{round-robin-implied}$ | | 
-| $18$ | | $\color{lightgray}\text{Timeout}$ | $\color{lightgray}\text{Timeout}$ | | 
-| $20$ | | $\color{lightgray}\text{Timeout}$ | $\color{lightgray}\text{Timeout}$ | | 
+| $4$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $6$ | $\color{pink}\text{Crashed}$ | $\color{red}\text{Inconsistent}$ | | | 
+| $8$ | $\color{pink}\text{Crashed}$ | $\color{red}\text{Inconsistent}$ | | | 
+| $10$ | $\color{pink}\text{Crashed}$ | $\color{red}\text{Inconsistent}$ | | | 
+| $12$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $14$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $16$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $18$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $20$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
 
 <!-- end-status -->
