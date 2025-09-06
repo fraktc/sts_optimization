@@ -9,7 +9,11 @@ $\text{RR-CP-plain-gecode}$ | $-$ | $\color{green}\text{1 (0 s)}$ | $\color{gree
 $\text{RR-CP-impl-gecode}$ | $-$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (3 s)}$ | $-$ | $-$ | $-$ | 
 $\text{RR-CP-symm-gecode}$ | $-$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (2 s)}$ | $\color{green}\text{1 (291 s)}$ | $-$ | $-$ | 
 $\text{RR-CP-full-gecode}$ | $-$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (1 s)}$ | $\color{green}\text{1 (259 s)}$ | $-$ | $-$ | 
-$\text{naive-CP-plain-chuffed}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | 
-$\text{naive-CP-impl-chuffed}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | 
-$\text{naive-CP-symm-chuffed}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | 
-$\text{naive-CP-full-chuffed}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | 
+$\text{naive-CP-plain-chuffed}$ | $-$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (3 s)}$ | $-$ | 
+$\text{naive-CP-impl-chuffed}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | 
+$\text{naive-CP-symm-chuffed}$ | $-$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $-$ | 
+$\text{naive-CP-full-chuffed}$ | $-$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $-$ | 
+$\text{naive-CP-plain-gecode}$ | $-$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{orange}\text{7 (299 s)}$ | 
+$\text{naive-CP-impl-gecode}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | $\color{pink}\text{E}$ | 
+$\text{naive-CP-symm-gecode}$ | $-$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (0 s)}$ | $\color{orange}\text{5 (299 s)}$ | 
+$\text{naive-CP-full-gecode}$ | $-$ | $\color{green}\text{1 (0 s)}$ | $\color{green}\text{1 (2 s)}$ | $\color{orange}\text{7 (299 s)}$ | 
