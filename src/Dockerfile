@@ -50,8 +50,10 @@ cp -r yices-2.6.5/lib/* /usr/local/lib
 # For Windows EOL char
 RUN apt install -y dos2unix
 
-COPY . .
+# Copy only the requirements
+COPY requirements.txt .
 RUN pip3 install -r requirements.txt
+COPY . .
 RUN dos2unix ./entrypoint.sh
 
 RUN chmod +x ./entrypoint.sh

@@ -1,4 +1,4 @@
-from .minizinc_utils import minizincSolve, parseInstanceForMinizinc
+from .minizinc_utils import minizincSolve
 import pathlib
 import os
 import math
@@ -10,6 +10,7 @@ logger = logging.getLogger(__name__)
 
 def _solutionExtractorFromForwardPath(variables):
     solution = variables["matches"]
+    print(solution)
     return solution
 
 def _solutionExtractorFromForwardPathRoundRobin(variable):
@@ -209,6 +210,9 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
             free_search = experiment["free_search"]
         )
         solve_time = time.time() - start_time
+
+        print(outcome, solutions, statistics, "\n"*5)
+
 
 
         if (outcome["mz_status"] is None) and (len(solutions) > 0):

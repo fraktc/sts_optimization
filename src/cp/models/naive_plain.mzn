@@ -48,4 +48,4 @@ var int: max_imbalance = max(t in TEAMS)(
 constraint max_imbalance >= 1;
 
 % Search strategy
-solve :: restart_luby(200) :: int_search(matches, dom_w_deg, indomain_random, complete) minimize max_imbalance;
+solve :: restart_luby(200) :: int_search(matches, dom_w_deg, indomain_min, complete) minimize max_imbalance;
