@@ -175,7 +175,7 @@ experiments_gecode_naive = [
 ]
 
 
-experiments_setup = experiments_chuffed_rr + experiments_gecode_rr + experiments_chuffed_naive
+experiments_setup = experiments_chuffed_rr + experiments_gecode_rr + experiments_chuffed_naive + experiments_gecode_naive
 
 def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwargs):
     instance_path = os.path.join(pathlib.Path(__file__).parent.resolve(), ".instance.dzn")

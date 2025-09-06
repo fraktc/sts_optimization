@@ -42,7 +42,9 @@ if __name__ == "__main__":
         datefmt = "%d-%m-%Y %H:%M:%S"
     )
 
-    INSTANCES = [4,6,8,10,12,14,16,18,20]
+    # INSTANCES = [4,6,8,10,12,14,16,18,20]
+    INSTANCES = [4,6,8,10]
+
 
 
     # Set memory limit if needed
