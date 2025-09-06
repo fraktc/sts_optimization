@@ -20,7 +20,7 @@ SOLVERS = [
 #SOLVERS = ['highs']
 
 
-def run_ampl_model(model_file, data_file, solver, timeout, random_seed):
+def run_ampl_model(model_file, n_teams, solver, timeout, random_seed):
     
     #add_to_path(r'c:/Users/cmaio/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/AMPL IDE.lnk') #Damodificareperreproducibilità
     # ampl = AMPL()
@@ -28,7 +28,9 @@ def run_ampl_model(model_file, data_file, solver, timeout, random_seed):
 
     try:
         ampl.read(model_file)
-        ampl.readData(data_file)
+        
+        # Set the number of teams parameter
+        ampl.param['n'] = n_teams
 
         if solver == 'highs':
             ampl.option['highs_options'] = "presolve=on mip_heuristic_effort=0.5 mip_rel_gap=1e-4" 
@@ -43,31 +45,25 @@ def run_ampl_model(model_file, data_file, solver, timeout, random_seed):
             ampl.solve()
         
         solve_time = math.floor(time.time() - start_time)
-        objective = round( ampl.getObjective('ObjectiveMaxDistance').value() )
+        objective = round( ampl.getObjective('max_imbalance').value() )
         is_optimal = ampl.getValue('solve_result') == "solved"
 
         if (ampl.getValue('solve_result') == 'failure') or (ampl.getValue('solve_result') == 'infeasible') or (objective <= 0) : raise Exception("UNSAT")
     
         
-        # Extraction of solution
-        A = ampl.getVariable('A')
-        X = ampl.getVariable('X')
-        m = ampl.getValue('m')
+        # Extraction of solution for sports scheduling
+        matches = ampl.getVariable('matches')
         n = ampl.getValue('n')
         
         solution = []
-        for couriers in range(1,m+1):
-            couriers_packs = []
-            packs = n + 1
-            while round(X[packs, n+1, couriers].value()) == 0:
-                for i in range(1, n + 1):
-                    if round(X[packs, i, couriers].value()) == 1:
-                        couriers_packs.append(i)
-                        packs = i
-                        break
-            solution.append(couriers_packs)
+        # Extract schedule: solution[period][week] = [home_team, away_team]
+        for p in range(1, n//2 + 1):  # periods
+            period_schedule = []
+            for w in range(1, n):  # weeks
+                match = [int(matches[p, w, 1].value()), int(matches[p, w, 2].value())]
+                period_schedule.append(match)
+            solution.append(period_schedule)
         
-    
         return {
             "time": solve_time if is_optimal else timeout,
             "optimal": is_optimal,
@@ -83,7 +79,8 @@ def run_ampl_model(model_file, data_file, solver, timeout, random_seed):
             "sol": None
         }
     finally:
-        ampl.close()
+        if ampl is not None:
+            ampl.close()
 
 models_setup = [
     {
@@ -101,11 +98,9 @@ models_setup = [
     
 ]
 
-def solve(instance, instance_number, timeout=300, cache={}, random_seed=42, models_filter=None, **kwargs):
-    
-    data_dir = os.path.join(pathlib.Path(__file__).parent.resolve(), './data')
-    data_instance = sorted([f for f in os.listdir(data_dir) if f.endswith('.dat')])[instance_number-1]
-    data_file = os.path.join(data_dir, data_instance)
+def solve(instance, timeout=300, cache={}, random_seed=42, models_filter=None, **kwargs):
+    # Extract number of teams from instance (should be an integer)
+    n = instance  # instance is just the number of teams
     
     out_results = {}
     for model in models_setup:
@@ -113,7 +108,7 @@ def solve(instance, instance_number, timeout=300, cache={}, random_seed=42, mode
             model_str = model['name'] + '_' + solver
             if (models_filter is not None) and (model_str not in models_filter):
                 continue
-            logger.info(f"Starting model {model['name']} with {solver}")
+            logger.info(f"Starting model {model['name']} with {solver} for {n} teams")
             # Check if result is in cache
             if model_str in cache:
                 logger.info(f"Cache hit")
@@ -122,8 +117,8 @@ def solve(instance, instance_number, timeout=300, cache={}, random_seed=42, mode
         
         # Solve instance
             result = run_ampl_model(
+                n_teams = n,
                 model_file = model["model_path"],
-                data_file = data_file,
                 solver = solver,
                 timeout = timeout,
                 random_seed = random_seed
@@ -134,4 +129,4 @@ def solve(instance, instance_number, timeout=300, cache={}, random_seed=42, mode
     return out_results
 
 if __name__ == '__main__':
-   solve('', 1, 300)
+   solve(4, 300)  # Test with 4 teams, 300 second timeout

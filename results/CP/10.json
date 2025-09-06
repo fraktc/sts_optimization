@@ -1,0 +1,2756 @@
+{
+<<<<<<< HEAD
+   "plain-gecode": {
+=======
+   "RR_CP_plain_chuffed": {
+      "time": 0,
+      "optimal": true,
+      "obj": 1,
+      "sol": [
+         [
+            [
+               8,
+               5
+            ],
+            [
+               8,
+               7
+            ],
+            [
+               2,
+               6
+            ],
+            [
+               2,
+               8
+            ],
+            [
+               2,
+               10
+            ],
+            [
+               5,
+               9
+            ],
+            [
+               8,
+               1
+            ],
+            [
+               8,
+               10
+            ],
+            [
+               10,
+               1
+            ]
+         ],
+         [
+            [
+               9,
+               4
+            ],
+            [
+               9,
+               6
+            ],
+            [
+               4,
+               1
+            ],
+            [
+               1,
+               5
+            ],
+            [
+               4,
+               8
+            ],
+            [
+               1,
+               7
+            ],
+            [
+               5,
+               2
+            ],
+            [
+               5,
+               4
+            ],
+            [
+               8,
+               3
+            ]
+         ],
+         [
+            [
+               2,
+               1
+            ],
+            [
+               1,
+               3
+            ],
+            [
+               3,
+               5
+            ],
+            [
+               4,
+               6
+            ],
+            [
+               3,
+               9
+            ],
+            [
+               4,
+               10
+            ],
+            [
+               6,
+               10
+            ],
+            [
+               1,
+               9
+            ],
+            [
+               7,
+               4
+            ]
+         ],
+         [
+            [
+               10,
+               3
+            ],
+            [
+               10,
+               5
+            ],
+            [
+               10,
+               7
+            ],
+            [
+               3,
+               7
+            ],
+            [
+               6,
+               1
+            ],
+            [
+               6,
+               8
+            ],
+            [
+               4,
+               3
+            ],
+            [
+               6,
+               3
+            ],
+            [
+               6,
+               5
+            ]
+         ],
+         [
+            [
+               7,
+               6
+            ],
+            [
+               2,
+               4
+            ],
+            [
+               9,
+               8
+            ],
+            [
+               10,
+               9
+            ],
+            [
+               5,
+               7
+            ],
+            [
+               3,
+               2
+            ],
+            [
+               7,
+               9
+            ],
+            [
+               7,
+               2
+            ],
+            [
+               9,
+               2
+            ]
+         ]
+      ],
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 225,
+               "flatIntVars": 270,
+               "flatIntConstraints": 509,
+               "evaluatedReifiedConstraints": 225,
+               "method": "satisfy",
+               "flatTime": 0.128054
+            },
+            "solver": {
+               "nodes": 2000,
+               "failures": 1695,
+               "restarts": 0,
+               "variables": 2117,
+               "intVars": 270,
+               "boolVariables": 1845,
+               "propagators": 69,
+               "propagations": 33011,
+               "peakDepth": 20,
+               "nogoods": 1695,
+               "backjumps": 291,
+               "peakMem": 0.0,
+               "time": 0.031,
+               "initTime": 0.005,
+               "solveTime": 0.026,
+               "baseMem": 0.0,
+               "trailMem": 0.01,
+               "randomSeed": 42
+            },
+            "solution": {
+               "nSolutions": 1
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": 0.16711587142944337,
+         "runner": "github-action"
+      }
+   },
+   "RR_CP_impl_chuffed": {
+      "time": 0,
+      "optimal": true,
+      "obj": 1,
+      "sol": [
+         [
+            [
+               7,
+               6
+            ],
+            [
+               10,
+               5
+            ],
+            [
+               4,
+               1
+            ],
+            [
+               4,
+               6
+            ],
+            [
+               6,
+               1
+            ],
+            [
+               4,
+               10
+            ],
+            [
+               6,
+               10
+            ],
+            [
+               6,
+               3
+            ],
+            [
+               9,
+               2
+            ]
+         ],
+         [
+            [
+               9,
+               4
+            ],
+            [
+               9,
+               6
+            ],
+            [
+               9,
+               8
+            ],
+            [
+               3,
+               7
+            ],
+            [
+               2,
+               10
+            ],
+            [
+               3,
+               2
+            ],
+            [
+               8,
+               1
+            ],
+            [
+               5,
+               4
+            ],
+            [
+               8,
+               3
+            ]
+         ],
+         [
+            [
+               10,
+               3
+            ],
+            [
+               1,
+               3
+            ],
+            [
+               3,
+               5
+            ],
+            [
+               2,
+               8
+            ],
+            [
+               4,
+               8
+            ],
+            [
+               5,
+               9
+            ],
+            [
+               5,
+               2
+            ],
+            [
+               7,
+               2
+            ],
+            [
+               10,
+               1
+            ]
+         ],
+         [
+            [
+               8,
+               5
+            ],
+            [
+               8,
+               7
+            ],
+            [
+               2,
+               6
+            ],
+            [
+               1,
+               5
+            ],
+            [
+               5,
+               7
+            ],
+            [
+               6,
+               8
+            ],
+            [
+               7,
+               9
+            ],
+            [
+               8,
+               10
+            ],
+            [
+               6,
+               5
+            ]
+         ],
+         [
+            [
+               2,
+               1
+            ],
+            [
+               2,
+               4
+            ],
+            [
+               10,
+               7
+            ],
+            [
+               10,
+               9
+            ],
+            [
+               3,
+               9
+            ],
+            [
+               1,
+               7
+            ],
+            [
+               4,
+               3
+            ],
+            [
+               1,
+               9
+            ],
+            [
+               7,
+               4
+            ]
+         ]
+      ],
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 275,
+               "flatIntVars": 370,
+               "flatIntConstraints": 674,
+               "evaluatedReifiedConstraints": 275,
+               "method": "satisfy",
+               "flatTime": 0.117739
+            },
+            "solver": {
+               "nodes": 281,
+               "failures": 227,
+               "restarts": 0,
+               "variables": 2767,
+               "intVars": 370,
+               "boolVariables": 2395,
+               "propagators": 199,
+               "propagations": 14612,
+               "peakDepth": 35,
+               "nogoods": 227,
+               "backjumps": 22,
+               "peakMem": 0.0,
+               "time": 0.012,
+               "initTime": 0.006,
+               "solveTime": 0.006,
+               "baseMem": 0.0,
+               "trailMem": 0.01,
+               "randomSeed": 42
+            },
+            "solution": {
+               "nSolutions": 1
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": 0.1381065731048584,
+         "runner": "github-action"
+      }
+   },
+   "RR_CP_symm_chuffed": {
+      "time": 0,
+      "optimal": true,
+      "obj": 1,
+      "sol": [
+         [
+            [
+               2,
+               1
+            ],
+            [
+               8,
+               7
+            ],
+            [
+               3,
+               5
+            ],
+            [
+               3,
+               7
+            ],
+            [
+               2,
+               10
+            ],
+            [
+               4,
+               10
+            ],
+            [
+               6,
+               10
+            ],
+            [
+               8,
+               10
+            ],
+            [
+               7,
+               4
+            ]
+         ],
+         [
+            [
+               10,
+               3
+            ],
+            [
+               9,
+               6
+            ],
+            [
+               10,
+               7
+            ],
+            [
+               2,
+               8
+            ],
+            [
+               5,
+               7
+            ],
+            [
+               6,
+               8
+            ],
+            [
+               5,
+               2
+            ],
+            [
+               5,
+               4
+            ],
+            [
+               9,
+               2
+            ]
+         ],
+         [
+            [
+               9,
+               4
+            ],
+            [
+               2,
+               4
+            ],
+            [
+               2,
+               6
+            ],
+            [
+               1,
+               5
+            ],
+            [
+               6,
+               1
+            ],
+            [
+               1,
+               7
+            ],
+            [
+               8,
+               1
+            ],
+            [
+               7,
+               2
+            ],
+            [
+               10,
+               1
+            ]
+         ],
+         [
+            [
+               8,
+               5
+            ],
+            [
+               1,
+               3
+            ],
+            [
+               4,
+               1
+            ],
+            [
+               4,
+               6
+            ],
+            [
+               4,
+               8
+            ],
+            [
+               5,
+               9
+            ],
+            [
+               4,
+               3
+            ],
+            [
+               6,
+               3
+            ],
+            [
+               6,
+               5
+            ]
+         ],
+         [
+            [
+               7,
+               6
+            ],
+            [
+               10,
+               5
+            ],
+            [
+               9,
+               8
+            ],
+            [
+               10,
+               9
+            ],
+            [
+               3,
+               9
+            ],
+            [
+               3,
+               2
+            ],
+            [
+               7,
+               9
+            ],
+            [
+               1,
+               9
+            ],
+            [
+               8,
+               3
+            ]
+         ]
+      ],
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 200,
+               "flatIntVars": 245,
+               "flatIntConstraints": 459,
+               "evaluatedReifiedConstraints": 200,
+               "method": "satisfy",
+               "flatTime": 0.113534
+            },
+            "solver": {
+               "nodes": 444,
+               "failures": 369,
+               "restarts": 0,
+               "variables": 1922,
+               "intVars": 250,
+               "boolVariables": 1670,
+               "propagators": 69,
+               "propagations": 6411,
+               "peakDepth": 20,
+               "nogoods": 369,
+               "backjumps": 61,
+               "peakMem": 0.0,
+               "time": 0.009,
+               "initTime": 0.004,
+               "solveTime": 0.005,
+               "baseMem": 0.0,
+               "trailMem": 0.01,
+               "randomSeed": 42
+            },
+            "solution": {
+               "nSolutions": 1
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": 0.12910251998901368,
+         "runner": "github-action"
+      }
+   },
+   "RR_CP_full_chuffed": {
+      "time": 0,
+      "optimal": true,
+      "obj": 1,
+      "sol": [
+         [
+            [
+               2,
+               1
+            ],
+            [
+               8,
+               7
+            ],
+            [
+               2,
+               6
+            ],
+            [
+               4,
+               6
+            ],
+            [
+               3,
+               9
+            ],
+            [
+               5,
+               9
+            ],
+            [
+               8,
+               1
+            ],
+            [
+               6,
+               3
+            ],
+            [
+               9,
+               2
+            ]
+         ],
+         [
+            [
+               10,
+               3
+            ],
+            [
+               2,
+               4
+            ],
+            [
+               4,
+               1
+            ],
+            [
+               1,
+               5
+            ],
+            [
+               2,
+               10
+            ],
+            [
+               1,
+               7
+            ],
+            [
+               7,
+               9
+            ],
+            [
+               7,
+               2
+            ],
+            [
+               6,
+               5
+            ]
+         ],
+         [
+            [
+               9,
+               4
+            ],
+            [
+               1,
+               3
+            ],
+            [
+               3,
+               5
+            ],
+            [
+               3,
+               7
+            ],
+            [
+               5,
+               7
+            ],
+            [
+               6,
+               8
+            ],
+            [
+               4,
+               3
+            ],
+            [
+               1,
+               9
+            ],
+            [
+               8,
+               3
+            ]
+         ],
+         [
+            [
+               8,
+               5
+            ],
+            [
+               10,
+               5
+            ],
+            [
+               10,
+               7
+            ],
+            [
+               10,
+               9
+            ],
+            [
+               6,
+               1
+            ],
+            [
+               3,
+               2
+            ],
+            [
+               6,
+               10
+            ],
+            [
+               8,
+               10
+            ],
+            [
+               10,
+               1
+            ]
+         ],
+         [
+            [
+               7,
+               6
+            ],
+            [
+               9,
+               6
+            ],
+            [
+               9,
+               8
+            ],
+            [
+               2,
+               8
+            ],
+            [
+               4,
+               8
+            ],
+            [
+               4,
+               10
+            ],
+            [
+               5,
+               2
+            ],
+            [
+               5,
+               4
+            ],
+            [
+               7,
+               4
+            ]
+         ]
+      ],
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 250,
+               "flatIntVars": 345,
+               "flatIntConstraints": 624,
+               "evaluatedReifiedConstraints": 250,
+               "method": "satisfy",
+               "flatTime": 0.119999
+            },
+            "solver": {
+               "nodes": 2565,
+               "failures": 2291,
+               "restarts": 0,
+               "variables": 2572,
+               "intVars": 350,
+               "boolVariables": 2220,
+               "propagators": 199,
+               "propagations": 136712,
+               "peakDepth": 35,
+               "nogoods": 2291,
+               "backjumps": 247,
+               "peakMem": 0.0,
+               "time": 0.055,
+               "initTime": 0.006,
+               "solveTime": 0.049,
+               "baseMem": 0.0,
+               "trailMem": 0.01,
+               "randomSeed": 42
+            },
+            "solution": {
+               "nSolutions": 1
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": 0.18311491775512695,
+         "runner": "github-action"
+      }
+   },
+   "RR_CP_plain_gecode": {
+      "time": 0,
+      "optimal": true,
+      "obj": 1,
+      "sol": [
+         [
+            [
+               10,
+               3
+            ],
+            [
+               9,
+               6
+            ],
+            [
+               10,
+               7
+            ],
+            [
+               4,
+               6
+            ],
+            [
+               4,
+               8
+            ],
+            [
+               5,
+               9
+            ],
+            [
+               8,
+               1
+            ],
+            [
+               5,
+               4
+            ],
+            [
+               6,
+               5
+            ]
+         ],
+         [
+            [
+               8,
+               5
+            ],
+            [
+               8,
+               7
+            ],
+            [
+               9,
+               8
+            ],
+            [
+               2,
+               8
+            ],
+            [
+               3,
+               9
+            ],
+            [
+               4,
+               10
+            ],
+            [
+               5,
+               2
+            ],
+            [
+               6,
+               3
+            ],
+            [
+               7,
+               4
+            ]
+         ],
+         [
+            [
+               2,
+               1
+            ],
+            [
+               10,
+               5
+            ],
+            [
+               2,
+               6
+            ],
+            [
+               1,
+               5
+            ],
+            [
+               2,
+               10
+            ],
+            [
+               3,
+               2
+            ],
+            [
+               4,
+               3
+            ],
+            [
+               7,
+               2
+            ],
+            [
+               8,
+               3
+            ]
+         ],
+         [
+            [
+               9,
+               4
+            ],
+            [
+               1,
+               3
+            ],
+            [
+               4,
+               1
+            ],
+            [
+               10,
+               9
+            ],
+            [
+               5,
+               7
+            ],
+            [
+               6,
+               8
+            ],
+            [
+               7,
+               9
+            ],
+            [
+               8,
+               10
+            ],
+            [
+               9,
+               2
+            ]
+         ],
+         [
+            [
+               7,
+               6
+            ],
+            [
+               2,
+               4
+            ],
+            [
+               3,
+               5
+            ],
+            [
+               3,
+               7
+            ],
+            [
+               6,
+               1
+            ],
+            [
+               1,
+               7
+            ],
+            [
+               6,
+               10
+            ],
+            [
+               1,
+               9
+            ],
+            [
+               10,
+               1
+            ]
+         ]
+      ],
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 225,
+               "flatIntVars": 270,
+               "flatIntConstraints": 509,
+               "evaluatedReifiedConstraints": 225,
+               "method": "satisfy",
+               "flatTime": 0.117629
+            },
+            "solver": {
+               "initTime": 0.00290391,
+               "solveTime": 0.00541971,
+               "solutions": 1,
+               "variables": 495,
+               "propagators": 509,
+               "propagations": 70680,
+               "nodes": 774,
+               "failures": 379,
+               "restarts": 0,
+               "peakDepth": 23
+            },
+            "solution": {
+               "nSolutions": 1
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": 0.14214448165893553,
+         "runner": "github-action"
+      }
+   },
+   "RR_CP_impl_gecode": {
+      "time": 0,
+      "optimal": true,
+      "obj": 1,
+      "sol": [
+         [
+            [
+               10,
+               3
+            ],
+            [
+               9,
+               6
+            ],
+            [
+               10,
+               7
+            ],
+            [
+               4,
+               6
+            ],
+            [
+               4,
+               8
+            ],
+            [
+               5,
+               9
+            ],
+            [
+               8,
+               1
+            ],
+            [
+               5,
+               4
+            ],
+            [
+               6,
+               5
+            ]
+         ],
+         [
+            [
+               8,
+               5
+            ],
+            [
+               8,
+               7
+            ],
+            [
+               9,
+               8
+            ],
+            [
+               2,
+               8
+            ],
+            [
+               3,
+               9
+            ],
+            [
+               4,
+               10
+            ],
+            [
+               5,
+               2
+            ],
+            [
+               6,
+               3
+            ],
+            [
+               7,
+               4
+            ]
+         ],
+         [
+            [
+               2,
+               1
+            ],
+            [
+               10,
+               5
+            ],
+            [
+               2,
+               6
+            ],
+            [
+               1,
+               5
+            ],
+            [
+               2,
+               10
+            ],
+            [
+               3,
+               2
+            ],
+            [
+               4,
+               3
+            ],
+            [
+               7,
+               2
+            ],
+            [
+               8,
+               3
+            ]
+         ],
+         [
+            [
+               9,
+               4
+            ],
+            [
+               1,
+               3
+            ],
+            [
+               4,
+               1
+            ],
+            [
+               10,
+               9
+            ],
+            [
+               5,
+               7
+            ],
+            [
+               6,
+               8
+            ],
+            [
+               7,
+               9
+            ],
+            [
+               8,
+               10
+            ],
+            [
+               9,
+               2
+            ]
+         ],
+         [
+            [
+               7,
+               6
+            ],
+            [
+               2,
+               4
+            ],
+            [
+               3,
+               5
+            ],
+            [
+               3,
+               7
+            ],
+            [
+               6,
+               1
+            ],
+            [
+               1,
+               7
+            ],
+            [
+               6,
+               10
+            ],
+            [
+               1,
+               9
+            ],
+            [
+               10,
+               1
+            ]
+         ]
+      ],
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 275,
+               "flatIntVars": 370,
+               "flatIntConstraints": 674,
+               "evaluatedReifiedConstraints": 275,
+               "method": "satisfy",
+               "flatTime": 0.118933
+            },
+            "solver": {
+               "initTime": 0.00399575,
+               "solveTime": 0.00432432,
+               "solutions": 1,
+               "variables": 645,
+               "propagators": 674,
+               "propagations": 44796,
+               "nodes": 349,
+               "failures": 167,
+               "restarts": 0,
+               "peakDepth": 26
+            },
+            "solution": {
+               "nSolutions": 1
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": 0.14311253356933593,
+         "runner": "github-action"
+      }
+   },
+   "RR_CP_symm_gecode": {
+      "time": 0,
+      "optimal": true,
+      "obj": 1,
+      "sol": [
+         [
+            [
+               2,
+               1
+            ],
+            [
+               10,
+               5
+            ],
+            [
+               2,
+               6
+            ],
+            [
+               4,
+               6
+            ],
+            [
+               3,
+               9
+            ],
+            [
+               4,
+               10
+            ],
+            [
+               8,
+               1
+            ],
+            [
+               5,
+               4
+            ],
+            [
+               6,
+               5
+            ]
+         ],
+         [
+            [
+               10,
+               3
+            ],
+            [
+               2,
+               4
+            ],
+            [
+               9,
+               8
+            ],
+            [
+               10,
+               9
+            ],
+            [
+               4,
+               8
+            ],
+            [
+               6,
+               8
+            ],
+            [
+               7,
+               9
+            ],
+            [
+               6,
+               3
+            ],
+            [
+               7,
+               4
+            ]
+         ],
+         [
+            [
+               9,
+               4
+            ],
+            [
+               9,
+               6
+            ],
+            [
+               10,
+               7
+            ],
+            [
+               2,
+               8
+            ],
+            [
+               6,
+               1
+            ],
+            [
+               5,
+               9
+            ],
+            [
+               6,
+               10
+            ],
+            [
+               7,
+               2
+            ],
+            [
+               8,
+               3
+            ]
+         ],
+         [
+            [
+               8,
+               5
+            ],
+            [
+               1,
+               3
+            ],
+            [
+               4,
+               1
+            ],
+            [
+               3,
+               7
+            ],
+            [
+               2,
+               10
+            ],
+            [
+               3,
+               2
+            ],
+            [
+               4,
+               3
+            ],
+            [
+               8,
+               10
+            ],
+            [
+               9,
+               2
+            ]
+         ],
+         [
+            [
+               7,
+               6
+            ],
+            [
+               8,
+               7
+            ],
+            [
+               3,
+               5
+            ],
+            [
+               1,
+               5
+            ],
+            [
+               5,
+               7
+            ],
+            [
+               1,
+               7
+            ],
+            [
+               5,
+               2
+            ],
+            [
+               1,
+               9
+            ],
+            [
+               10,
+               1
+            ]
+         ]
+      ],
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 200,
+               "flatIntVars": 245,
+               "flatIntConstraints": 459,
+               "evaluatedReifiedConstraints": 200,
+               "method": "satisfy",
+               "flatTime": 0.111212
+            },
+            "solver": {
+               "initTime": 0.00259555,
+               "solveTime": 0.00108999,
+               "solutions": 1,
+               "variables": 465,
+               "propagators": 458,
+               "propagations": 12142,
+               "nodes": 131,
+               "failures": 56,
+               "restarts": 0,
+               "peakDepth": 23
+            },
+            "solution": {
+               "nSolutions": 1
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": 0.130119686126709,
+         "runner": "github-action"
+      }
+   },
+   "RR_CP_full_gecode": {
+      "time": 0,
+      "optimal": true,
+      "obj": 1,
+      "sol": [
+         [
+            [
+               2,
+               1
+            ],
+            [
+               10,
+               5
+            ],
+            [
+               2,
+               6
+            ],
+            [
+               4,
+               6
+            ],
+            [
+               3,
+               9
+            ],
+            [
+               4,
+               10
+            ],
+            [
+               8,
+               1
+            ],
+            [
+               5,
+               4
+            ],
+            [
+               6,
+               5
+            ]
+         ],
+         [
+            [
+               10,
+               3
+            ],
+            [
+               2,
+               4
+            ],
+            [
+               9,
+               8
+            ],
+            [
+               10,
+               9
+            ],
+            [
+               4,
+               8
+            ],
+            [
+               6,
+               8
+            ],
+            [
+               7,
+               9
+            ],
+            [
+               6,
+               3
+            ],
+            [
+               7,
+               4
+            ]
+         ],
+         [
+            [
+               9,
+               4
+            ],
+            [
+               9,
+               6
+            ],
+            [
+               10,
+               7
+            ],
+            [
+               2,
+               8
+            ],
+            [
+               6,
+               1
+            ],
+            [
+               5,
+               9
+            ],
+            [
+               6,
+               10
+            ],
+            [
+               7,
+               2
+            ],
+            [
+               8,
+               3
+            ]
+         ],
+         [
+            [
+               8,
+               5
+            ],
+            [
+               1,
+               3
+            ],
+            [
+               4,
+               1
+            ],
+            [
+               3,
+               7
+            ],
+            [
+               2,
+               10
+            ],
+            [
+               3,
+               2
+            ],
+            [
+               4,
+               3
+            ],
+            [
+               8,
+               10
+            ],
+            [
+               9,
+               2
+            ]
+         ],
+         [
+            [
+               7,
+               6
+            ],
+            [
+               8,
+               7
+            ],
+            [
+               3,
+               5
+            ],
+            [
+               1,
+               5
+            ],
+            [
+               5,
+               7
+            ],
+            [
+               1,
+               7
+            ],
+            [
+               5,
+               2
+            ],
+            [
+               1,
+               9
+            ],
+            [
+               10,
+               1
+            ]
+         ]
+      ],
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 250,
+               "flatIntVars": 345,
+               "flatIntConstraints": 624,
+               "evaluatedReifiedConstraints": 250,
+               "method": "satisfy",
+               "flatTime": 0.114662
+            },
+            "solver": {
+               "initTime": 0.00373523,
+               "solveTime": 0.00204112,
+               "solutions": 1,
+               "variables": 615,
+               "propagators": 623,
+               "propagations": 17216,
+               "nodes": 128,
+               "failures": 56,
+               "restarts": 0,
+               "peakDepth": 21
+            },
+            "solution": {
+               "nSolutions": 1
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": 0.1361215934753418,
+         "runner": "github-action"
+      }
+   },
+   "naive_CP_plain_chuffed": {
+>>>>>>> 5ecc7f0fcaafbf3a0371500edbdc8ae426563838
+      "time": 300,
+      "optimal": false,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "statistics": {
+<<<<<<< HEAD
+            "compiler": null,
+            "solver": null,
+            "solution": null
+         },
+         "crash_reason": "yes",
+=======
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 10800,
+               "flatIntVars": 1989,
+               "flatBoolConstraints": 2000,
+               "flatIntConstraints": 12753,
+               "evaluatedReifiedConstraints": 10800,
+               "evaluatedHalfReifiedConstraints": 900,
+               "eliminatedImplications": 1800,
+               "method": "minimize",
+               "flatTime": 0.489864
+            },
+            "solver": {
+               "nodes": 2234379,
+               "failures": 1804190,
+               "restarts": 1969,
+               "variables": 41228,
+               "intVars": 1991,
+               "boolVariables": 39235,
+               "propagators": 2243,
+               "propagations": 432788827,
+               "peakDepth": 63,
+               "nogoods": 1804190,
+               "backjumps": 351137,
+               "peakMem": 0.0,
+               "time": 298.625,
+               "initTime": 0.116,
+               "solveTime": 298.509,
+               "objective": -1,
+               "optTime": 0.0,
+               "baseMem": 0.0,
+               "trailMem": 0.28,
+               "randomSeed": 42
+            },
+            "solution": {
+               "nSolutions": 0
+            }
+         },
+         "crash_reason": null,
+>>>>>>> 5ecc7f0fcaafbf3a0371500edbdc8ae426563838
+         "time_to_last_solution": null,
+         "runner": "github-action"
+      }
+   },
+<<<<<<< HEAD
+   "plain-gecode-symm": {
+=======
+   "naive_CP_impl_chuffed": {
+>>>>>>> 5ecc7f0fcaafbf3a0371500edbdc8ae426563838
+      "time": 300,
+      "optimal": false,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "statistics": {
+            "compiler": null,
+            "solver": null,
+            "solution": null
+         },
+<<<<<<< HEAD
+         "crash_reason": "yes",
+         "time_to_last_solution": null,
+         "runner": "github-action"
+      }
+=======
+         "crash_reason": "minizinc_error: ",
+         "time_to_last_solution": null,
+         "runner": "github-action"
+      }
+   },
+   "naive_CP_symm_chuffed": {
+      "time": 300,
+      "optimal": false,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 10828,
+               "flatIntVars": 1934,
+               "flatBoolConstraints": 2012,
+               "flatIntConstraints": 12677,
+               "evaluatedReifiedConstraints": 10849,
+               "evaluatedHalfReifiedConstraints": 850,
+               "eliminatedImplications": 1700,
+               "method": "minimize",
+               "flatTime": 0.482361
+            },
+            "solver": {
+               "nodes": 2002861,
+               "failures": 1638606,
+               "restarts": 1781,
+               "variables": 39862,
+               "intVars": 1940,
+               "boolVariables": 37920,
+               "propagators": 2171,
+               "propagations": 415261462,
+               "peakDepth": 57,
+               "nogoods": 1638606,
+               "backjumps": 299099,
+               "peakMem": 0.0,
+               "time": 298.633,
+               "initTime": 0.117,
+               "solveTime": 298.516,
+               "objective": -1,
+               "optTime": 0.0,
+               "baseMem": 0.0,
+               "trailMem": 0.19,
+               "randomSeed": 42
+            },
+            "solution": {
+               "nSolutions": 0
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": null,
+         "runner": "github-action"
+      }
+   },
+   "naive_CP_full_chuffed": {
+      "time": 300,
+      "optimal": false,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 10878,
+               "flatIntVars": 1984,
+               "flatBoolConstraints": 2012,
+               "flatIntConstraints": 12792,
+               "evaluatedReifiedConstraints": 10899,
+               "evaluatedHalfReifiedConstraints": 850,
+               "eliminatedImplications": 1700,
+               "method": "minimize",
+               "flatTime": 0.505915
+            },
+            "solver": {
+               "nodes": 2096853,
+               "failures": 1740107,
+               "restarts": 1881,
+               "variables": 40212,
+               "intVars": 1990,
+               "boolVariables": 38220,
+               "propagators": 2201,
+               "propagations": 483106739,
+               "peakDepth": 53,
+               "nogoods": 1740107,
+               "backjumps": 291936,
+               "peakMem": 0.0,
+               "time": 298.61,
+               "initTime": 0.116,
+               "solveTime": 298.494,
+               "objective": -1,
+               "optTime": 0.0,
+               "baseMem": 0.0,
+               "trailMem": 0.19,
+               "randomSeed": 42
+            },
+            "solution": {
+               "nSolutions": 0
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": null,
+         "runner": "github-action"
+      }
+   },
+   "naive_CP_plain_gecode": {
+      "time": 299,
+      "optimal": false,
+      "obj": 7,
+      "sol": [
+         [
+            [
+               5,
+               8
+            ],
+            [
+               1,
+               2
+            ],
+            [
+               6,
+               9
+            ],
+            [
+               10,
+               9
+            ],
+            [
+               7,
+               3
+            ],
+            [
+               6,
+               3
+            ],
+            [
+               1,
+               10
+            ],
+            [
+               2,
+               7
+            ],
+            [
+               4,
+               5
+            ]
+         ],
+         [
+            [
+               10,
+               4
+            ],
+            [
+               4,
+               3
+            ],
+            [
+               10,
+               7
+            ],
+            [
+               1,
+               6
+            ],
+            [
+               8,
+               6
+            ],
+            [
+               9,
+               2
+            ],
+            [
+               7,
+               5
+            ],
+            [
+               5,
+               9
+            ],
+            [
+               8,
+               2
+            ]
+         ],
+         [
+            [
+               1,
+               7
+            ],
+            [
+               5,
+               6
+            ],
+            [
+               1,
+               3
+            ],
+            [
+               4,
+               2
+            ],
+            [
+               4,
+               9
+            ],
+            [
+               5,
+               10
+            ],
+            [
+               8,
+               9
+            ],
+            [
+               8,
+               3
+            ],
+            [
+               6,
+               7
+            ]
+         ],
+         [
+            [
+               3,
+               9
+            ],
+            [
+               7,
+               9
+            ],
+            [
+               5,
+               2
+            ],
+            [
+               7,
+               8
+            ],
+            [
+               2,
+               10
+            ],
+            [
+               1,
+               8
+            ],
+            [
+               4,
+               6
+            ],
+            [
+               1,
+               4
+            ],
+            [
+               10,
+               3
+            ]
+         ],
+         [
+            [
+               6,
+               2
+            ],
+            [
+               8,
+               10
+            ],
+            [
+               8,
+               4
+            ],
+            [
+               5,
+               3
+            ],
+            [
+               5,
+               1
+            ],
+            [
+               4,
+               7
+            ],
+            [
+               2,
+               3
+            ],
+            [
+               6,
+               10
+            ],
+            [
+               1,
+               9
+            ]
+         ]
+      ],
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 1800,
+               "flatIntVars": 1981,
+               "flatBoolConstraints": 1800,
+               "flatIntConstraints": 3755,
+               "evaluatedReifiedConstraints": 1800,
+               "evaluatedHalfReifiedConstraints": 900,
+               "eliminatedImplications": 1800,
+               "method": "minimize",
+               "flatTime": 0.385969
+            },
+            "solver": {
+               "initTime": 0.0230765,
+               "solveTime": 298.613,
+               "solutions": 1,
+               "variables": 3781,
+               "propagators": 5555,
+               "propagations": 1422490009,
+               "nodes": 10241015,
+               "failures": 5015431,
+               "restarts": 4239,
+               "peakDepth": 77
+            },
+            "solution": {
+               "nSolutions": 1
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": 299.06318048286437,
+         "runner": "github-action"
+      }
+   },
+   "naive_CP_impl_gecode": {
+      "time": 300,
+      "optimal": false,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "statistics": {
+            "compiler": null,
+            "solver": null,
+            "solution": null
+         },
+         "crash_reason": "minizinc_error: ",
+         "time_to_last_solution": null,
+         "runner": "github-action"
+      }
+   },
+   "naive_CP_symm_gecode": {
+      "time": 299,
+      "optimal": false,
+      "obj": 5,
+      "sol": [
+         [
+            [
+               1,
+               7
+            ],
+            [
+               3,
+               4
+            ],
+            [
+               3,
+               2
+            ],
+            [
+               4,
+               1
+            ],
+            [
+               7,
+               8
+            ],
+            [
+               8,
+               5
+            ],
+            [
+               9,
+               5
+            ],
+            [
+               9,
+               2
+            ],
+            [
+               10,
+               6
+            ]
+         ],
+         [
+            [
+               2,
+               8
+            ],
+            [
+               9,
+               10
+            ],
+            [
+               10,
+               4
+            ],
+            [
+               5,
+               3
+            ],
+            [
+               9,
+               6
+            ],
+            [
+               6,
+               7
+            ],
+            [
+               2,
+               4
+            ],
+            [
+               5,
+               1
+            ],
+            [
+               3,
+               8
+            ]
+         ],
+         [
+            [
+               3,
+               9
+            ],
+            [
+               6,
+               5
+            ],
+            [
+               1,
+               6
+            ],
+            [
+               10,
+               8
+            ],
+            [
+               2,
+               1
+            ],
+            [
+               10,
+               2
+            ],
+            [
+               7,
+               3
+            ],
+            [
+               8,
+               4
+            ],
+            [
+               4,
+               7
+            ]
+         ],
+         [
+            [
+               4,
+               6
+            ],
+            [
+               1,
+               8
+            ],
+            [
+               5,
+               7
+            ],
+            [
+               9,
+               7
+            ],
+            [
+               3,
+               10
+            ],
+            [
+               9,
+               4
+            ],
+            [
+               10,
+               1
+            ],
+            [
+               3,
+               6
+            ],
+            [
+               2,
+               5
+            ]
+         ],
+         [
+            [
+               5,
+               10
+            ],
+            [
+               2,
+               7
+            ],
+            [
+               9,
+               8
+            ],
+            [
+               2,
+               6
+            ],
+            [
+               4,
+               5
+            ],
+            [
+               1,
+               3
+            ],
+            [
+               8,
+               6
+            ],
+            [
+               7,
+               10
+            ],
+            [
+               1,
+               9
+            ]
+         ]
+      ],
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 1700,
+               "flatIntVars": 1926,
+               "flatBoolConstraints": 1700,
+               "flatIntConstraints": 3608,
+               "evaluatedReifiedConstraints": 1745,
+               "evaluatedHalfReifiedConstraints": 850,
+               "eliminatedImplications": 1700,
+               "method": "minimize",
+               "flatTime": 0.385705
+            },
+            "solver": {
+               "initTime": 0.0221827,
+               "solveTime": 298.613,
+               "solutions": 1,
+               "variables": 3646,
+               "propagators": 5108,
+               "propagations": 2220279859,
+               "nodes": 5197156,
+               "failures": 2567163,
+               "restarts": 2468,
+               "peakDepth": 67
+            },
+            "solution": {
+               "nSolutions": 1
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": 299.0611604557037,
+         "runner": "github-action"
+      }
+   },
+   "naive_CP_full_gecode": {
+      "time": 299,
+      "optimal": false,
+      "obj": 7,
+      "sol": [
+         [
+            [
+               1,
+               7
+            ],
+            [
+               2,
+               8
+            ],
+            [
+               2,
+               7
+            ],
+            [
+               3,
+               8
+            ],
+            [
+               4,
+               6
+            ],
+            [
+               4,
+               5
+            ],
+            [
+               9,
+               10
+            ],
+            [
+               9,
+               6
+            ],
+            [
+               10,
+               3
+            ]
+         ],
+         [
+            [
+               2,
+               6
+            ],
+            [
+               4,
+               9
+            ],
+            [
+               6,
+               10
+            ],
+            [
+               5,
+               9
+            ],
+            [
+               1,
+               5
+            ],
+            [
+               2,
+               3
+            ],
+            [
+               8,
+               7
+            ],
+            [
+               8,
+               1
+            ],
+            [
+               7,
+               4
+            ]
+         ],
+         [
+            [
+               3,
+               9
+            ],
+            [
+               10,
+               5
+            ],
+            [
+               1,
+               9
+            ],
+            [
+               2,
+               4
+            ],
+            [
+               10,
+               8
+            ],
+            [
+               6,
+               8
+            ],
+            [
+               3,
+               6
+            ],
+            [
+               5,
+               7
+            ],
+            [
+               2,
+               1
+            ]
+         ],
+         [
+            [
+               4,
+               10
+            ],
+            [
+               1,
+               3
+            ],
+            [
+               4,
+               8
+            ],
+            [
+               1,
+               6
+            ],
+            [
+               3,
+               7
+            ],
+            [
+               7,
+               9
+            ],
+            [
+               5,
+               2
+            ],
+            [
+               2,
+               10
+            ],
+            [
+               5,
+               6
+            ]
+         ],
+         [
+            [
+               5,
+               8
+            ],
+            [
+               7,
+               6
+            ],
+            [
+               3,
+               5
+            ],
+            [
+               7,
+               10
+            ],
+            [
+               2,
+               9
+            ],
+            [
+               1,
+               10
+            ],
+            [
+               4,
+               1
+            ],
+            [
+               4,
+               3
+            ],
+            [
+               8,
+               9
+            ]
+         ]
+      ],
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 1750,
+               "flatIntVars": 1976,
+               "flatBoolConstraints": 1700,
+               "flatIntConstraints": 3723,
+               "evaluatedReifiedConstraints": 1795,
+               "evaluatedHalfReifiedConstraints": 850,
+               "eliminatedImplications": 1700,
+               "method": "minimize",
+               "flatTime": 0.374906
+            },
+            "solver": {
+               "initTime": 0.022527,
+               "solveTime": 298.624,
+               "solutions": 1,
+               "variables": 3746,
+               "propagators": 5223,
+               "propagations": 1928424050,
+               "nodes": 5875005,
+               "failures": 2899395,
+               "restarts": 2813,
+               "peakDepth": 71
+            },
+            "solution": {
+               "nSolutions": 1
+            }
+         },
+         "crash_reason": null,
+         "time_to_last_solution": 299.0621401901245,
+         "runner": "github-action"
+      }
+>>>>>>> 5ecc7f0fcaafbf3a0371500edbdc8ae426563838
+   }
+}

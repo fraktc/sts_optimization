@@ -1,4 +1,4 @@
-from .minizinc_utils import minizincSolve, parseInstanceForMinizinc
+from .minizinc_utils import minizincSolve
 import pathlib
 import os
 import math
@@ -12,210 +12,170 @@ def _solutionExtractorFromForwardPath(variables):
     solution = variables["matches"]
     return solution
 
+def _solutionExtractorFromForwardPathRoundRobin(variable):
+    rr_home, rr_away, period_slot = variable["rr_home"], variable["rr_away"], variable["period_slot"]
+    periods = variable["periods"]
+    weeks = variable["weeks"]
 
+    # rr_home, rr_away and period_slot have shape [weeks * periods]
 
-experiments_gecode = [
+    # Reshape  rr_home, rr_away and period_slot to be [weeks, periods]
+    rr_home = [[rr_home[w * periods + p] for p in range(periods)] for w in range(weeks)]
+    rr_away = [[rr_away[w * periods + p] for p in range(periods)] for w in range(weeks)]
+    period_slot = [[period_slot[w * periods + p] for p in range(periods)] for w in range(weeks)]
+
+    # Convert the solution to the matches format
+    matches = []
+    for p in range(periods):
+        m = []
+        for w in range(weeks):
+            m.append([rr_home[w][period_slot[w][p] - 1], rr_away[w][period_slot[w][p] - 1]])
+        matches.append(m)
+
+    return matches
+
+experiments_chuffed_rr = [
     {
-        "name": "plain-gecode",
-        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./gecode/plain.mzn"),
+        "name": "RR_CP_plain_chuffed",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_plain.mzn"),
+        "solver": "chuffed",
+        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "RR_CP_impl_chuffed",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_impl.mzn"),
+        "solver": "chuffed",
+        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "RR_CP_symm_chuffed",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_symm.mzn"),
+        "solver": "chuffed",
+        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "RR_CP_full_chuffed",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_full.mzn"),
+        "solver": "chuffed",
+        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+        "preprocessing": [],
+        "free_search": False
+    },
+]
+
+experiments_gecode_rr = [
+    {
+        "name": "RR_CP_plain_gecode",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_plain.mzn"),
+        "solver": "gecode",
+        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "RR_CP_impl_gecode",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_impl.mzn"),
+        "solver": "gecode",
+        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "RR_CP_symm_gecode",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_symm.mzn"),
+        "solver": "gecode",
+        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "RR_CP_full_gecode",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_full.mzn"),
+        "solver": "gecode",
+        "solution_extractor_fn": _solutionExtractorFromForwardPathRoundRobin,
+        "preprocessing": [],
+        "free_search": False
+    },
+]
+
+experiments_chuffed_naive = [
+    {
+        "name": "naive_CP_plain_chuffed",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/naive_plain.mzn"),
+        "solver": "chuffed",
+        "solution_extractor_fn": _solutionExtractorFromForwardPath,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "naive_CP_impl_chuffed",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/naive_impl.mzn"),
+        "solver": "chuffed",
+        "solution_extractor_fn": _solutionExtractorFromForwardPath,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "naive_CP_symm_chuffed",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/naive_symm.mzn"),
+        "solver": "chuffed",
+        "solution_extractor_fn": _solutionExtractorFromForwardPath,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "naive_CP_full_chuffed",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/naive_full.mzn"),
+        "solver": "chuffed",
+        "solution_extractor_fn": _solutionExtractorFromForwardPath,
+        "preprocessing": [],
+        "free_search": False
+    },
+]
+
+experiments_gecode_naive = [
+    {
+        "name": "naive_CP_plain_gecode",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/naive_plain.mzn"),
         "solver": "gecode",
         "solution_extractor_fn": _solutionExtractorFromForwardPath,
         "preprocessing": [],
         "free_search": False
     },
     {
-        "name": "plain-gecode-symm",
-        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./gecode/plain_symm.mzn"),
+        "name": "naive_CP_impl_gecode",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/naive_impl.mzn"),
         "solver": "gecode",
         "solution_extractor_fn": _solutionExtractorFromForwardPath,
         "preprocessing": [],
         "free_search": False
     },
-    # {
-    #     "name": "vrp-luby-gecode",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/gecode/vrp-luby.mzn"),
-    #     "solver": "gecode",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-lns50-gecode",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/gecode/vrp-lns.mzn"),
-    #     "solver": "gecode",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [ _setLNSPercentage(50) ],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-lns80-gecode",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/gecode/vrp-lns.mzn"),
-    #     "solver": "gecode",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [ _setLNSPercentage(80) ],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-lns90-gecode",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/gecode/vrp-lns.mzn"),
-    #     "solver": "gecode",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [ _setLNSPercentage(90) ],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-lns95-gecode",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/gecode/vrp-lns.mzn"),
-    #     "solver": "gecode",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [ _setLNSPercentage(95) ],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-lns97-gecode",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/gecode/vrp-lns.mzn"),
-    #     "solver": "gecode",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [ _setLNSPercentage(97) ],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-lns99-gecode",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/gecode/vrp-lns.mzn"),
-    #     "solver": "gecode",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [ _setLNSPercentage(99) ],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-lns90-symm_amount-gecode",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/gecode/vrp-lns-symm_amount.mzn"),
-    #     "solver": "gecode",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [ _setLNSPercentage(90) ],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-lns90-symm_packs-gecode",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/gecode/vrp-lns-symm_packs.mzn"),
-    #     "solver": "gecode",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [ _setLNSPercentage(90) ],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-lns95-symm_amount-gecode",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/gecode/vrp-lns-symm_amount.mzn"),
-    #     "solver": "gecode",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [ _setLNSPercentage(95) ],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-lns95-symm_packs-gecode",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/gecode/vrp-lns-symm_packs.mzn"),
-    #     "solver": "gecode",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [ _setLNSPercentage(95) ],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-lns95-symm_amount_strong-gecode",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/gecode/vrp-lns-symm_amount_strong.mzn"),
-    #     "solver": "gecode",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [ _setLNSPercentage(95) ],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-lns95-symm_packs_strong-gecode",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/gecode/vrp-lns-symm_packs_strong.mzn"),
-    #     "solver": "gecode",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [ _setLNSPercentage(95) ],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-plain-ff-gecode",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/gecode/vrp-plain-ff.mzn"),
-    #     "solver": "gecode",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-lns95-ff-gecode",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/gecode/vrp-lns-ff.mzn"),
-    #     "solver": "gecode",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [ _setLNSPercentage(95) ],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-lns95-symm_amount-ff-gecode",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/gecode/vrp-lns-symm_amount-ff.mzn"),
-    #     "solver": "gecode",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [ _setLNSPercentage(95) ],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-lns95-symm_packs-ff-gecode",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/gecode/vrp-lns-symm_packs-ff.mzn"),
-    #     "solver": "gecode",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [ _setLNSPercentage(95) ],
-    #     "free_search": False
-    # },
+    {
+        "name": "naive_CP_symm_gecode",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/naive_symm.mzn"),
+        "solver": "gecode",
+        "solution_extractor_fn": _solutionExtractorFromForwardPath,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "naive_CP_full_gecode",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/naive_full.mzn"),
+        "solver": "gecode",
+        "solution_extractor_fn": _solutionExtractorFromForwardPath,
+        "preprocessing": [],
+        "free_search": False
+    },
 ]
 
-experiments_chuffed = [
-    # {
-    #     "name": "vrp-plain-chuffed",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/chuffed/vrp-plain.mzn"),
-    #     "solver": "chuffed",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-plain-fs-chuffed",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/chuffed/vrp-plain.mzn"),
-    #     "solver": "chuffed",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [],
-    #     "free_search": True
-    # },
-    # {
-    #     "name": "vrp-luby-chuffed",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/chuffed/vrp-luby.mzn"),
-    #     "solver": "chuffed",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-symm_amount-chuffed",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/chuffed/vrp-symm_amount.mzn"),
-    #     "solver": "chuffed",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [],
-    #     "free_search": False
-    # },
-    # {
-    #     "name": "vrp-symm_packs-chuffed",
-    #     "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/chuffed/vrp-symm_packs.mzn"),
-    #     "solver": "chuffed",
-    #     "solution_extractor_fn": _solutionExtractorFromForwardPath,
-    #     "preprocessing": [],
-    #     "free_search": False
-    # },
-]
-experiments_setup = (
-    experiments_gecode +
-    experiments_chuffed
-)
 
+experiments_setup = experiments_chuffed_rr + experiments_gecode_rr + experiments_chuffed_naive + experiments_gecode_naive
 
 def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwargs):
     instance_path = os.path.join(pathlib.Path(__file__).parent.resolve(), ".instance.dzn")
@@ -232,14 +192,10 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
             out_results[experiment["name"]] = cache[experiment["name"]]
             continue
 
-        # dzn_content = parseInstanceForMinizinc(instance)
         dzn_content = f"n = {instance};\n"
         start_time = time.time()
 
         # Create instance input file
-        # if len(experiment["preprocessing"]) > 0:
-        #     for prepro_fn in experiment["preprocessing"]:
-        #         dzn_content += prepro_fn(experiment, instance, random_seed)
         with open(instance_path, "w") as f:
             f.write(dzn_content)
         preprocess_time = time.time() - start_time
@@ -254,6 +210,9 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
             free_search = experiment["free_search"]
         )
         solve_time = time.time() - start_time
+
+        print(outcome, solutions, statistics, "\n"*5)
+
 
 
         if (outcome["mz_status"] is None) and (len(solutions) > 0):
@@ -271,9 +230,12 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
             solution = None
             crash_reason = outcome["crash_reason"]
         else:
-            overall_time = timeout if outcome["mz_status"] in ["UNKNOWN", "SATISFIED"] else math.floor(solve_time)
-            optimality = outcome["mz_status"] == "OPTIMAL_SOLUTION"
-            objective = solutions[-1]["variables"]["_objective"]
+            overall_time = math.floor(solve_time)
+            if "_objective" in solutions[-1]["variables"]:
+                objective = solutions[-1]["variables"]["_objective"]
+            else:
+                objective = solutions[-1]["variables"]["max_imbalance"]
+            optimality = objective == 1
             solution = experiment["solution_extractor_fn"](solutions[-1]["variables"])
             crash_reason = outcome["crash_reason"]
 

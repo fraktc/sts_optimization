@@ -4,7 +4,7 @@ include "globals.mzn";
 int: n;
 set of int: TEAMS = 1..(n);
 set of int: WEEKS = 1..(n-1);
-set of int: PERIODS = 1..n/2;
+set of int: PERIODS = 1..(n div 2);
 set of int: SLOTS = 1..2;
 
 % Decision variables
@@ -57,7 +57,7 @@ var int: max_imbalance = max(t in TEAMS)(
 constraint max_imbalance >= 1;
 
 % Search strategy
-solve :: restart_luby(200) :: int_search(matches, dom_w_deg, indomain_random, complete) minimize max_imbalance;
+solve :: restart_luby(200) :: int_search(matches, dom_w_deg, indomain_min, complete) minimize max_imbalance;
 
 % Output
 % output [

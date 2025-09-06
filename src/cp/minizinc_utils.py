@@ -7,27 +7,12 @@ import time
 from pathlib import Path
 
 
-
-def parseInstanceForMinizinc(instance):
-    out = ""
-    out += f"m = {instance['m']};\n"
-    out += f"n = {instance['n']};\n"
-    out += f"l = [ {','.join([str(x) for x in instance['l']])} ];\n"
-    out += f"s = [ {','.join([str(x) for x in instance['s']])} ];\n"
-    out += "D = ["
-    for d in instance["D"]:
-        out += f"| {','.join([str(x) for x in d])} "
-    out += "|];\n"
-    
-    return out
-
-
 def __formatCommand(model_path, data_path, solver, timeout_ms, seed, free_search):
     cmd = [
         "minizinc",
         "--json-stream",
         "--output-mode", "json",
-        "--all",
+        # "--all",
         "--statistics",
         "--solver", f"{solver}",
         "--time-limit", f"{timeout_ms}",
@@ -84,20 +69,36 @@ def minizincSolve(model_path: str, data_path: str, solver: str, timeout_ms: int,
                 else:
                     logger.warning("Unknown solver")
             elif data["type"] == "solution":
-                # Each intermediate solution is stored
+                # MiniZinc's automatic decision-variable JSON
+                vars_auto = data["output"].get("json", {})
+
+                # Your manual output block (string from `output [...]`)
+                text_output = data["output"].get("default", "").strip()
+                
+                # If your output is valid JSON text, parse it
+                try:
+                    manual_vars = json.loads(text_output) if text_output.startswith("{") else {}
+                except json.JSONDecodeError:
+                    manual_vars = {}
+
+                # Merge both sources (manual overrides automatic if keys match)
+                merged_vars = {**vars_auto, **manual_vars}
+                
                 sol = {
-                    "variables": data["output"]["json"],
+                    "variables": merged_vars,
                     "time_ms": data["time"]
                 }
                 solutions.append(sol)
+
             elif data["type"] == "status":
                 outcome["mz_status"] = data["status"]
                 outcome["time_ms"] = data["time"]
 
         pipe.wait()
+        stderr_output = pipe.stderr.read().decode("utf-8")
         if pipe.returncode in [-6, -11]:
             outcome["crash_reason"] = "out-of-memory"
         elif pipe.returncode != 0:
-            outcome["crash_reason"] = "yes"
+            outcome["crash_reason"] = f"minizinc_error: {stderr_output.strip()}"
 
     return outcome, solutions, statistics
