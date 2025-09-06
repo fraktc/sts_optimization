@@ -1,59 +1,124 @@
-# from .models.z3.model_plain import SMT_plain
-# from .models.z3.model_twosolver import SMT_twosolver 
-# from .models.z3.model_local_search import SMT_local_search
-# from .models.z3.model_plain_mtz import SMT_plain_mtz
-# from .solve_smtlib import solve as solve_smtlib
+from .models.z3.naive import NaiveSolver
+from .models.z3.round_robin import RoundRobinSolver, BitVecRoundRobinSolver
 import gc
 
 import logging
 logger = logging.getLogger(__name__)
 
-# experiments = [
-#     {
-#         "name": "plain",
-#         "model": SMT_plain,
-#         "symmetry_breaking": False,
-#         "implied_constraints": False,
-#     },
-#     {
-#         "name": "plain_symm",
-#         "model": SMT_plain,
-#         "symmetry_breaking": True,
-#         "implied_constraints": False,
-#     },
-#     {
-#         "name": "plain_impl",
-#         "model": SMT_plain,
-#         "symmetry_breaking": False,
-#         "implied_constraints": True,
-#     },
-#     {
-#         "name": "twosolver",
-#         "model": SMT_twosolver,
-#         "symmetry_breaking": False,
-#         "implied_constraints": False,
-#     },
-#     {
-#         "name": "twosolver_symm",
-#         "model": SMT_twosolver,
-#         "symmetry_breaking": True,
-#         "implied_constraints": False,
-#     },
-#     {
-#         "name": "twosolver_impl",
-#         "model": SMT_twosolver,
-#         "symmetry_breaking": False,
-#         "implied_constraints": True,
-#     },
-#     {
-#         "name": "local_search",
-#         "model": SMT_local_search,
-#         "symmetry_breaking": False,
-#         "implied_constraints": False,
-#     }
-# ]
-
-experiments = []
+experiments = [
+    {
+        "name": "naive",
+        "model": NaiveSolver,
+        "symmetry_constraint_mask": [False],
+        "implied_constraint_mask": [False],
+        "optimization": False,
+    },
+    {
+        "name": "naive_symm",
+        "model": NaiveSolver,
+        "symmetry_constraint_mask": [True],
+        "implied_constraint_mask": [False],
+        "optimization": False,
+    },
+    {
+        "name": "naive_implied",
+        "model": NaiveSolver,
+        "symmetry_constraint_mask": [False],
+        "implied_constraint_mask": [True],
+        "optimization": False,
+    },
+    {
+        "name": "naive_full",
+        "model": NaiveSolver,
+        "symmetry_constraint_mask": [True],
+        "implied_constraint_mask": [True],
+        "optimization": False,
+    },
+    {
+        "name": "naive_optim",
+        "model": NaiveSolver,
+        "symmetry_constraint_mask": [False],
+        "implied_constraint_mask": [False],
+        "optimization": True,
+    },
+    {
+        "name": "naive_symm_optim",
+        "model": NaiveSolver,
+        "symmetry_constraint_mask": [True],
+        "implied_constraint_mask": [False],
+        "optimization": True,
+    },
+    {
+        "name": "naive_implied_optim",
+        "model": NaiveSolver,
+        "symmetry_constraint_mask": [False],
+        "implied_constraint_mask": [True],
+        "optimization": True,
+    },
+    {
+        "name": "naive_full_optim",
+        "model": NaiveSolver,
+        "symmetry_constraint_mask": [True],
+        "implied_constraint_mask": [True],
+        "optimization": True,
+    },
+    {
+        "name": "round_robin",
+        "model": RoundRobinSolver,
+        "symmetry_constraint_mask": [False],
+        "implied_constraint_mask": [False],
+        "optimization": False,
+    },
+    {
+        "name": "round_robin_symm",
+        "model": RoundRobinSolver,
+        "symmetry_constraint_mask": [True],
+        "implied_constraint_mask": [False],
+        "optimization": False,
+    },
+    {
+        "name": "round_robin_implied",
+        "model": RoundRobinSolver,
+        "symmetry_constraint_mask": [False],
+        "implied_constraint_mask": [True],
+        "optimization": False,
+    },
+    {
+        "name": "round_robin_full",
+        "model": RoundRobinSolver,
+        "symmetry_constraint_mask": [True],
+        "implied_constraint_mask": [True],
+        "optimization": False,
+    },
+    {
+        "name": "round_robin_bitvec",
+        "model": BitVecRoundRobinSolver,
+        "symmetry_constraint_mask": [False],
+        "implied_constraint_mask": [False],
+        "optimization": False,
+    },
+    {
+        "name": "round_robin_bitvec_symm",
+        "model": BitVecRoundRobinSolver,
+        "symmetry_constraint_mask": [True],
+        "implied_constraint_mask": [False],
+        "optimization": False,
+    },
+    {
+        "name": "round_robin_bitvec_implied",
+        "model": BitVecRoundRobinSolver,
+        "symmetry_constraint_mask": [False],
+        "implied_constraint_mask": [True],
+        "optimization": False,
+    },
+    {
+        "name": "round_robin_bitvec_full",
+        "model": BitVecRoundRobinSolver,
+        "symmetry_constraint_mask": [True],
+        "implied_constraint_mask": [True],
+        "optimization": False,
+    },
+]
 
 def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwargs):
     results = {}
@@ -62,9 +127,9 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
         if (models_filter is not None) and (experiment["name"] not in models_filter):
             continue
         logger.info(f"Starting model {experiment['name']}")
-        name, model, symmetry_breaking, implied_constraints = experiment["name"], experiment["model"], experiment["symmetry_breaking"], experiment["implied_constraints"]
+        name, model, symmetry_constraint_mask, implied_constraint_mask, optimization = experiment["name"], experiment["model"], experiment["symmetry_constraint_mask"], experiment["implied_constraint_mask"], experiment["optimization"]
 
-        # Check if result is in cache
+        # Check if result is in cache00
         if name in cache:
             logger.info(f"Cache hit")
             results[name] = cache[name]
@@ -81,20 +146,12 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
             continue
             
         
-        results[name] = model(instance["m"],
-                              instance["n"],
-                              instance["l"],
-                              instance["s"],
-                              instance["D"],
+        results[name] = model(instance,
                               timeout=timeout,
-                              implied_constraints=implied_constraints,
-                              symmetry_breaking=symmetry_breaking,
-                              **kwargs)
+                              implied_constraint_mask=implied_constraint_mask,
+                              symmetry_constraint_mask=symmetry_constraint_mask,
+                              **kwargs).solve()
 
         gc.collect()
-    smtlib_results = {}
-    # smtlib_results = solve_smtlib(instance, instance_number, timeout, cache, random_seed, models_filter, **kwargs)
-    for key in smtlib_results:
-        results[key] = smtlib_results[key]
 
     return results
