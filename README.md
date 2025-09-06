@@ -41,16 +41,16 @@ docker run -v ./res:/cdmo/results cdmo
 ## Results
 <!-- Do NOT remove the comments below -->
 <!-- begin-status -->
-| Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MILP](./method-statuses/milp-status.md) |
+| Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MIP](./method-statuses/mip-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
-| $4$ | | | | $\color{lightgray}\text{Timeout}$ | 
-| $6$ | | | | $\color{green}\text{0.0086 s (obj: 1)}$</br>$\color{green}\text{RR-milp-plain-CBC}$ | 
-| $8$ | | | | $\color{green}\text{0.0152 s (obj: 1)}$</br>$\color{green}\text{RR-milp-SB-CBC}$ | 
-| $10$ | | | | $\color{green}\text{0.0258 s (obj: 1)}$</br>$\color{green}\text{RR-milp-plain-CBC}$ | 
-| $12$ | | | | $\color{green}\text{0.243 s (obj: 1)}$</br>$\color{green}\text{RR-milp-full-CBC}$ | 
-| $14$ | | | | $\color{green}\text{15.9383 s (obj: 1)}$</br>$\color{green}\text{RR-milp-SB-CBC}$ | 
-| $16$ | | | | $\color{lightgray}\text{Timeout}$ | 
-| $18$ | | | | $\color{lightgray}\text{Timeout}$ | 
-| $20$ | | | | $\color{lightgray}\text{Timeout}$ | 
+| $4$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $6$ | $\color{pink}\text{Crashed}$ | $\color{red}\text{Inconsistent}$ | | | 
+| $8$ | $\color{pink}\text{Crashed}$ | $\color{red}\text{Inconsistent}$ | | | 
+| $10$ | $\color{pink}\text{Crashed}$ | $\color{red}\text{Inconsistent}$ | | | 
+| $12$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $14$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $16$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $18$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $20$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
 
 <!-- end-status -->
