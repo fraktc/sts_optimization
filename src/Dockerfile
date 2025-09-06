@@ -41,8 +41,18 @@ cp -r yices-2.6.5/etc/* /usr/local/etc &&\
 cp -r yices-2.6.5/include/* /usr/local/include &&\
 cp -r yices-2.6.5/lib/* /usr/local/lib
 
+# # Install build dependencies for highspy
+# RUN apt-get update && apt-get install -y \
+#     build-essential cmake git pkg-config
+
+# # Install pulp with highspy (HiGHS Python bindings)
+# RUN python3 -m pip install --no-cache-dir pulp[HiGHS]==3.2.1 highspy
+# Install PuLP and HiGHS
+RUN python3 -m pip install --no-cache-dir pulp==3.2.1 highspy
+# RUN apt-get update && apt-get install -y highs
+
 # Install PuLP 3.2.1
-RUN python3 -m pip install pulp==3.2.1 --no-cache-dir
+# RUN python3 -m pip install "pulp[HiGHS]==3.2.1" --no-cache-dir
 
 # Install amplpy and all necessary amplpy.modules:
 # ARG AMPL_KEY 
@@ -53,8 +63,9 @@ RUN python3 -m pip install pulp==3.2.1 --no-cache-dir
 # For Windows EOL char
 RUN apt install -y dos2unix
 
-COPY . .
+COPY requirements.txt .
 RUN pip3 install -r requirements.txt
+COPY . .
 RUN dos2unix ./entrypoint.sh
 
 RUN chmod +x ./entrypoint.sh

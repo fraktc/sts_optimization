@@ -6,6 +6,7 @@ import warnings
 import math
 import time
 import importlib.util
+import pulp
 
 logger = logging.getLogger(__name__)
 

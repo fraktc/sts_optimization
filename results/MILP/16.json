@@ -1,74 +1,38 @@
 {
-   "RR_milp_full_HiGHS": {
-      "time": 300,
-      "optimal": false,
-      "obj": null,
-      "sol": null,
-      "_extras": {
-         "runner": "github-action"
-      }
-   },
-   "RR_milp_implied_HiGHS": {
-      "time": 300,
-      "optimal": false,
-      "obj": null,
-      "sol": null,
-      "_extras": {
-         "runner": "github-action"
-      }
-   },
-   "RR_milp_plain_HiGHS": {
-      "time": 300,
-      "optimal": false,
-      "obj": null,
-      "sol": null,
-      "_extras": {
-         "runner": "github-action"
-      }
-   },
-   "RR_milp_SB_HiGHS": {
-      "time": 300,
-      "optimal": false,
-      "obj": null,
-      "sol": null,
-      "_extras": {
-         "runner": "github-action"
-      }
-   },
-   "RR_milp_full_CBC": {
-      "time": 300,
-      "optimal": false,
-      "obj": null,
-      "sol": null,
-      "_extras": {
-         "runner": "github-action"
-      }
-   },
-   "RR_milp_implied_CBC": {
-      "time": 300,
-      "optimal": false,
-      "obj": null,
-      "sol": null,
-      "_extras": {
-         "runner": "github-action"
-      }
-   },
-   "RR_milp_plain_CBC": {
-      "time": 300,
-      "optimal": false,
-      "obj": null,
-      "sol": null,
-      "_extras": {
-         "runner": "github-action"
-      }
-   },
-   "RR_milp_SB_CBC": {
-      "time": 300,
-      "optimal": false,
-      "obj": null,
-      "sol": null,
-      "_extras": {
-         "runner": "github-action"
-      }
-   }
+    "RR_milp_full_CBC": {
+        "time": 300,
+        "optimal": false,
+        "obj": null,
+        "sol": null,
+        "_extras": {
+            "runner": "github-action"
+        }
+    },
+    "RR_milp_implied_CBC": {
+        "time": 300,
+        "optimal": false,
+        "obj": null,
+        "sol": null,
+        "_extras": {
+            "runner": "github-action"
+        }
+    },
+    "RR_milp_plain_CBC": {
+        "time": 300,
+        "optimal": false,
+        "obj": null,
+        "sol": null,
+        "_extras": {
+            "runner": "github-action"
+        }
+    },
+    "RR_milp_SB_CBC": {
+        "time": 300,
+        "optimal": false,
+        "obj": null,
+        "sol": null,
+        "_extras": {
+            "runner": "github-action"
+        }
+    }
 }
