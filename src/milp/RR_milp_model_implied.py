@@ -128,11 +128,17 @@ def create_milp_model(n,solver, timeout=60):
     prob += 0
     
     # Test with different solvers
+    # solvers = {
+    #     'CBC': pulp.PULP_CBC_CMD(msg=0, timeLimit=timeout),
+    #     'HiGHS': pulp.COIN_CMD(msg=0, timeLimit=timeout) if pulp.COIN_CMD().available() else pulp.PULP_CBC_CMD(msg=0, timeLimit=timeout)
+    # }
+
+    if solver == "HiGHS" and not pulp.HiGHS_CMD().available():
+        raise ValueError("HiGHS solver is not available in this PuLP installation.")
     solvers = {
         'CBC': pulp.PULP_CBC_CMD(msg=0, timeLimit=timeout),
-        'HiGHS': pulp.COIN_CMD(msg=0, timeLimit=timeout) if pulp.COIN_CMD().available() else pulp.PULP_CBC_CMD(msg=0, timeLimit=timeout)
+        'HiGHS': pulp.HiGHS_CMD(msg=0, timeLimit=timeout)
     }
-
 
     if solver not in solvers:
         raise ValueError(f"Solver {solver} not recognized. Available solvers: {list(solvers.keys())}")
