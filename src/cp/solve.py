@@ -34,7 +34,7 @@ def _solutionExtractorFromForwardPathRoundRobin(variable):
 
     return matches
 
-experiments_chuffed = [
+experiments_chuffed_rr = [
     {
         "name": "RR_CP_plain_chuffed",
         "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_plain.mzn"),
@@ -69,7 +69,7 @@ experiments_chuffed = [
     },
 ]
 
-experiments_gecode = [
+experiments_gecode_rr = [
     {
         "name": "RR_CP_plain_gecode",
         "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/round_robin_plain.mzn"),
@@ -104,8 +104,77 @@ experiments_gecode = [
     },
 ]
 
+experiments_chuffed_naive = [
+    {
+        "name": "naive_CP_plain_chuffed",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/naive_plain.mzn"),
+        "solver": "chuffed",
+        "solution_extractor_fn": _solutionExtractorFromForwardPath,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "naive_CP_impl_chuffed",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/naive_impl.mzn"),
+        "solver": "chuffed",
+        "solution_extractor_fn": _solutionExtractorFromForwardPath,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "naive_CP_symm_chuffed",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/naive_symm.mzn"),
+        "solver": "chuffed",
+        "solution_extractor_fn": _solutionExtractorFromForwardPath,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "naive_CP_full_chuffed",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/naive_full.mzn"),
+        "solver": "chuffed",
+        "solution_extractor_fn": _solutionExtractorFromForwardPath,
+        "preprocessing": [],
+        "free_search": False
+    },
+]
 
-experiments_setup = experiments_chuffed + experiments_gecode
+experiments_gecode_naive = [
+    {
+        "name": "naive_CP_plain_gecode",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/naive_plain.mzn"),
+        "solver": "gecode",
+        "solution_extractor_fn": _solutionExtractorFromForwardPath,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "naive_CP_impl_gecode",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/naive_impl.mzn"),
+        "solver": "gecode",
+        "solution_extractor_fn": _solutionExtractorFromForwardPath,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "naive_CP_symm_gecode",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/naive_symm.mzn"),
+        "solver": "gecode",
+        "solution_extractor_fn": _solutionExtractorFromForwardPath,
+        "preprocessing": [],
+        "free_search": False
+    },
+    {
+        "name": "naive_CP_full_gecode",
+        "model_path": os.path.join(pathlib.Path(__file__).parent.resolve(), "./models/naive_full.mzn"),
+        "solver": "gecode",
+        "solution_extractor_fn": _solutionExtractorFromForwardPath,
+        "preprocessing": [],
+        "free_search": False
+    },
+]
+
+experiments_setup = experiments_chuffed_rr + experiments_gecode_rr + experiments_chuffed_naive
 
 def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwargs):
     instance_path = os.path.join(pathlib.Path(__file__).parent.resolve(), ".instance.dzn")
