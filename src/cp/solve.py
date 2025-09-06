@@ -10,7 +10,6 @@ logger = logging.getLogger(__name__)
 
 def _solutionExtractorFromForwardPath(variables):
     solution = variables["matches"]
-    print(solution)
     return solution
 
 def _solutionExtractorFromForwardPathRoundRobin(variable):
@@ -232,7 +231,10 @@ def solve(instance, timeout, cache={}, random_seed=42, models_filter=None, **kwa
             crash_reason = outcome["crash_reason"]
         else:
             overall_time = math.floor(solve_time)
-            objective = solutions[-1]["variables"]["max_imbalance"]
+            if "_objective" in solutions[-1]["variables"]:
+                objective = solutions[-1]["variables"]["_objective"]
+            else:
+                objective = solutions[-1]["variables"]["max_imbalance"]
             optimality = objective == 1
             solution = experiment["solution_extractor_fn"](solutions[-1]["variables"])
             crash_reason = outcome["crash_reason"]
