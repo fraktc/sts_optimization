@@ -1294,5 +1294,108 @@
          "time_to_last_solution": 0.12610323524475098,
          "runner": "github-action"
       }
+   },
+   "naive_CP_plain_chuffed": {
+      "time": 300,
+      "optimal": false,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 4480,
+               "flatIntVars": 1023,
+               "flatBoolConstraints": 1024,
+               "flatIntConstraints": 5482,
+               "evaluatedReifiedConstraints": 4480,
+               "evaluatedHalfReifiedConstraints": 448,
+               "eliminatedImplications": 896,
+               "method": "minimize",
+               "flatTime": 0.510645
+            },
+            "solver": {
+               "nSolutions": 0
+            },
+            "solution": null
+         },
+         "crash_reason": "yes",
+         "time_to_last_solution": null,
+         "runner": "github-action"
+      }
+   },
+   "naive_CP_impl_chuffed": {
+      "time": 300,
+      "optimal": false,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "statistics": {
+            "compiler": null,
+            "solver": null,
+            "solution": null
+         },
+         "crash_reason": "yes",
+         "time_to_last_solution": null,
+         "runner": "github-action"
+      }
+   },
+   "naive_CP_symm_chuffed": {
+      "time": 300,
+      "optimal": false,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 4488,
+               "flatIntVars": 987,
+               "flatBoolConstraints": 1020,
+               "flatIntConstraints": 5429,
+               "evaluatedReifiedConstraints": 4504,
+               "evaluatedHalfReifiedConstraints": 416,
+               "eliminatedImplications": 832,
+               "method": "minimize",
+               "flatTime": 0.485448
+            },
+            "solver": {
+               "nSolutions": 0
+            },
+            "solution": null
+         },
+         "crash_reason": "yes",
+         "time_to_last_solution": null,
+         "runner": "github-action"
+      }
+   },
+   "naive_CP_full_chuffed": {
+      "time": 300,
+      "optimal": false,
+      "obj": null,
+      "sol": null,
+      "_extras": {
+         "statistics": {
+            "compiler": {
+               "paths": 0,
+               "flatBoolVars": 4520,
+               "flatIntVars": 1019,
+               "flatBoolConstraints": 1020,
+               "flatIntConstraints": 5505,
+               "evaluatedReifiedConstraints": 4536,
+               "evaluatedHalfReifiedConstraints": 416,
+               "eliminatedImplications": 832,
+               "method": "minimize",
+               "flatTime": 0.516784
+            },
+            "solver": {
+               "nSolutions": 0
+            },
+            "solution": null
+         },
+         "crash_reason": "yes",
+         "time_to_last_solution": null,
+         "runner": "github-action"
+      }
    }
 }
