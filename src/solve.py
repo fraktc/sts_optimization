@@ -9,6 +9,7 @@ import platform
 import logging
 logger = logging.getLogger(__name__)
 
+#check if the platform is not Windows
 if platform.system() != "Windows":
     import resource
 
@@ -21,7 +22,6 @@ def __loadCache(results_file_path):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(prog="Instance solver")
-    # parser.add_argument("--instances-path", type=str, default="./instances", help="Path to the input instances")
     parser.add_argument("--timeout", type=int, default=300, help="Timeout in seconds")
     parser.add_argument("--output-path", type=str, default="./res", help="Results directory")
     parser.add_argument("--verbose", action="store_true")
@@ -42,10 +42,14 @@ if __name__ == "__main__":
         datefmt = "%d-%m-%Y %H:%M:%S"
     )
 
+<<<<<<< HEAD
     # INSTANCES = [4,6,8,10,12,14,16,18,20]
     INSTANCES = [4,6,8,10]
 
 
+=======
+    INSTANCES = [6,8,10,12,14,16,18,20]
+>>>>>>> main
 
     # Set memory limit if needed
     if args.mem_limit >= 0 and platform.system() != "Windows":
@@ -65,7 +69,6 @@ if __name__ == "__main__":
     logger.info("-"*50)
     logger.info("Running with the following configuration:")
     logger.info(f"Methods: {args.methods}")
-    # logger.info(f"Instances: {INSTANCES}")
     logger.info(f"Memory limit: {args.mem_limit} MB")
     logger.info(f"Timeout: {args.timeout} s")
     logger.info("-"*50)
@@ -91,7 +94,6 @@ if __name__ == "__main__":
             logger.info(f"Starting instance {instance}")
             instance_results = solve_fn(
                 instance = instance,
-                # instance_number = instance_number,
                 timeout = args.timeout,
                 cache = cached_results,
                 random_seed = args.seed,
