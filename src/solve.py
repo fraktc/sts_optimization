@@ -42,14 +42,7 @@ if __name__ == "__main__":
         datefmt = "%d-%m-%Y %H:%M:%S"
     )
 
-<<<<<<< HEAD
-    # INSTANCES = [4,6,8,10,12,14,16,18,20]
-    INSTANCES = [4,6,8,10]
-
-
-=======
     INSTANCES = [6,8,10,12,14,16,18,20]
->>>>>>> main
 
     # Set memory limit if needed
     if args.mem_limit >= 0 and platform.system() != "Windows":
