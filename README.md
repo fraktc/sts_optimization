@@ -43,14 +43,14 @@ docker run -v ./res:/cdmo/results cdmo
 <!-- begin-status -->
 | Instance | [CP](./method-statuses/cp-status.md) | [SAT](./method-statuses/sat-status.md) | [SMT](./method-statuses/smt-status.md) | [MIP](./method-statuses/mip-status.md) |
 |:-:| :---:|:---:|:---:|:---:|
-| $4$ | | $\color{red}\text{Inconsistent}$ | | | 
-| $6$ | | $\color{green}\text{0.11846923828125 s (obj: 0)}$</br>$\color{green}\text{optimizer-z3-z3}$ | | | 
-| $8$ | | $\color{green}\text{0.48363542556762695 s (obj: 0)}$</br>$\color{green}\text{optimizer-z3-z3}$ | | | 
-| $10$ | | $\color{orange}\text{2.901758909225464 s (obj: 3)}$</br>$\color{orange}\text{solver-heule-sequential}$ | | | 
-| $12$ | | $\color{orange}\text{25.762351274490356 s (obj: 3)}$</br>$\color{orange}\text{solver-pairwise-sequential}$ | | | 
-| $14$ | | $\color{orange}\text{55.34747576713562 s (obj: 5)}$</br>$\color{orange}\text{solver-bitwise-pairwise}$ | | | 
-| $16$ | | | | | 
-| $18$ | | | | | 
-| $20$ | | | | | 
+| $4$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $6$ | $\color{pink}\text{Crashed}$ | $\color{red}\text{Inconsistent}$ | | | 
+| $8$ | $\color{pink}\text{Crashed}$ | $\color{red}\text{Inconsistent}$ | | | 
+| $10$ | $\color{pink}\text{Crashed}$ | $\color{red}\text{Inconsistent}$ | | | 
+| $12$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $14$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $16$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $18$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
+| $20$ | $\color{pink}\text{Crashed}$ | $\color{lightgray}\text{Timeout}$ | | | 
 
 <!-- end-status -->

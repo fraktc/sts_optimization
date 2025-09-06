@@ -45,19 +45,14 @@ def didCrash(result):
 
 
 def isInconsistent(result):
-    # result = result["sol"]
     if "sol" not in result or not result["sol"] or result["sol"] == "N/A":
         return True
 
     solution = result["sol"]
 
-    # print(check_solution(solution))
-    # print(solution)
-
     res, errors = check_solution(solution)
 
     if not res:
-        # print(f"Inconsistent solution found: {errors}")
         return True
     else:
         return False
@@ -163,8 +158,6 @@ def main(args):
     """
     check_solution.py <results folder>
     """
-    # FIXME: The results folder contains the .json file of each approach.
-    #        No other file should appear in these folders.
     # errors = []
     # warnings = []
 
@@ -182,7 +175,6 @@ def main(args):
         for instance in [4,6,8,10,12,14,16,18,20]:
             instances_status[subfolder][instance] = {}
 
-        # print(instances_status[subfolder])
 
         # print(f"\nChecking results in {folder} folder")
         for results_file in sorted(os.listdir(folder)):
