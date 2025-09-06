@@ -65,4 +65,3 @@ solve :: restart_luby(200) :: int_search(matches, dom_w_deg, indomain_min, compl
 %  "AWAY: \n" ++ show2d([ [matches[p, w, 2] | p in PERIODS] | w in WEEKS ]) ++ "\n" ++
 %  "MAX_IMBALANCE: \n" ++ show(max_imbalance)
 %];
-% hello bello
